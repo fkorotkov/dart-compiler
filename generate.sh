@@ -1,0 +1,1 @@
+java -cp lib/antlrworks.jar org.antlr.Tool -o gensrc/org/dartlang Dart.g
