@@ -41,8 +41,8 @@ STRING : '\'' (options {greedy=false;} : .)* '\'' { setText(getText().substring(
 
 topLevel returns [ASTNode root]
 	: {final List<ASTNode> children = new ArrayList<ASTNode>();}
-	  (child=varDeclaration {children.add(child.root);})*
-	  {$root = new TopLevelNode(children);};
+	  (child=stataemet {children.add(child.root);})*
+	  {$root = new StatementsNode(children);};
 
 functionDeclaration
 	: type? ID '(' parameterList ')' block;
@@ -70,8 +70,10 @@ value returns [ExpressionNode root]
 	| ID {$root = new IdentifierNode($ID.text);}
 	| STRING {$root = new StringValueNode($STRING.text);} ;
 
-block
-	: '{' stataemet* '}';
+block returns [StatementsNode root]
+	: {final List<ASTNode> children = new ArrayList<ASTNode>();} '{'
+	  (child=stataemet {children.add(child.root);})*
+	  '}' {$root = new StatementsNode(children);};
 
-stataemet
-	: varDeclaration;
+stataemet returns [ASTNode root]
+	: varDeclaration {$root = $varDeclaration.root};

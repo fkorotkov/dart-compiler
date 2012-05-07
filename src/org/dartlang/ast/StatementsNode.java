@@ -5,8 +5,8 @@ import java.util.List;
 /**
  * @author fedor.korotkov
  */
-public class TopLevelNode extends ASTNode {
-    public TopLevelNode(List<ASTNode> children) {
+public class StatementsNode extends ASTNode {
+    public StatementsNode(List<ASTNode> children) {
         super(children);
     }
 }

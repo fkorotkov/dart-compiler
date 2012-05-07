@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 Dart.g 2012-05-07 01:56:16
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 Dart.g 2012-05-08 00:40:49
 
   package org.dartlang;
 
@@ -77,25 +77,25 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "topLevel"
-    // Dart.g:42:1: topLevel returns [ASTNode root] : (child= varDeclaration )* ;
+    // Dart.g:42:1: topLevel returns [ASTNode root] : (child= stataemet )* ;
     public final DartParser.topLevel_return topLevel() throws RecognitionException {
         DartParser.topLevel_return retval = new DartParser.topLevel_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        DartParser.varDeclaration_return child = null;
+        DartParser.stataemet_return child = null;
 
 
 
         try {
-            // Dart.g:43:2: ( (child= varDeclaration )* )
-            // Dart.g:43:4: (child= varDeclaration )*
+            // Dart.g:43:2: ( (child= stataemet )* )
+            // Dart.g:43:4: (child= stataemet )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
             final List<ASTNode> children = new ArrayList<ASTNode>();
-            // Dart.g:44:4: (child= varDeclaration )*
+            // Dart.g:44:4: (child= stataemet )*
             loop1:
             do {
                 int alt1=2;
@@ -108,10 +108,10 @@ public class DartParser extends Parser {
 
                 switch (alt1) {
             	case 1 :
-            	    // Dart.g:44:5: child= varDeclaration
+            	    // Dart.g:44:5: child= stataemet
             	    {
-            	    pushFollow(FOLLOW_varDeclaration_in_topLevel367);
-            	    child=varDeclaration();
+            	    pushFollow(FOLLOW_stataemet_in_topLevel367);
+            	    child=stataemet();
 
             	    state._fsp--;
 
@@ -126,7 +126,7 @@ public class DartParser extends Parser {
                 }
             } while (true);
 
-            retval.root = new TopLevelNode(children);
+            retval.root = new StatementsNode(children);
 
             }
 
@@ -739,12 +739,13 @@ public class DartParser extends Parser {
     // $ANTLR end "value"
 
     public static class block_return extends ParserRuleReturnScope {
+        public StatementsNode root;
         CommonTree tree;
         public Object getTree() { return tree; }
     };
 
     // $ANTLR start "block"
-    // Dart.g:73:1: block : '{' ( stataemet )* '}' ;
+    // Dart.g:73:1: block returns [StatementsNode root] : '{' (child= stataemet )* '}' ;
     public final DartParser.block_return block() throws RecognitionException {
         DartParser.block_return retval = new DartParser.block_return();
         retval.start = input.LT(1);
@@ -752,24 +753,25 @@ public class DartParser extends Parser {
         CommonTree root_0 = null;
 
         Token char_literal21=null;
-        Token char_literal23=null;
-        DartParser.stataemet_return stataemet22 = null;
+        Token char_literal22=null;
+        DartParser.stataemet_return child = null;
 
 
         CommonTree char_literal21_tree=null;
-        CommonTree char_literal23_tree=null;
+        CommonTree char_literal22_tree=null;
 
         try {
-            // Dart.g:74:2: ( '{' ( stataemet )* '}' )
-            // Dart.g:74:4: '{' ( stataemet )* '}'
+            // Dart.g:74:2: ( '{' (child= stataemet )* '}' )
+            // Dart.g:74:4: '{' (child= stataemet )* '}'
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            char_literal21=(Token)match(input,28,FOLLOW_28_in_block555); 
+            final List<ASTNode> children = new ArrayList<ASTNode>();
+            char_literal21=(Token)match(input,28,FOLLOW_28_in_block561); 
             char_literal21_tree = (CommonTree)adaptor.create(char_literal21);
             adaptor.addChild(root_0, char_literal21_tree);
 
-            // Dart.g:74:8: ( stataemet )*
+            // Dart.g:75:4: (child= stataemet )*
             loop5:
             do {
                 int alt5=2;
@@ -782,14 +784,15 @@ public class DartParser extends Parser {
 
                 switch (alt5) {
             	case 1 :
-            	    // Dart.g:74:8: stataemet
+            	    // Dart.g:75:5: child= stataemet
             	    {
-            	    pushFollow(FOLLOW_stataemet_in_block557);
-            	    stataemet22=stataemet();
+            	    pushFollow(FOLLOW_stataemet_in_block569);
+            	    child=stataemet();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, stataemet22.getTree());
+            	    adaptor.addChild(root_0, child.getTree());
+            	    children.add(child.root);
 
             	    }
             	    break;
@@ -799,10 +802,11 @@ public class DartParser extends Parser {
                 }
             } while (true);
 
-            char_literal23=(Token)match(input,29,FOLLOW_29_in_block560); 
-            char_literal23_tree = (CommonTree)adaptor.create(char_literal23);
-            adaptor.addChild(root_0, char_literal23_tree);
+            char_literal22=(Token)match(input,29,FOLLOW_29_in_block578); 
+            char_literal22_tree = (CommonTree)adaptor.create(char_literal22);
+            adaptor.addChild(root_0, char_literal22_tree);
 
+            retval.root = new StatementsNode(children);
 
             }
 
@@ -825,34 +829,36 @@ public class DartParser extends Parser {
     // $ANTLR end "block"
 
     public static class stataemet_return extends ParserRuleReturnScope {
+        public ASTNode root;
         CommonTree tree;
         public Object getTree() { return tree; }
     };
 
     // $ANTLR start "stataemet"
-    // Dart.g:76:1: stataemet : varDeclaration ;
+    // Dart.g:78:1: stataemet returns [ASTNode root] : varDeclaration ;
     public final DartParser.stataemet_return stataemet() throws RecognitionException {
         DartParser.stataemet_return retval = new DartParser.stataemet_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        DartParser.varDeclaration_return varDeclaration24 = null;
+        DartParser.varDeclaration_return varDeclaration23 = null;
 
 
 
         try {
-            // Dart.g:77:2: ( varDeclaration )
-            // Dart.g:77:4: varDeclaration
+            // Dart.g:79:2: ( varDeclaration )
+            // Dart.g:79:4: varDeclaration
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_varDeclaration_in_stataemet569);
-            varDeclaration24=varDeclaration();
+            pushFollow(FOLLOW_varDeclaration_in_stataemet593);
+            varDeclaration23=varDeclaration();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, varDeclaration24.getTree());
+            adaptor.addChild(root_0, varDeclaration23.getTree());
+            retval.root = (varDeclaration23!=null?varDeclaration23.root:null)
 
             }
 
@@ -879,7 +885,7 @@ public class DartParser extends Parser {
 
  
 
-    public static final BitSet FOLLOW_varDeclaration_in_topLevel367 = new BitSet(new long[]{0x0000000000040822L});
+    public static final BitSet FOLLOW_stataemet_in_topLevel367 = new BitSet(new long[]{0x0000000000040822L});
     public static final BitSet FOLLOW_type_in_functionDeclaration385 = new BitSet(new long[]{0x0000000000400000L});
     public static final BitSet FOLLOW_ID_in_functionDeclaration388 = new BitSet(new long[]{0x0000000001000000L});
     public static final BitSet FOLLOW_24_in_functionDeclaration390 = new BitSet(new long[]{0x0000000000400000L});
@@ -901,9 +907,9 @@ public class DartParser extends Parser {
     public static final BitSet FOLLOW_INT_in_value529 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ID_in_value536 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_STRING_in_value543 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_block555 = new BitSet(new long[]{0x0000000020040820L});
-    public static final BitSet FOLLOW_stataemet_in_block557 = new BitSet(new long[]{0x0000000020040820L});
-    public static final BitSet FOLLOW_29_in_block560 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_varDeclaration_in_stataemet569 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_block561 = new BitSet(new long[]{0x0000000020040820L});
+    public static final BitSet FOLLOW_stataemet_in_block569 = new BitSet(new long[]{0x0000000020040820L});
+    public static final BitSet FOLLOW_29_in_block578 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_varDeclaration_in_stataemet593 = new BitSet(new long[]{0x0000000000000002L});
 
 }
