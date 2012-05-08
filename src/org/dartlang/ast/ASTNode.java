@@ -10,32 +10,29 @@ import java.util.List;
 public class ASTNode {
     private final String text;
     protected final List<ASTNode> children;
-    public ASTNode(String text){
+
+    public ASTNode(String text) {
         this(text, new ArrayList<ASTNode>());
     }
 
-    public ASTNode(String text, List<ASTNode> children){
+    public ASTNode(String text, List<ASTNode> children) {
         this.text = text;
         this.children = children;
     }
 
-    public ASTNode(List<ASTNode> children){
-        this(getChildrenText(children), children);
+    public ASTNode(List<ASTNode> children) {
+        this(null, children);
     }
 
-    public ASTNode(ASTNode child){
+    public ASTNode(ASTNode child) {
         this(child.getText(), Arrays.asList(child));
     }
 
     public String getText() {
-        return text;
+        return text == null ? getClass().getSimpleName() : text;
     }
 
-    private static String getChildrenText(List<ASTNode> children) {
-        final StringBuilder textBuilder = new StringBuilder();
-        for (ASTNode child : children){
-            textBuilder.append(child.getText());
-        }
-        return textBuilder.toString();
+    public List<ASTNode> getChildren() {
+        return children;
     }
 }

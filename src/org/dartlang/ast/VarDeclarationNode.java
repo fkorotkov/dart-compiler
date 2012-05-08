@@ -5,11 +5,13 @@ package org.dartlang.ast;
  */
 public class VarDeclarationNode extends ASTNode {
     private final String name;
+    private final TypeNode type;
     private final ASTNode expression;
 
-    public VarDeclarationNode(String name, ASTNode expression) {
-        super(expression);
+    public VarDeclarationNode(String name, TypeNode type, ASTNode expression) {
+        super(name);
         this.name = name;
+        this.type = type;
         this.expression = expression;
     }
 
