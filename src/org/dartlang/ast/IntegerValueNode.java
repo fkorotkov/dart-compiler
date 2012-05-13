@@ -7,7 +7,11 @@ public class IntegerValueNode extends ExpressionNode {
     final int value;
 
     public IntegerValueNode(int value) {
-        super(Integer.toString(value));
         this.value = value;
+    }
+
+    @Override
+    public String getText() {
+        return super.getText() + "(" + value + ")";
     }
 }

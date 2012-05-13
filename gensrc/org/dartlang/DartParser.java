@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 Dart.g 2012-05-08 23:43:57
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 Dart.g 2012-05-14 00:03:08
 
   package org.dartlang;
 
@@ -15,18 +15,20 @@ import org.antlr.runtime.tree.*;
 
 public class DartParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "BREAK", "CONST", "CONTINUE", "DEFAULT", "DO", "ELSE", "FALSE", "FINAL", "FOR", "IF", "IN", "NULL", "RETURN", "TRUE", "VAR", "VOID", "WHILE", "INT", "ID", "STRING", "WHITESPACE", "'('", "')'", "','", "'='", "'{'", "'}'", "';'", "'||'", "'&&'", "'|'", "'^'", "'&'", "'+'", "'-'", "'*'", "'/'", "'%'", "'~/'", "'<<'", "'>'", "'=='", "'!='", "'==='", "'!=='"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "BREAK", "CONST", "CONTINUE", "DEFAULT", "DO", "ELSE", "FALSE", "FINAL", "FOR", "IF", "IN", "NULL", "RETURN", "TRUE", "WHILE", "INT", "ID", "STRING", "WHITESPACE", "'('", "')'", "','", "';'", "'='", "'{'", "'}'", "'||'", "'&&'", "'|'", "'^'", "'&'", "'+'", "'-'", "'*'", "'/'", "'%'", "'~/'", "'<<'", "'>'", "'=='", "'!='", "'==='", "'!=='"
     };
     public static final int T__29=29;
     public static final int T__28=28;
     public static final int T__27=27;
-    public static final int WHILE=20;
     public static final int T__26=26;
+    public static final int WHILE=18;
     public static final int T__25=25;
+    public static final int T__24=24;
+    public static final int T__23=23;
     public static final int CONST=5;
     public static final int DO=8;
     public static final int FOR=12;
-    public static final int ID=22;
+    public static final int ID=20;
     public static final int EOF=-1;
     public static final int BREAK=4;
     public static final int IF=13;
@@ -34,22 +36,18 @@ public class DartParser extends Parser {
     public static final int IN=14;
     public static final int CONTINUE=6;
     public static final int RETURN=16;
-    public static final int VAR=18;
-    public static final int VOID=19;
     public static final int T__42=42;
     public static final int T__43=43;
     public static final int T__40=40;
     public static final int T__41=41;
     public static final int T__46=46;
-    public static final int T__47=47;
     public static final int T__44=44;
     public static final int T__45=45;
-    public static final int T__48=48;
     public static final int NULL=15;
     public static final int DEFAULT=7;
     public static final int ELSE=9;
-    public static final int WHITESPACE=24;
-    public static final int INT=21;
+    public static final int WHITESPACE=22;
+    public static final int INT=19;
     public static final int TRUE=17;
     public static final int T__30=30;
     public static final int T__31=31;
@@ -62,7 +60,7 @@ public class DartParser extends Parser {
     public static final int T__38=38;
     public static final int T__39=39;
     public static final int FALSE=10;
-    public static final int STRING=23;
+    public static final int STRING=21;
 
     // delegates
     // delegators
@@ -96,46 +94,46 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "topLevel"
-    // Dart.g:43:1: topLevel returns [ASTNode root] : (child= stataemet )* ;
+    // Dart.g:41:1: topLevel returns [ASTNode root] : (child= statement )* ;
     public final DartParser.topLevel_return topLevel() throws RecognitionException {
         DartParser.topLevel_return retval = new DartParser.topLevel_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        DartParser.stataemet_return child = null;
+        DartParser.statement_return child = null;
 
 
 
         try {
-            // Dart.g:44:2: ( (child= stataemet )* )
-            // Dart.g:44:4: (child= stataemet )*
+            // Dart.g:42:2: ( (child= statement )* )
+            // Dart.g:42:4: (child= statement )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
             final List<ASTNode> children = new ArrayList<ASTNode>();
-            // Dart.g:45:4: (child= stataemet )*
+            // Dart.g:43:4: (child= statement )*
             loop1:
             do {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==ID) ) {
+                if ( (LA1_0==RETURN||LA1_0==ID) ) {
                     alt1=1;
                 }
 
 
                 switch (alt1) {
             	case 1 :
-            	    // Dart.g:45:5: child= stataemet
+            	    // Dart.g:43:5: child= statement
             	    {
-            	    pushFollow(FOLLOW_stataemet_in_topLevel397);
-            	    child=stataemet();
+            	    pushFollow(FOLLOW_statement_in_topLevel366);
+            	    child=statement();
 
             	    state._fsp--;
 
             	    adaptor.addChild(root_0, child.getTree());
-            	    children.add(child.root);
+            	    children.add((child!=null?child.root:null));
 
             	    }
             	    break;
@@ -174,7 +172,7 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "functionDeclaration"
-    // Dart.g:48:1: functionDeclaration returns [FunctionDeclarationNode root] : ( type )? ID '(' parameterList ')' block ;
+    // Dart.g:46:1: functionDeclaration returns [FunctionDeclarationNode root] : ( type )? ID '(' parameterList ')' block ;
     public final DartParser.functionDeclaration_return functionDeclaration() throws RecognitionException {
         DartParser.functionDeclaration_return retval = new DartParser.functionDeclaration_return();
         retval.start = input.LT(1);
@@ -196,12 +194,12 @@ public class DartParser extends Parser {
         CommonTree char_literal5_tree=null;
 
         try {
-            // Dart.g:49:2: ( ( type )? ID '(' parameterList ')' block )
-            // Dart.g:49:4: ( type )? ID '(' parameterList ')' block
+            // Dart.g:47:2: ( ( type )? ID '(' parameterList ')' block )
+            // Dart.g:47:4: ( type )? ID '(' parameterList ')' block
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            // Dart.g:49:4: ( type )?
+            // Dart.g:47:4: ( type )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -214,9 +212,9 @@ public class DartParser extends Parser {
             }
             switch (alt2) {
                 case 1 :
-                    // Dart.g:49:4: type
+                    // Dart.g:47:4: type
                     {
-                    pushFollow(FOLLOW_type_in_functionDeclaration419);
+                    pushFollow(FOLLOW_type_in_functionDeclaration388);
                     type1=type();
 
                     state._fsp--;
@@ -228,25 +226,25 @@ public class DartParser extends Parser {
 
             }
 
-            ID2=(Token)match(input,ID,FOLLOW_ID_in_functionDeclaration422); 
+            ID2=(Token)match(input,ID,FOLLOW_ID_in_functionDeclaration391); 
             ID2_tree = (CommonTree)adaptor.create(ID2);
             adaptor.addChild(root_0, ID2_tree);
 
-            char_literal3=(Token)match(input,25,FOLLOW_25_in_functionDeclaration424); 
+            char_literal3=(Token)match(input,23,FOLLOW_23_in_functionDeclaration393); 
             char_literal3_tree = (CommonTree)adaptor.create(char_literal3);
             adaptor.addChild(root_0, char_literal3_tree);
 
-            pushFollow(FOLLOW_parameterList_in_functionDeclaration426);
+            pushFollow(FOLLOW_parameterList_in_functionDeclaration395);
             parameterList4=parameterList();
 
             state._fsp--;
 
             adaptor.addChild(root_0, parameterList4.getTree());
-            char_literal5=(Token)match(input,26,FOLLOW_26_in_functionDeclaration428); 
+            char_literal5=(Token)match(input,24,FOLLOW_24_in_functionDeclaration397); 
             char_literal5_tree = (CommonTree)adaptor.create(char_literal5);
             adaptor.addChild(root_0, char_literal5_tree);
 
-            pushFollow(FOLLOW_block_in_functionDeclaration430);
+            pushFollow(FOLLOW_block_in_functionDeclaration399);
             block6=block();
 
             state._fsp--;
@@ -281,7 +279,7 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "type"
-    // Dart.g:52:1: type returns [TypeNode root] : ID ;
+    // Dart.g:50:1: type returns [TypeNode root] : ID ;
     public final DartParser.type_return type() throws RecognitionException {
         DartParser.type_return retval = new DartParser.type_return();
         retval.start = input.LT(1);
@@ -293,12 +291,12 @@ public class DartParser extends Parser {
         CommonTree ID7_tree=null;
 
         try {
-            // Dart.g:53:2: ( ID )
-            // Dart.g:53:4: ID
+            // Dart.g:51:2: ( ID )
+            // Dart.g:51:4: ID
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            ID7=(Token)match(input,ID,FOLLOW_ID_in_type446); 
+            ID7=(Token)match(input,ID,FOLLOW_ID_in_type415); 
             ID7_tree = (CommonTree)adaptor.create(ID7);
             adaptor.addChild(root_0, ID7_tree);
 
@@ -331,7 +329,7 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "parameter"
-    // Dart.g:55:1: parameter returns [ParameterNode root] : type name= ID ;
+    // Dart.g:53:1: parameter returns [ParameterNode root] : type name= ID ;
     public final DartParser.parameter_return parameter() throws RecognitionException {
         DartParser.parameter_return retval = new DartParser.parameter_return();
         retval.start = input.LT(1);
@@ -345,18 +343,18 @@ public class DartParser extends Parser {
         CommonTree name_tree=null;
 
         try {
-            // Dart.g:56:2: ( type name= ID )
-            // Dart.g:56:4: type name= ID
+            // Dart.g:54:2: ( type name= ID )
+            // Dart.g:54:4: type name= ID
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_type_in_parameter461);
+            pushFollow(FOLLOW_type_in_parameter430);
             type8=type();
 
             state._fsp--;
 
             adaptor.addChild(root_0, type8.getTree());
-            name=(Token)match(input,ID,FOLLOW_ID_in_parameter465); 
+            name=(Token)match(input,ID,FOLLOW_ID_in_parameter434); 
             name_tree = (CommonTree)adaptor.create(name);
             adaptor.addChild(root_0, name_tree);
 
@@ -389,7 +387,7 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "parameterList"
-    // Dart.g:58:1: parameterList returns [ParameterListNode root] : child1= parameter ( ',' child2= parameter )* ;
+    // Dart.g:56:1: parameterList returns [ParameterListNode root] : (child1= parameter ( ',' child2= parameter )* )? ;
     public final DartParser.parameterList_return parameterList() throws RecognitionException {
         DartParser.parameterList_return retval = new DartParser.parameterList_return();
         retval.start = input.LT(1);
@@ -405,53 +403,70 @@ public class DartParser extends Parser {
         CommonTree char_literal9_tree=null;
 
         try {
-            // Dart.g:59:2: (child1= parameter ( ',' child2= parameter )* )
-            // Dart.g:59:4: child1= parameter ( ',' child2= parameter )*
+            // Dart.g:57:2: ( (child1= parameter ( ',' child2= parameter )* )? )
+            // Dart.g:57:4: (child1= parameter ( ',' child2= parameter )* )?
             {
             root_0 = (CommonTree)adaptor.nil();
 
             final List<ASTNode> children = new ArrayList<ASTNode>();
-            pushFollow(FOLLOW_parameter_in_parameterList488);
-            child1=parameter();
+            // Dart.g:58:4: (child1= parameter ( ',' child2= parameter )* )?
+            int alt4=2;
+            int LA4_0 = input.LA(1);
 
-            state._fsp--;
+            if ( (LA4_0==ID) ) {
+                alt4=1;
+            }
+            switch (alt4) {
+                case 1 :
+                    // Dart.g:59:11: child1= parameter ( ',' child2= parameter )*
+                    {
+                    pushFollow(FOLLOW_parameter_in_parameterList469);
+                    child1=parameter();
 
-            adaptor.addChild(root_0, child1.getTree());
-            children.add(child1.root);
-            // Dart.g:60:50: ( ',' child2= parameter )*
-            loop3:
-            do {
-                int alt3=2;
-                int LA3_0 = input.LA(1);
+                    state._fsp--;
 
-                if ( (LA3_0==27) ) {
-                    alt3=1;
-                }
+                    adaptor.addChild(root_0, child1.getTree());
+                    children.add(child1.root);
+                    // Dart.g:59:57: ( ',' child2= parameter )*
+                    loop3:
+                    do {
+                        int alt3=2;
+                        int LA3_0 = input.LA(1);
+
+                        if ( (LA3_0==25) ) {
+                            alt3=1;
+                        }
 
 
-                switch (alt3) {
-            	case 1 :
-            	    // Dart.g:60:51: ',' child2= parameter
-            	    {
-            	    char_literal9=(Token)match(input,27,FOLLOW_27_in_parameterList493); 
-            	    char_literal9_tree = (CommonTree)adaptor.create(char_literal9);
-            	    adaptor.addChild(root_0, char_literal9_tree);
+                        switch (alt3) {
+                    	case 1 :
+                    	    // Dart.g:59:58: ',' child2= parameter
+                    	    {
+                    	    char_literal9=(Token)match(input,25,FOLLOW_25_in_parameterList474); 
+                    	    char_literal9_tree = (CommonTree)adaptor.create(char_literal9);
+                    	    adaptor.addChild(root_0, char_literal9_tree);
 
-            	    pushFollow(FOLLOW_parameter_in_parameterList497);
-            	    child2=parameter();
+                    	    pushFollow(FOLLOW_parameter_in_parameterList478);
+                    	    child2=parameter();
 
-            	    state._fsp--;
+                    	    state._fsp--;
 
-            	    adaptor.addChild(root_0, child2.getTree());
-            	    children.add(child2.root);
+                    	    adaptor.addChild(root_0, child2.getTree());
+                    	    children.add(child2.root);
 
-            	    }
-            	    break;
+                    	    }
+                    	    break;
 
-            	default :
-            	    break loop3;
-                }
-            } while (true);
+                    	default :
+                    	    break loop3;
+                        }
+                    } while (true);
+
+
+                    }
+                    break;
+
+            }
 
             retval.root = new ParameterListNode(children);
 
@@ -503,17 +518,17 @@ public class DartParser extends Parser {
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_type_in_varDeclaration524);
+            pushFollow(FOLLOW_type_in_varDeclaration511);
             type10=type();
 
             state._fsp--;
 
             adaptor.addChild(root_0, type10.getTree());
-            ID11=(Token)match(input,ID,FOLLOW_ID_in_varDeclaration526); 
+            ID11=(Token)match(input,ID,FOLLOW_ID_in_varDeclaration513); 
             ID11_tree = (CommonTree)adaptor.create(ID11);
             adaptor.addChild(root_0, ID11_tree);
 
-            pushFollow(FOLLOW_varInit_in_varDeclaration528);
+            pushFollow(FOLLOW_varInit_in_varDeclaration515);
             varInit12=varInit();
 
             state._fsp--;
@@ -541,6 +556,70 @@ public class DartParser extends Parser {
     }
     // $ANTLR end "varDeclaration"
 
+    public static class returnStatement_return extends ParserRuleReturnScope {
+        public ReturnStatementNode root;
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "returnStatement"
+    // Dart.g:66:1: returnStatement returns [ReturnStatementNode root] : RETURN expression ';' ;
+    public final DartParser.returnStatement_return returnStatement() throws RecognitionException {
+        DartParser.returnStatement_return retval = new DartParser.returnStatement_return();
+        retval.start = input.LT(1);
+
+        CommonTree root_0 = null;
+
+        Token RETURN13=null;
+        Token char_literal15=null;
+        DartParser.expression_return expression14 = null;
+
+
+        CommonTree RETURN13_tree=null;
+        CommonTree char_literal15_tree=null;
+
+        try {
+            // Dart.g:67:5: ( RETURN expression ';' )
+            // Dart.g:67:7: RETURN expression ';'
+            {
+            root_0 = (CommonTree)adaptor.nil();
+
+            RETURN13=(Token)match(input,RETURN,FOLLOW_RETURN_in_returnStatement533); 
+            RETURN13_tree = (CommonTree)adaptor.create(RETURN13);
+            adaptor.addChild(root_0, RETURN13_tree);
+
+            pushFollow(FOLLOW_expression_in_returnStatement535);
+            expression14=expression();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, expression14.getTree());
+            char_literal15=(Token)match(input,26,FOLLOW_26_in_returnStatement537); 
+            char_literal15_tree = (CommonTree)adaptor.create(char_literal15);
+            adaptor.addChild(root_0, char_literal15_tree);
+
+            retval.root = new ReturnStatementNode((expression14!=null?expression14.root:null));
+
+            }
+
+            retval.stop = input.LT(-1);
+
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+        finally {
+        }
+        return retval;
+    }
+    // $ANTLR end "returnStatement"
+
     public static class varInit_return extends ParserRuleReturnScope {
         public VarInitNode root;
         CommonTree tree;
@@ -548,36 +627,36 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "varInit"
-    // Dart.g:66:1: varInit returns [VarInitNode root] : '=' expression ;
+    // Dart.g:69:1: varInit returns [VarInitNode root] : '=' expression ;
     public final DartParser.varInit_return varInit() throws RecognitionException {
         DartParser.varInit_return retval = new DartParser.varInit_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token char_literal13=null;
-        DartParser.expression_return expression14 = null;
+        Token char_literal16=null;
+        DartParser.expression_return expression17 = null;
 
 
-        CommonTree char_literal13_tree=null;
+        CommonTree char_literal16_tree=null;
 
         try {
-            // Dart.g:67:2: ( '=' expression )
-            // Dart.g:67:4: '=' expression
+            // Dart.g:70:2: ( '=' expression )
+            // Dart.g:70:4: '=' expression
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            char_literal13=(Token)match(input,28,FOLLOW_28_in_varInit544); 
-            char_literal13_tree = (CommonTree)adaptor.create(char_literal13);
-            adaptor.addChild(root_0, char_literal13_tree);
+            char_literal16=(Token)match(input,27,FOLLOW_27_in_varInit552); 
+            char_literal16_tree = (CommonTree)adaptor.create(char_literal16);
+            adaptor.addChild(root_0, char_literal16_tree);
 
-            pushFollow(FOLLOW_expression_in_varInit546);
-            expression14=expression();
+            pushFollow(FOLLOW_expression_in_varInit554);
+            expression17=expression();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expression14.getTree());
-            new VarInitNode((expression14!=null?expression14.root:null));
+            adaptor.addChild(root_0, expression17.getTree());
+            retval.root = new VarInitNode((expression17!=null?expression17.root:null));
 
             }
 
@@ -606,66 +685,66 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "block"
-    // Dart.g:70:1: block returns [StatementsNode root] : '{' (child= stataemet )* '}' ;
+    // Dart.g:73:1: block returns [StatementsNode root] : '{' (child= statement )* '}' ;
     public final DartParser.block_return block() throws RecognitionException {
         DartParser.block_return retval = new DartParser.block_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token char_literal15=null;
-        Token char_literal16=null;
-        DartParser.stataemet_return child = null;
+        Token char_literal18=null;
+        Token char_literal19=null;
+        DartParser.statement_return child = null;
 
 
-        CommonTree char_literal15_tree=null;
-        CommonTree char_literal16_tree=null;
+        CommonTree char_literal18_tree=null;
+        CommonTree char_literal19_tree=null;
 
         try {
-            // Dart.g:71:2: ( '{' (child= stataemet )* '}' )
-            // Dart.g:71:4: '{' (child= stataemet )* '}'
+            // Dart.g:74:2: ( '{' (child= statement )* '}' )
+            // Dart.g:74:4: '{' (child= statement )* '}'
             {
             root_0 = (CommonTree)adaptor.nil();
 
             final List<ASTNode> children = new ArrayList<ASTNode>();
-            char_literal15=(Token)match(input,29,FOLLOW_29_in_block564); 
-            char_literal15_tree = (CommonTree)adaptor.create(char_literal15);
-            adaptor.addChild(root_0, char_literal15_tree);
+            char_literal18=(Token)match(input,28,FOLLOW_28_in_block572); 
+            char_literal18_tree = (CommonTree)adaptor.create(char_literal18);
+            adaptor.addChild(root_0, char_literal18_tree);
 
-            // Dart.g:72:4: (child= stataemet )*
-            loop4:
+            // Dart.g:75:4: (child= statement )*
+            loop5:
             do {
-                int alt4=2;
-                int LA4_0 = input.LA(1);
+                int alt5=2;
+                int LA5_0 = input.LA(1);
 
-                if ( (LA4_0==ID) ) {
-                    alt4=1;
+                if ( (LA5_0==RETURN||LA5_0==ID) ) {
+                    alt5=1;
                 }
 
 
-                switch (alt4) {
+                switch (alt5) {
             	case 1 :
-            	    // Dart.g:72:5: child= stataemet
+            	    // Dart.g:75:5: child= statement
             	    {
-            	    pushFollow(FOLLOW_stataemet_in_block572);
-            	    child=stataemet();
+            	    pushFollow(FOLLOW_statement_in_block580);
+            	    child=statement();
 
             	    state._fsp--;
 
             	    adaptor.addChild(root_0, child.getTree());
-            	    children.add(child.root);
+            	    children.add((child!=null?child.root:null));
 
             	    }
             	    break;
 
             	default :
-            	    break loop4;
+            	    break loop5;
                 }
             } while (true);
 
-            char_literal16=(Token)match(input,30,FOLLOW_30_in_block581); 
-            char_literal16_tree = (CommonTree)adaptor.create(char_literal16);
-            adaptor.addChild(root_0, char_literal16_tree);
+            char_literal19=(Token)match(input,29,FOLLOW_29_in_block589); 
+            char_literal19_tree = (CommonTree)adaptor.create(char_literal19);
+            adaptor.addChild(root_0, char_literal19_tree);
 
             retval.root = new StatementsNode(children);
 
@@ -689,100 +768,120 @@ public class DartParser extends Parser {
     }
     // $ANTLR end "block"
 
-    public static class stataemet_return extends ParserRuleReturnScope {
+    public static class statement_return extends ParserRuleReturnScope {
         public ASTNode root;
         CommonTree tree;
         public Object getTree() { return tree; }
     };
 
-    // $ANTLR start "stataemet"
-    // Dart.g:75:1: stataemet returns [ASTNode root] : ( varDeclaration ';' | functionDeclaration );
-    public final DartParser.stataemet_return stataemet() throws RecognitionException {
-        DartParser.stataemet_return retval = new DartParser.stataemet_return();
+    // $ANTLR start "statement"
+    // Dart.g:78:1: statement returns [ASTNode root] : ( varDeclaration ';' | functionDeclaration | returnStatement );
+    public final DartParser.statement_return statement() throws RecognitionException {
+        DartParser.statement_return retval = new DartParser.statement_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token char_literal18=null;
-        DartParser.varDeclaration_return varDeclaration17 = null;
+        Token char_literal21=null;
+        DartParser.varDeclaration_return varDeclaration20 = null;
 
-        DartParser.functionDeclaration_return functionDeclaration19 = null;
+        DartParser.functionDeclaration_return functionDeclaration22 = null;
+
+        DartParser.returnStatement_return returnStatement23 = null;
 
 
-        CommonTree char_literal18_tree=null;
+        CommonTree char_literal21_tree=null;
 
         try {
-            // Dart.g:76:2: ( varDeclaration ';' | functionDeclaration )
-            int alt5=2;
-            int LA5_0 = input.LA(1);
+            // Dart.g:79:2: ( varDeclaration ';' | functionDeclaration | returnStatement )
+            int alt6=3;
+            int LA6_0 = input.LA(1);
 
-            if ( (LA5_0==ID) ) {
-                int LA5_1 = input.LA(2);
+            if ( (LA6_0==ID) ) {
+                int LA6_1 = input.LA(2);
 
-                if ( (LA5_1==25) ) {
-                    alt5=2;
+                if ( (LA6_1==23) ) {
+                    alt6=2;
                 }
-                else if ( (LA5_1==ID) ) {
-                    int LA5_3 = input.LA(3);
+                else if ( (LA6_1==ID) ) {
+                    int LA6_4 = input.LA(3);
 
-                    if ( (LA5_3==25) ) {
-                        alt5=2;
+                    if ( (LA6_4==23) ) {
+                        alt6=2;
                     }
-                    else if ( (LA5_3==28) ) {
-                        alt5=1;
+                    else if ( (LA6_4==27) ) {
+                        alt6=1;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 5, 3, input);
+                            new NoViableAltException("", 6, 4, input);
 
                         throw nvae;
                     }
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 5, 1, input);
+                        new NoViableAltException("", 6, 1, input);
 
                     throw nvae;
                 }
             }
+            else if ( (LA6_0==RETURN) ) {
+                alt6=3;
+            }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 5, 0, input);
+                    new NoViableAltException("", 6, 0, input);
 
                 throw nvae;
             }
-            switch (alt5) {
+            switch (alt6) {
                 case 1 :
-                    // Dart.g:76:4: varDeclaration ';'
+                    // Dart.g:79:4: varDeclaration ';'
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_varDeclaration_in_stataemet596);
-                    varDeclaration17=varDeclaration();
+                    pushFollow(FOLLOW_varDeclaration_in_statement604);
+                    varDeclaration20=varDeclaration();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, varDeclaration17.getTree());
-                    char_literal18=(Token)match(input,31,FOLLOW_31_in_stataemet598); 
-                    char_literal18_tree = (CommonTree)adaptor.create(char_literal18);
-                    adaptor.addChild(root_0, char_literal18_tree);
+                    adaptor.addChild(root_0, varDeclaration20.getTree());
+                    char_literal21=(Token)match(input,26,FOLLOW_26_in_statement606); 
+                    char_literal21_tree = (CommonTree)adaptor.create(char_literal21);
+                    adaptor.addChild(root_0, char_literal21_tree);
 
-                    retval.root = (varDeclaration17!=null?varDeclaration17.root:null);
+                    retval.root = (varDeclaration20!=null?varDeclaration20.root:null);
 
                     }
                     break;
                 case 2 :
-                    // Dart.g:77:4: functionDeclaration
+                    // Dart.g:80:4: functionDeclaration
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_functionDeclaration_in_stataemet605);
-                    functionDeclaration19=functionDeclaration();
+                    pushFollow(FOLLOW_functionDeclaration_in_statement613);
+                    functionDeclaration22=functionDeclaration();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, functionDeclaration19.getTree());
-                    retval.root = (functionDeclaration19!=null?functionDeclaration19.root:null);
+                    adaptor.addChild(root_0, functionDeclaration22.getTree());
+                    retval.root = (functionDeclaration22!=null?functionDeclaration22.root:null);
+
+                    }
+                    break;
+                case 3 :
+                    // Dart.g:81:4: returnStatement
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+                    pushFollow(FOLLOW_returnStatement_in_statement620);
+                    returnStatement23=returnStatement();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, returnStatement23.getTree());
+                    retval.root = (returnStatement23!=null?returnStatement23.root:null);
 
                     }
                     break;
@@ -804,7 +903,7 @@ public class DartParser extends Parser {
         }
         return retval;
     }
-    // $ANTLR end "stataemet"
+    // $ANTLR end "statement"
 
     public static class value_return extends ParserRuleReturnScope {
         public ExpressionNode root;
@@ -813,45 +912,51 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "value"
-    // Dart.g:80:1: value returns [ExpressionNode root] : ( INT | callExpression | ID | STRING );
+    // Dart.g:84:1: value returns [ExpressionNode root] : ( INT | callExpression | ID | STRING | '(' expression ')' );
     public final DartParser.value_return value() throws RecognitionException {
         DartParser.value_return retval = new DartParser.value_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token INT20=null;
-        Token ID22=null;
-        Token STRING23=null;
-        DartParser.callExpression_return callExpression21 = null;
+        Token INT24=null;
+        Token ID26=null;
+        Token STRING27=null;
+        Token char_literal28=null;
+        Token char_literal30=null;
+        DartParser.callExpression_return callExpression25 = null;
+
+        DartParser.expression_return expression29 = null;
 
 
-        CommonTree INT20_tree=null;
-        CommonTree ID22_tree=null;
-        CommonTree STRING23_tree=null;
+        CommonTree INT24_tree=null;
+        CommonTree ID26_tree=null;
+        CommonTree STRING27_tree=null;
+        CommonTree char_literal28_tree=null;
+        CommonTree char_literal30_tree=null;
 
         try {
-            // Dart.g:81:2: ( INT | callExpression | ID | STRING )
-            int alt6=4;
+            // Dart.g:85:2: ( INT | callExpression | ID | STRING | '(' expression ')' )
+            int alt7=5;
             switch ( input.LA(1) ) {
             case INT:
                 {
-                alt6=1;
+                alt7=1;
                 }
                 break;
             case ID:
                 {
-                int LA6_2 = input.LA(2);
+                int LA7_2 = input.LA(2);
 
-                if ( (LA6_2==25) ) {
-                    alt6=2;
+                if ( (LA7_2==23) ) {
+                    alt7=2;
                 }
-                else if ( ((LA6_2>=26 && LA6_2<=27)||(LA6_2>=31 && LA6_2<=48)) ) {
-                    alt6=3;
+                else if ( ((LA7_2>=24 && LA7_2<=26)||(LA7_2>=30 && LA7_2<=46)) ) {
+                    alt7=3;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 6, 2, input);
+                        new NoViableAltException("", 7, 2, input);
 
                     throw nvae;
                 }
@@ -859,68 +964,96 @@ public class DartParser extends Parser {
                 break;
             case STRING:
                 {
-                alt6=4;
+                alt7=4;
+                }
+                break;
+            case 23:
+                {
+                alt7=5;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 6, 0, input);
+                    new NoViableAltException("", 7, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt6) {
+            switch (alt7) {
                 case 1 :
-                    // Dart.g:81:4: INT
+                    // Dart.g:85:4: INT
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    INT20=(Token)match(input,INT,FOLLOW_INT_in_value622); 
-                    INT20_tree = (CommonTree)adaptor.create(INT20);
-                    adaptor.addChild(root_0, INT20_tree);
+                    INT24=(Token)match(input,INT,FOLLOW_INT_in_value637); 
+                    INT24_tree = (CommonTree)adaptor.create(INT24);
+                    adaptor.addChild(root_0, INT24_tree);
 
-                    retval.root = new IntegerValueNode(Integer.parseInt((INT20!=null?INT20.getText():null)));
+                    retval.root = new IntegerValueNode(Integer.parseInt((INT24!=null?INT24.getText():null)));
 
                     }
                     break;
                 case 2 :
-                    // Dart.g:82:4: callExpression
+                    // Dart.g:86:4: callExpression
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    pushFollow(FOLLOW_callExpression_in_value629);
-                    callExpression21=callExpression();
+                    pushFollow(FOLLOW_callExpression_in_value644);
+                    callExpression25=callExpression();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, callExpression21.getTree());
-                    retval.root = (callExpression21!=null?callExpression21.root:null);
+                    adaptor.addChild(root_0, callExpression25.getTree());
+                    retval.root = (callExpression25!=null?callExpression25.root:null);
 
                     }
                     break;
                 case 3 :
-                    // Dart.g:83:4: ID
+                    // Dart.g:87:4: ID
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    ID22=(Token)match(input,ID,FOLLOW_ID_in_value636); 
-                    ID22_tree = (CommonTree)adaptor.create(ID22);
-                    adaptor.addChild(root_0, ID22_tree);
+                    ID26=(Token)match(input,ID,FOLLOW_ID_in_value651); 
+                    ID26_tree = (CommonTree)adaptor.create(ID26);
+                    adaptor.addChild(root_0, ID26_tree);
 
-                    retval.root = new IdentifierNode((ID22!=null?ID22.getText():null));
+                    retval.root = new IdentifierNode((ID26!=null?ID26.getText():null));
 
                     }
                     break;
                 case 4 :
-                    // Dart.g:84:4: STRING
+                    // Dart.g:88:4: STRING
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    STRING23=(Token)match(input,STRING,FOLLOW_STRING_in_value643); 
-                    STRING23_tree = (CommonTree)adaptor.create(STRING23);
-                    adaptor.addChild(root_0, STRING23_tree);
+                    STRING27=(Token)match(input,STRING,FOLLOW_STRING_in_value658); 
+                    STRING27_tree = (CommonTree)adaptor.create(STRING27);
+                    adaptor.addChild(root_0, STRING27_tree);
 
-                    retval.root = new StringValueNode((STRING23!=null?STRING23.getText():null));
+                    retval.root = new StringValueNode((STRING27!=null?STRING27.getText():null));
+
+                    }
+                    break;
+                case 5 :
+                    // Dart.g:89:4: '(' expression ')'
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+                    char_literal28=(Token)match(input,23,FOLLOW_23_in_value665); 
+                    char_literal28_tree = (CommonTree)adaptor.create(char_literal28);
+                    adaptor.addChild(root_0, char_literal28_tree);
+
+                    pushFollow(FOLLOW_expression_in_value667);
+                    expression29=expression();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, expression29.getTree());
+                    char_literal30=(Token)match(input,24,FOLLOW_24_in_value669); 
+                    char_literal30_tree = (CommonTree)adaptor.create(char_literal30);
+                    adaptor.addChild(root_0, char_literal30_tree);
+
+                    retval.root = (expression29!=null?expression29.root:null);
 
                     }
                     break;
@@ -951,89 +1084,112 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "callExpression"
-    // Dart.g:87:1: callExpression returns [CallExpressionNode root] : ID '(' child1= expression ( ',' child2= expression )* ')' ;
+    // Dart.g:92:1: callExpression returns [CallExpressionNode root] : ID '(' (child1= expression ( ',' child2= expression )* ')' )? ')' ;
     public final DartParser.callExpression_return callExpression() throws RecognitionException {
         DartParser.callExpression_return retval = new DartParser.callExpression_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token ID24=null;
-        Token char_literal25=null;
-        Token char_literal26=null;
-        Token char_literal27=null;
+        Token ID31=null;
+        Token char_literal32=null;
+        Token char_literal33=null;
+        Token char_literal34=null;
+        Token char_literal35=null;
         DartParser.expression_return child1 = null;
 
         DartParser.expression_return child2 = null;
 
 
-        CommonTree ID24_tree=null;
-        CommonTree char_literal25_tree=null;
-        CommonTree char_literal26_tree=null;
-        CommonTree char_literal27_tree=null;
+        CommonTree ID31_tree=null;
+        CommonTree char_literal32_tree=null;
+        CommonTree char_literal33_tree=null;
+        CommonTree char_literal34_tree=null;
+        CommonTree char_literal35_tree=null;
 
         try {
-            // Dart.g:88:5: ( ID '(' child1= expression ( ',' child2= expression )* ')' )
-            // Dart.g:88:7: ID '(' child1= expression ( ',' child2= expression )* ')'
+            // Dart.g:93:5: ( ID '(' (child1= expression ( ',' child2= expression )* ')' )? ')' )
+            // Dart.g:93:7: ID '(' (child1= expression ( ',' child2= expression )* ')' )? ')'
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            ID24=(Token)match(input,ID,FOLLOW_ID_in_callExpression663); 
-            ID24_tree = (CommonTree)adaptor.create(ID24);
-            adaptor.addChild(root_0, ID24_tree);
+            ID31=(Token)match(input,ID,FOLLOW_ID_in_callExpression689); 
+            ID31_tree = (CommonTree)adaptor.create(ID31);
+            adaptor.addChild(root_0, ID31_tree);
 
-            char_literal25=(Token)match(input,25,FOLLOW_25_in_callExpression665); 
-            char_literal25_tree = (CommonTree)adaptor.create(char_literal25);
-            adaptor.addChild(root_0, char_literal25_tree);
+            char_literal32=(Token)match(input,23,FOLLOW_23_in_callExpression691); 
+            char_literal32_tree = (CommonTree)adaptor.create(char_literal32);
+            adaptor.addChild(root_0, char_literal32_tree);
 
             final List<ExpressionNode> children = new ArrayList<ExpressionNode>();
-            pushFollow(FOLLOW_expression_in_callExpression683);
-            child1=expression();
+            // Dart.g:95:7: (child1= expression ( ',' child2= expression )* ')' )?
+            int alt9=2;
+            int LA9_0 = input.LA(1);
 
-            state._fsp--;
+            if ( ((LA9_0>=INT && LA9_0<=STRING)||LA9_0==23) ) {
+                alt9=1;
+            }
+            switch (alt9) {
+                case 1 :
+                    // Dart.g:96:11: child1= expression ( ',' child2= expression )* ')'
+                    {
+                    pushFollow(FOLLOW_expression_in_callExpression721);
+                    child1=expression();
 
-            adaptor.addChild(root_0, child1.getTree());
-            children.add((child1!=null?child1.root:null));
-            // Dart.g:91:7: ( ',' child2= expression )*
-            loop7:
-            do {
-                int alt7=2;
-                int LA7_0 = input.LA(1);
+                    state._fsp--;
 
-                if ( (LA7_0==27) ) {
-                    alt7=1;
-                }
+                    adaptor.addChild(root_0, child1.getTree());
+                    children.add((child1!=null?child1.root:null));
+                    // Dart.g:97:11: ( ',' child2= expression )*
+                    loop8:
+                    do {
+                        int alt8=2;
+                        int LA8_0 = input.LA(1);
+
+                        if ( (LA8_0==25) ) {
+                            alt8=1;
+                        }
 
 
-                switch (alt7) {
-            	case 1 :
-            	    // Dart.g:91:8: ',' child2= expression
-            	    {
-            	    char_literal26=(Token)match(input,27,FOLLOW_27_in_callExpression694); 
-            	    char_literal26_tree = (CommonTree)adaptor.create(char_literal26);
-            	    adaptor.addChild(root_0, char_literal26_tree);
+                        switch (alt8) {
+                    	case 1 :
+                    	    // Dart.g:97:12: ',' child2= expression
+                    	    {
+                    	    char_literal33=(Token)match(input,25,FOLLOW_25_in_callExpression736); 
+                    	    char_literal33_tree = (CommonTree)adaptor.create(char_literal33);
+                    	    adaptor.addChild(root_0, char_literal33_tree);
 
-            	    pushFollow(FOLLOW_expression_in_callExpression698);
-            	    child2=expression();
+                    	    pushFollow(FOLLOW_expression_in_callExpression740);
+                    	    child2=expression();
 
-            	    state._fsp--;
+                    	    state._fsp--;
 
-            	    adaptor.addChild(root_0, child2.getTree());
-            	    children.add((child2!=null?child2.root:null));
+                    	    adaptor.addChild(root_0, child2.getTree());
+                    	    children.add((child2!=null?child2.root:null));
 
-            	    }
-            	    break;
+                    	    }
+                    	    break;
 
-            	default :
-            	    break loop7;
-                }
-            } while (true);
+                    	default :
+                    	    break loop8;
+                        }
+                    } while (true);
 
-            char_literal27=(Token)match(input,26,FOLLOW_26_in_callExpression710); 
-            char_literal27_tree = (CommonTree)adaptor.create(char_literal27);
-            adaptor.addChild(root_0, char_literal27_tree);
+                    char_literal34=(Token)match(input,24,FOLLOW_24_in_callExpression756); 
+                    char_literal34_tree = (CommonTree)adaptor.create(char_literal34);
+                    adaptor.addChild(root_0, char_literal34_tree);
 
-            retval.root = new CallExpressionNode((ID24!=null?ID24.getText():null), children);
+
+                    }
+                    break;
+
+            }
+
+            char_literal35=(Token)match(input,24,FOLLOW_24_in_callExpression773); 
+            char_literal35_tree = (CommonTree)adaptor.create(char_literal35);
+            adaptor.addChild(root_0, char_literal35_tree);
+
+            retval.root = new CallExpressionNode((ID31!=null?ID31.getText():null), children);
 
             }
 
@@ -1062,30 +1218,30 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "expression"
-    // Dart.g:95:1: expression returns [ExpressionNode root] : logicalOrExpression ;
+    // Dart.g:103:1: expression returns [ExpressionNode root] : logicalOrExpression ;
     public final DartParser.expression_return expression() throws RecognitionException {
         DartParser.expression_return retval = new DartParser.expression_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        DartParser.logicalOrExpression_return logicalOrExpression28 = null;
+        DartParser.logicalOrExpression_return logicalOrExpression36 = null;
 
 
 
         try {
-            // Dart.g:96:2: ( logicalOrExpression )
-            // Dart.g:96:4: logicalOrExpression
+            // Dart.g:104:2: ( logicalOrExpression )
+            // Dart.g:104:4: logicalOrExpression
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_logicalOrExpression_in_expression732);
-            logicalOrExpression28=logicalOrExpression();
+            pushFollow(FOLLOW_logicalOrExpression_in_expression795);
+            logicalOrExpression36=logicalOrExpression();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, logicalOrExpression28.getTree());
-            retval.root = (logicalOrExpression28!=null?logicalOrExpression28.root:null);
+            adaptor.addChild(root_0, logicalOrExpression36.getTree());
+            retval.root = (logicalOrExpression36!=null?logicalOrExpression36.root:null);
 
             }
 
@@ -1114,61 +1270,68 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "logicalOrExpression"
-    // Dart.g:99:1: logicalOrExpression returns [ExpressionNode root] : logicalAndExpression ( '||' expression )? ;
+    // Dart.g:107:1: logicalOrExpression returns [ExpressionNode root] : expression1= logicalAndExpression ( '||' expression2= logicalAndExpression )* ;
     public final DartParser.logicalOrExpression_return logicalOrExpression() throws RecognitionException {
         DartParser.logicalOrExpression_return retval = new DartParser.logicalOrExpression_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token string_literal30=null;
-        DartParser.logicalAndExpression_return logicalAndExpression29 = null;
+        Token string_literal37=null;
+        DartParser.logicalAndExpression_return expression1 = null;
 
-        DartParser.expression_return expression31 = null;
+        DartParser.logicalAndExpression_return expression2 = null;
 
 
-        CommonTree string_literal30_tree=null;
+        CommonTree string_literal37_tree=null;
 
         try {
-            // Dart.g:100:5: ( logicalAndExpression ( '||' expression )? )
-            // Dart.g:100:7: logicalAndExpression ( '||' expression )?
+            // Dart.g:108:5: (expression1= logicalAndExpression ( '||' expression2= logicalAndExpression )* )
+            // Dart.g:108:7: expression1= logicalAndExpression ( '||' expression2= logicalAndExpression )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_logicalAndExpression_in_logicalOrExpression752);
-            logicalAndExpression29=logicalAndExpression();
+            pushFollow(FOLLOW_logicalAndExpression_in_logicalOrExpression817);
+            expression1=logicalAndExpression();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, logicalAndExpression29.getTree());
-            retval.root = (logicalAndExpression29!=null?logicalAndExpression29.root:null);
-            // Dart.g:101:7: ( '||' expression )?
-            int alt8=2;
-            int LA8_0 = input.LA(1);
+            adaptor.addChild(root_0, expression1.getTree());
+            retval.root = (expression1!=null?expression1.root:null);
+            // Dart.g:109:7: ( '||' expression2= logicalAndExpression )*
+            loop10:
+            do {
+                int alt10=2;
+                int LA10_0 = input.LA(1);
 
-            if ( (LA8_0==32) ) {
-                alt8=1;
-            }
-            switch (alt8) {
-                case 1 :
-                    // Dart.g:101:8: '||' expression
-                    {
-                    string_literal30=(Token)match(input,32,FOLLOW_32_in_logicalOrExpression763); 
-                    string_literal30_tree = (CommonTree)adaptor.create(string_literal30);
-                    adaptor.addChild(root_0, string_literal30_tree);
+                if ( (LA10_0==30) ) {
+                    alt10=1;
+                }
 
-                    pushFollow(FOLLOW_expression_in_logicalOrExpression765);
-                    expression31=expression();
 
-                    state._fsp--;
+                switch (alt10) {
+            	case 1 :
+            	    // Dart.g:109:8: '||' expression2= logicalAndExpression
+            	    {
+            	    string_literal37=(Token)match(input,30,FOLLOW_30_in_logicalOrExpression828); 
+            	    string_literal37_tree = (CommonTree)adaptor.create(string_literal37);
+            	    adaptor.addChild(root_0, string_literal37_tree);
 
-                    adaptor.addChild(root_0, expression31.getTree());
-                    retval.root = new LogicalOrExpression((logicalAndExpression29!=null?logicalAndExpression29.root:null), (expression31!=null?expression31.root:null));
+            	    pushFollow(FOLLOW_logicalAndExpression_in_logicalOrExpression832);
+            	    expression2=logicalAndExpression();
 
-                    }
-                    break;
+            	    state._fsp--;
 
-            }
+            	    adaptor.addChild(root_0, expression2.getTree());
+            	    retval.root = new LogicalOrExpression(retval.root, (expression2!=null?expression2.root:null));
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop10;
+                }
+            } while (true);
 
 
             }
@@ -1198,61 +1361,68 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "logicalAndExpression"
-    // Dart.g:104:1: logicalAndExpression returns [ExpressionNode root] : bitwiseOrExpression ( '&&' expression )? ;
+    // Dart.g:112:1: logicalAndExpression returns [ExpressionNode root] : expression1= bitwiseOrExpression ( '&&' expression2= bitwiseOrExpression )* ;
     public final DartParser.logicalAndExpression_return logicalAndExpression() throws RecognitionException {
         DartParser.logicalAndExpression_return retval = new DartParser.logicalAndExpression_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token string_literal33=null;
-        DartParser.bitwiseOrExpression_return bitwiseOrExpression32 = null;
+        Token string_literal38=null;
+        DartParser.bitwiseOrExpression_return expression1 = null;
 
-        DartParser.expression_return expression34 = null;
+        DartParser.bitwiseOrExpression_return expression2 = null;
 
 
-        CommonTree string_literal33_tree=null;
+        CommonTree string_literal38_tree=null;
 
         try {
-            // Dart.g:105:5: ( bitwiseOrExpression ( '&&' expression )? )
-            // Dart.g:105:7: bitwiseOrExpression ( '&&' expression )?
+            // Dart.g:113:5: (expression1= bitwiseOrExpression ( '&&' expression2= bitwiseOrExpression )* )
+            // Dart.g:113:7: expression1= bitwiseOrExpression ( '&&' expression2= bitwiseOrExpression )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_bitwiseOrExpression_in_logicalAndExpression790);
-            bitwiseOrExpression32=bitwiseOrExpression();
+            pushFollow(FOLLOW_bitwiseOrExpression_in_logicalAndExpression859);
+            expression1=bitwiseOrExpression();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, bitwiseOrExpression32.getTree());
-            retval.root = (bitwiseOrExpression32!=null?bitwiseOrExpression32.root:null);
-            // Dart.g:106:7: ( '&&' expression )?
-            int alt9=2;
-            int LA9_0 = input.LA(1);
+            adaptor.addChild(root_0, expression1.getTree());
+            retval.root = (expression1!=null?expression1.root:null);
+            // Dart.g:114:7: ( '&&' expression2= bitwiseOrExpression )*
+            loop11:
+            do {
+                int alt11=2;
+                int LA11_0 = input.LA(1);
 
-            if ( (LA9_0==33) ) {
-                alt9=1;
-            }
-            switch (alt9) {
-                case 1 :
-                    // Dart.g:106:8: '&&' expression
-                    {
-                    string_literal33=(Token)match(input,33,FOLLOW_33_in_logicalAndExpression801); 
-                    string_literal33_tree = (CommonTree)adaptor.create(string_literal33);
-                    adaptor.addChild(root_0, string_literal33_tree);
+                if ( (LA11_0==31) ) {
+                    alt11=1;
+                }
 
-                    pushFollow(FOLLOW_expression_in_logicalAndExpression803);
-                    expression34=expression();
 
-                    state._fsp--;
+                switch (alt11) {
+            	case 1 :
+            	    // Dart.g:114:8: '&&' expression2= bitwiseOrExpression
+            	    {
+            	    string_literal38=(Token)match(input,31,FOLLOW_31_in_logicalAndExpression870); 
+            	    string_literal38_tree = (CommonTree)adaptor.create(string_literal38);
+            	    adaptor.addChild(root_0, string_literal38_tree);
 
-                    adaptor.addChild(root_0, expression34.getTree());
-                    retval.root = new LogicalAndExpression((bitwiseOrExpression32!=null?bitwiseOrExpression32.root:null), (expression34!=null?expression34.root:null));
+            	    pushFollow(FOLLOW_bitwiseOrExpression_in_logicalAndExpression874);
+            	    expression2=bitwiseOrExpression();
 
-                    }
-                    break;
+            	    state._fsp--;
 
-            }
+            	    adaptor.addChild(root_0, expression2.getTree());
+            	    retval.root = new LogicalAndExpression(retval.root, (expression2!=null?expression2.root:null));
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop11;
+                }
+            } while (true);
 
 
             }
@@ -1282,61 +1452,68 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "bitwiseOrExpression"
-    // Dart.g:109:1: bitwiseOrExpression returns [ExpressionNode root] : bitwiseXorExpression ( '|' expression )? ;
+    // Dart.g:117:1: bitwiseOrExpression returns [ExpressionNode root] : expression1= bitwiseXorExpression ( '|' expression2= bitwiseXorExpression )* ;
     public final DartParser.bitwiseOrExpression_return bitwiseOrExpression() throws RecognitionException {
         DartParser.bitwiseOrExpression_return retval = new DartParser.bitwiseOrExpression_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token char_literal36=null;
-        DartParser.bitwiseXorExpression_return bitwiseXorExpression35 = null;
+        Token char_literal39=null;
+        DartParser.bitwiseXorExpression_return expression1 = null;
 
-        DartParser.expression_return expression37 = null;
+        DartParser.bitwiseXorExpression_return expression2 = null;
 
 
-        CommonTree char_literal36_tree=null;
+        CommonTree char_literal39_tree=null;
 
         try {
-            // Dart.g:110:5: ( bitwiseXorExpression ( '|' expression )? )
-            // Dart.g:110:7: bitwiseXorExpression ( '|' expression )?
+            // Dart.g:118:5: (expression1= bitwiseXorExpression ( '|' expression2= bitwiseXorExpression )* )
+            // Dart.g:118:7: expression1= bitwiseXorExpression ( '|' expression2= bitwiseXorExpression )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_bitwiseXorExpression_in_bitwiseOrExpression828);
-            bitwiseXorExpression35=bitwiseXorExpression();
+            pushFollow(FOLLOW_bitwiseXorExpression_in_bitwiseOrExpression901);
+            expression1=bitwiseXorExpression();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, bitwiseXorExpression35.getTree());
-            retval.root = (bitwiseXorExpression35!=null?bitwiseXorExpression35.root:null);
-            // Dart.g:111:7: ( '|' expression )?
-            int alt10=2;
-            int LA10_0 = input.LA(1);
+            adaptor.addChild(root_0, expression1.getTree());
+            retval.root = (expression1!=null?expression1.root:null);
+            // Dart.g:119:7: ( '|' expression2= bitwiseXorExpression )*
+            loop12:
+            do {
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-            if ( (LA10_0==34) ) {
-                alt10=1;
-            }
-            switch (alt10) {
-                case 1 :
-                    // Dart.g:111:8: '|' expression
-                    {
-                    char_literal36=(Token)match(input,34,FOLLOW_34_in_bitwiseOrExpression839); 
-                    char_literal36_tree = (CommonTree)adaptor.create(char_literal36);
-                    adaptor.addChild(root_0, char_literal36_tree);
+                if ( (LA12_0==32) ) {
+                    alt12=1;
+                }
 
-                    pushFollow(FOLLOW_expression_in_bitwiseOrExpression841);
-                    expression37=expression();
 
-                    state._fsp--;
+                switch (alt12) {
+            	case 1 :
+            	    // Dart.g:119:8: '|' expression2= bitwiseXorExpression
+            	    {
+            	    char_literal39=(Token)match(input,32,FOLLOW_32_in_bitwiseOrExpression912); 
+            	    char_literal39_tree = (CommonTree)adaptor.create(char_literal39);
+            	    adaptor.addChild(root_0, char_literal39_tree);
 
-                    adaptor.addChild(root_0, expression37.getTree());
-                    retval.root = new BitwiseOrExpression((bitwiseXorExpression35!=null?bitwiseXorExpression35.root:null), (expression37!=null?expression37.root:null));
+            	    pushFollow(FOLLOW_bitwiseXorExpression_in_bitwiseOrExpression916);
+            	    expression2=bitwiseXorExpression();
 
-                    }
-                    break;
+            	    state._fsp--;
 
-            }
+            	    adaptor.addChild(root_0, expression2.getTree());
+            	    retval.root = new BitwiseOrExpression(retval.root, (expression2!=null?expression2.root:null));
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop12;
+                }
+            } while (true);
 
 
             }
@@ -1366,61 +1543,68 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "bitwiseXorExpression"
-    // Dart.g:114:1: bitwiseXorExpression returns [ExpressionNode root] : bitwiseAndExpression ( '^' expression )? ;
+    // Dart.g:122:1: bitwiseXorExpression returns [ExpressionNode root] : expression1= bitwiseAndExpression ( '^' expression2= bitwiseAndExpression )* ;
     public final DartParser.bitwiseXorExpression_return bitwiseXorExpression() throws RecognitionException {
         DartParser.bitwiseXorExpression_return retval = new DartParser.bitwiseXorExpression_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token char_literal39=null;
-        DartParser.bitwiseAndExpression_return bitwiseAndExpression38 = null;
+        Token char_literal40=null;
+        DartParser.bitwiseAndExpression_return expression1 = null;
 
-        DartParser.expression_return expression40 = null;
+        DartParser.bitwiseAndExpression_return expression2 = null;
 
 
-        CommonTree char_literal39_tree=null;
+        CommonTree char_literal40_tree=null;
 
         try {
-            // Dart.g:115:5: ( bitwiseAndExpression ( '^' expression )? )
-            // Dart.g:115:7: bitwiseAndExpression ( '^' expression )?
+            // Dart.g:123:5: (expression1= bitwiseAndExpression ( '^' expression2= bitwiseAndExpression )* )
+            // Dart.g:123:7: expression1= bitwiseAndExpression ( '^' expression2= bitwiseAndExpression )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_bitwiseAndExpression_in_bitwiseXorExpression866);
-            bitwiseAndExpression38=bitwiseAndExpression();
+            pushFollow(FOLLOW_bitwiseAndExpression_in_bitwiseXorExpression943);
+            expression1=bitwiseAndExpression();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, bitwiseAndExpression38.getTree());
-            retval.root = (bitwiseAndExpression38!=null?bitwiseAndExpression38.root:null);
-            // Dart.g:116:7: ( '^' expression )?
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            adaptor.addChild(root_0, expression1.getTree());
+            retval.root = (expression1!=null?expression1.root:null);
+            // Dart.g:124:7: ( '^' expression2= bitwiseAndExpression )*
+            loop13:
+            do {
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-            if ( (LA11_0==35) ) {
-                alt11=1;
-            }
-            switch (alt11) {
-                case 1 :
-                    // Dart.g:116:8: '^' expression
-                    {
-                    char_literal39=(Token)match(input,35,FOLLOW_35_in_bitwiseXorExpression877); 
-                    char_literal39_tree = (CommonTree)adaptor.create(char_literal39);
-                    adaptor.addChild(root_0, char_literal39_tree);
+                if ( (LA13_0==33) ) {
+                    alt13=1;
+                }
 
-                    pushFollow(FOLLOW_expression_in_bitwiseXorExpression879);
-                    expression40=expression();
 
-                    state._fsp--;
+                switch (alt13) {
+            	case 1 :
+            	    // Dart.g:124:8: '^' expression2= bitwiseAndExpression
+            	    {
+            	    char_literal40=(Token)match(input,33,FOLLOW_33_in_bitwiseXorExpression954); 
+            	    char_literal40_tree = (CommonTree)adaptor.create(char_literal40);
+            	    adaptor.addChild(root_0, char_literal40_tree);
 
-                    adaptor.addChild(root_0, expression40.getTree());
-                    retval.root = new BitwiseXorExpression((bitwiseAndExpression38!=null?bitwiseAndExpression38.root:null), (expression40!=null?expression40.root:null));
+            	    pushFollow(FOLLOW_bitwiseAndExpression_in_bitwiseXorExpression958);
+            	    expression2=bitwiseAndExpression();
 
-                    }
-                    break;
+            	    state._fsp--;
 
-            }
+            	    adaptor.addChild(root_0, expression2.getTree());
+            	    retval.root = new BitwiseXorExpression(retval.root, (expression2!=null?expression2.root:null));
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop13;
+                }
+            } while (true);
 
 
             }
@@ -1450,61 +1634,68 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "bitwiseAndExpression"
-    // Dart.g:119:1: bitwiseAndExpression returns [ExpressionNode root] : equalityExpression ( '&' expression )? ;
+    // Dart.g:127:1: bitwiseAndExpression returns [ExpressionNode root] : expression1= equalityExpression ( '&' expression2= equalityExpression )* ;
     public final DartParser.bitwiseAndExpression_return bitwiseAndExpression() throws RecognitionException {
         DartParser.bitwiseAndExpression_return retval = new DartParser.bitwiseAndExpression_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token char_literal42=null;
-        DartParser.equalityExpression_return equalityExpression41 = null;
+        Token char_literal41=null;
+        DartParser.equalityExpression_return expression1 = null;
 
-        DartParser.expression_return expression43 = null;
+        DartParser.equalityExpression_return expression2 = null;
 
 
-        CommonTree char_literal42_tree=null;
+        CommonTree char_literal41_tree=null;
 
         try {
-            // Dart.g:120:5: ( equalityExpression ( '&' expression )? )
-            // Dart.g:120:7: equalityExpression ( '&' expression )?
+            // Dart.g:128:5: (expression1= equalityExpression ( '&' expression2= equalityExpression )* )
+            // Dart.g:128:7: expression1= equalityExpression ( '&' expression2= equalityExpression )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_equalityExpression_in_bitwiseAndExpression904);
-            equalityExpression41=equalityExpression();
+            pushFollow(FOLLOW_equalityExpression_in_bitwiseAndExpression985);
+            expression1=equalityExpression();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, equalityExpression41.getTree());
-            retval.root = (equalityExpression41!=null?equalityExpression41.root:null);
-            // Dart.g:121:7: ( '&' expression )?
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            adaptor.addChild(root_0, expression1.getTree());
+            retval.root = (expression1!=null?expression1.root:null);
+            // Dart.g:129:7: ( '&' expression2= equalityExpression )*
+            loop14:
+            do {
+                int alt14=2;
+                int LA14_0 = input.LA(1);
 
-            if ( (LA12_0==36) ) {
-                alt12=1;
-            }
-            switch (alt12) {
-                case 1 :
-                    // Dart.g:121:8: '&' expression
-                    {
-                    char_literal42=(Token)match(input,36,FOLLOW_36_in_bitwiseAndExpression915); 
-                    char_literal42_tree = (CommonTree)adaptor.create(char_literal42);
-                    adaptor.addChild(root_0, char_literal42_tree);
+                if ( (LA14_0==34) ) {
+                    alt14=1;
+                }
 
-                    pushFollow(FOLLOW_expression_in_bitwiseAndExpression917);
-                    expression43=expression();
 
-                    state._fsp--;
+                switch (alt14) {
+            	case 1 :
+            	    // Dart.g:129:8: '&' expression2= equalityExpression
+            	    {
+            	    char_literal41=(Token)match(input,34,FOLLOW_34_in_bitwiseAndExpression996); 
+            	    char_literal41_tree = (CommonTree)adaptor.create(char_literal41);
+            	    adaptor.addChild(root_0, char_literal41_tree);
 
-                    adaptor.addChild(root_0, expression43.getTree());
-                    retval.root = new BitwiseAndExpression((equalityExpression41!=null?equalityExpression41.root:null), (expression43!=null?expression43.root:null));
+            	    pushFollow(FOLLOW_equalityExpression_in_bitwiseAndExpression1000);
+            	    expression2=equalityExpression();
 
-                    }
-                    break;
+            	    state._fsp--;
 
-            }
+            	    adaptor.addChild(root_0, expression2.getTree());
+            	    retval.root = new BitwiseAndExpression(retval.root, (expression2!=null?expression2.root:null));
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop14;
+                }
+            } while (true);
 
 
             }
@@ -1534,63 +1725,70 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "equalityExpression"
-    // Dart.g:124:1: equalityExpression returns [ExpressionNode root] : shiftExpression ( equalityOperator expression )? ;
+    // Dart.g:132:1: equalityExpression returns [ExpressionNode root] : expression1= shiftExpression ( equalityOperator expression2= shiftExpression )* ;
     public final DartParser.equalityExpression_return equalityExpression() throws RecognitionException {
         DartParser.equalityExpression_return retval = new DartParser.equalityExpression_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        DartParser.shiftExpression_return shiftExpression44 = null;
+        DartParser.shiftExpression_return expression1 = null;
 
-        DartParser.equalityOperator_return equalityOperator45 = null;
+        DartParser.shiftExpression_return expression2 = null;
 
-        DartParser.expression_return expression46 = null;
+        DartParser.equalityOperator_return equalityOperator42 = null;
 
 
 
         try {
-            // Dart.g:125:5: ( shiftExpression ( equalityOperator expression )? )
-            // Dart.g:125:7: shiftExpression ( equalityOperator expression )?
+            // Dart.g:133:5: (expression1= shiftExpression ( equalityOperator expression2= shiftExpression )* )
+            // Dart.g:133:7: expression1= shiftExpression ( equalityOperator expression2= shiftExpression )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_shiftExpression_in_equalityExpression942);
-            shiftExpression44=shiftExpression();
+            pushFollow(FOLLOW_shiftExpression_in_equalityExpression1027);
+            expression1=shiftExpression();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, shiftExpression44.getTree());
-            retval.root = (shiftExpression44!=null?shiftExpression44.root:null);
-            // Dart.g:126:7: ( equalityOperator expression )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            adaptor.addChild(root_0, expression1.getTree());
+            retval.root = (expression1!=null?expression1.root:null);
+            // Dart.g:134:7: ( equalityOperator expression2= shiftExpression )*
+            loop15:
+            do {
+                int alt15=2;
+                int LA15_0 = input.LA(1);
 
-            if ( ((LA13_0>=45 && LA13_0<=48)) ) {
-                alt13=1;
-            }
-            switch (alt13) {
-                case 1 :
-                    // Dart.g:126:8: equalityOperator expression
-                    {
-                    pushFollow(FOLLOW_equalityOperator_in_equalityExpression953);
-                    equalityOperator45=equalityOperator();
+                if ( ((LA15_0>=43 && LA15_0<=46)) ) {
+                    alt15=1;
+                }
 
-                    state._fsp--;
 
-                    adaptor.addChild(root_0, equalityOperator45.getTree());
-                    pushFollow(FOLLOW_expression_in_equalityExpression955);
-                    expression46=expression();
+                switch (alt15) {
+            	case 1 :
+            	    // Dart.g:134:8: equalityOperator expression2= shiftExpression
+            	    {
+            	    pushFollow(FOLLOW_equalityOperator_in_equalityExpression1038);
+            	    equalityOperator42=equalityOperator();
 
-                    state._fsp--;
+            	    state._fsp--;
 
-                    adaptor.addChild(root_0, expression46.getTree());
-                    retval.root = new EqualityExpression((shiftExpression44!=null?shiftExpression44.root:null), (expression46!=null?expression46.root:null));
+            	    adaptor.addChild(root_0, equalityOperator42.getTree());
+            	    pushFollow(FOLLOW_shiftExpression_in_equalityExpression1042);
+            	    expression2=shiftExpression();
 
-                    }
-                    break;
+            	    state._fsp--;
 
-            }
+            	    adaptor.addChild(root_0, expression2.getTree());
+            	    retval.root = new EqualityExpression(retval.root, (expression2!=null?expression2.root:null));
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop15;
+                }
+            } while (true);
 
 
             }
@@ -1620,66 +1818,70 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "shiftExpression"
-    // Dart.g:129:1: shiftExpression returns [ExpressionNode root] : additiveExpression ( shiftOperator expression )? ;
+    // Dart.g:137:1: shiftExpression returns [ExpressionNode root] : expression1= additiveExpression ( shiftOperator expression2= additiveExpression )* ;
     public final DartParser.shiftExpression_return shiftExpression() throws RecognitionException {
         DartParser.shiftExpression_return retval = new DartParser.shiftExpression_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        DartParser.additiveExpression_return additiveExpression47 = null;
+        DartParser.additiveExpression_return expression1 = null;
 
-        DartParser.shiftOperator_return shiftOperator48 = null;
+        DartParser.additiveExpression_return expression2 = null;
 
-        DartParser.expression_return expression49 = null;
+        DartParser.shiftOperator_return shiftOperator43 = null;
 
 
 
         try {
-            // Dart.g:130:5: ( additiveExpression ( shiftOperator expression )? )
-            // Dart.g:130:7: additiveExpression ( shiftOperator expression )?
+            // Dart.g:138:5: (expression1= additiveExpression ( shiftOperator expression2= additiveExpression )* )
+            // Dart.g:138:7: expression1= additiveExpression ( shiftOperator expression2= additiveExpression )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_additiveExpression_in_shiftExpression980);
-            additiveExpression47=additiveExpression();
+            pushFollow(FOLLOW_additiveExpression_in_shiftExpression1069);
+            expression1=additiveExpression();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, additiveExpression47.getTree());
-            retval.root = (additiveExpression47!=null?additiveExpression47.root:null);
-            // Dart.g:131:7: ( shiftOperator expression )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            adaptor.addChild(root_0, expression1.getTree());
+            retval.root = (expression1!=null?expression1.root:null);
+            // Dart.g:139:7: ( shiftOperator expression2= additiveExpression )*
+            loop16:
+            do {
+                int alt16=2;
+                int LA16_0 = input.LA(1);
 
-            if ( (LA14_0==43) ) {
-                alt14=1;
-            }
-            else if ( (LA14_0==44) ) {
-                alt14=1;
-            }
-            switch (alt14) {
-                case 1 :
-                    // Dart.g:131:8: shiftOperator expression
-                    {
-                    pushFollow(FOLLOW_shiftOperator_in_shiftExpression991);
-                    shiftOperator48=shiftOperator();
+                if ( ((LA16_0>=41 && LA16_0<=42)) ) {
+                    alt16=1;
+                }
 
-                    state._fsp--;
 
-                    adaptor.addChild(root_0, shiftOperator48.getTree());
-                    pushFollow(FOLLOW_expression_in_shiftExpression993);
-                    expression49=expression();
+                switch (alt16) {
+            	case 1 :
+            	    // Dart.g:139:8: shiftOperator expression2= additiveExpression
+            	    {
+            	    pushFollow(FOLLOW_shiftOperator_in_shiftExpression1080);
+            	    shiftOperator43=shiftOperator();
 
-                    state._fsp--;
+            	    state._fsp--;
 
-                    adaptor.addChild(root_0, expression49.getTree());
-                    retval.root = new ShiftExpression((additiveExpression47!=null?additiveExpression47.root:null), (expression49!=null?expression49.root:null));
+            	    adaptor.addChild(root_0, shiftOperator43.getTree());
+            	    pushFollow(FOLLOW_additiveExpression_in_shiftExpression1084);
+            	    expression2=additiveExpression();
 
-                    }
-                    break;
+            	    state._fsp--;
 
-            }
+            	    adaptor.addChild(root_0, expression2.getTree());
+            	    retval.root = new ShiftExpression(retval.root, (expression2!=null?expression2.root:null));
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop16;
+                }
+            } while (true);
 
 
             }
@@ -1709,63 +1911,70 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "additiveExpression"
-    // Dart.g:134:1: additiveExpression returns [ExpressionNode root] : multiplicativeExpression ( additiveOperator expression )? ;
+    // Dart.g:142:1: additiveExpression returns [ExpressionNode root] : expression1= multiplicativeExpression ( additiveOperator expression2= multiplicativeExpression )* ;
     public final DartParser.additiveExpression_return additiveExpression() throws RecognitionException {
         DartParser.additiveExpression_return retval = new DartParser.additiveExpression_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        DartParser.multiplicativeExpression_return multiplicativeExpression50 = null;
+        DartParser.multiplicativeExpression_return expression1 = null;
 
-        DartParser.additiveOperator_return additiveOperator51 = null;
+        DartParser.multiplicativeExpression_return expression2 = null;
 
-        DartParser.expression_return expression52 = null;
+        DartParser.additiveOperator_return additiveOperator44 = null;
 
 
 
         try {
-            // Dart.g:135:5: ( multiplicativeExpression ( additiveOperator expression )? )
-            // Dart.g:135:7: multiplicativeExpression ( additiveOperator expression )?
+            // Dart.g:143:5: (expression1= multiplicativeExpression ( additiveOperator expression2= multiplicativeExpression )* )
+            // Dart.g:143:7: expression1= multiplicativeExpression ( additiveOperator expression2= multiplicativeExpression )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression1018);
-            multiplicativeExpression50=multiplicativeExpression();
+            pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression1111);
+            expression1=multiplicativeExpression();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, multiplicativeExpression50.getTree());
-            retval.root = (multiplicativeExpression50!=null?multiplicativeExpression50.root:null);
-            // Dart.g:136:7: ( additiveOperator expression )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            adaptor.addChild(root_0, expression1.getTree());
+            retval.root = (expression1!=null?expression1.root:null);
+            // Dart.g:144:7: ( additiveOperator expression2= multiplicativeExpression )*
+            loop17:
+            do {
+                int alt17=2;
+                int LA17_0 = input.LA(1);
 
-            if ( ((LA15_0>=37 && LA15_0<=38)) ) {
-                alt15=1;
-            }
-            switch (alt15) {
-                case 1 :
-                    // Dart.g:136:8: additiveOperator expression
-                    {
-                    pushFollow(FOLLOW_additiveOperator_in_additiveExpression1029);
-                    additiveOperator51=additiveOperator();
+                if ( ((LA17_0>=35 && LA17_0<=36)) ) {
+                    alt17=1;
+                }
 
-                    state._fsp--;
 
-                    adaptor.addChild(root_0, additiveOperator51.getTree());
-                    pushFollow(FOLLOW_expression_in_additiveExpression1031);
-                    expression52=expression();
+                switch (alt17) {
+            	case 1 :
+            	    // Dart.g:144:8: additiveOperator expression2= multiplicativeExpression
+            	    {
+            	    pushFollow(FOLLOW_additiveOperator_in_additiveExpression1122);
+            	    additiveOperator44=additiveOperator();
 
-                    state._fsp--;
+            	    state._fsp--;
 
-                    adaptor.addChild(root_0, expression52.getTree());
-                    retval.root = new AdditiveExpression((multiplicativeExpression50!=null?multiplicativeExpression50.root:null), (expression52!=null?expression52.root:null));
+            	    adaptor.addChild(root_0, additiveOperator44.getTree());
+            	    pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression1126);
+            	    expression2=multiplicativeExpression();
 
-                    }
-                    break;
+            	    state._fsp--;
 
-            }
+            	    adaptor.addChild(root_0, expression2.getTree());
+            	    retval.root = new AdditiveExpression(retval.root, (expression2!=null?expression2.root:null));
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop17;
+                }
+            } while (true);
 
 
             }
@@ -1795,63 +2004,70 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "multiplicativeExpression"
-    // Dart.g:139:1: multiplicativeExpression returns [ExpressionNode root] : value ( multiplicativeOperator expression )? ;
+    // Dart.g:147:1: multiplicativeExpression returns [ExpressionNode root] : value1= value ( multiplicativeOperator value2= value )* ;
     public final DartParser.multiplicativeExpression_return multiplicativeExpression() throws RecognitionException {
         DartParser.multiplicativeExpression_return retval = new DartParser.multiplicativeExpression_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        DartParser.value_return value53 = null;
+        DartParser.value_return value1 = null;
 
-        DartParser.multiplicativeOperator_return multiplicativeOperator54 = null;
+        DartParser.value_return value2 = null;
 
-        DartParser.expression_return expression55 = null;
+        DartParser.multiplicativeOperator_return multiplicativeOperator45 = null;
 
 
 
         try {
-            // Dart.g:140:5: ( value ( multiplicativeOperator expression )? )
-            // Dart.g:140:7: value ( multiplicativeOperator expression )?
+            // Dart.g:148:5: (value1= value ( multiplicativeOperator value2= value )* )
+            // Dart.g:148:7: value1= value ( multiplicativeOperator value2= value )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            pushFollow(FOLLOW_value_in_multiplicativeExpression1056);
-            value53=value();
+            pushFollow(FOLLOW_value_in_multiplicativeExpression1153);
+            value1=value();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, value53.getTree());
-            retval.root = (value53!=null?value53.root:null);
-            // Dart.g:141:7: ( multiplicativeOperator expression )?
-            int alt16=2;
-            int LA16_0 = input.LA(1);
+            adaptor.addChild(root_0, value1.getTree());
+            retval.root = (value1!=null?value1.root:null);
+            // Dart.g:149:7: ( multiplicativeOperator value2= value )*
+            loop18:
+            do {
+                int alt18=2;
+                int LA18_0 = input.LA(1);
 
-            if ( ((LA16_0>=39 && LA16_0<=42)) ) {
-                alt16=1;
-            }
-            switch (alt16) {
-                case 1 :
-                    // Dart.g:141:8: multiplicativeOperator expression
-                    {
-                    pushFollow(FOLLOW_multiplicativeOperator_in_multiplicativeExpression1067);
-                    multiplicativeOperator54=multiplicativeOperator();
+                if ( ((LA18_0>=37 && LA18_0<=40)) ) {
+                    alt18=1;
+                }
 
-                    state._fsp--;
 
-                    adaptor.addChild(root_0, multiplicativeOperator54.getTree());
-                    pushFollow(FOLLOW_expression_in_multiplicativeExpression1069);
-                    expression55=expression();
+                switch (alt18) {
+            	case 1 :
+            	    // Dart.g:149:8: multiplicativeOperator value2= value
+            	    {
+            	    pushFollow(FOLLOW_multiplicativeOperator_in_multiplicativeExpression1164);
+            	    multiplicativeOperator45=multiplicativeOperator();
 
-                    state._fsp--;
+            	    state._fsp--;
 
-                    adaptor.addChild(root_0, expression55.getTree());
-                    retval.root = new MultiplicativeExpression((value53!=null?value53.root:null), (expression55!=null?expression55.root:null));
+            	    adaptor.addChild(root_0, multiplicativeOperator45.getTree());
+            	    pushFollow(FOLLOW_value_in_multiplicativeExpression1168);
+            	    value2=value();
 
-                    }
-                    break;
+            	    state._fsp--;
 
-            }
+            	    adaptor.addChild(root_0, value2.getTree());
+            	    retval.root = new MultiplicativeExpression(retval.root, (value2!=null?value2.root:null));
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop18;
+                }
+            } while (true);
 
 
             }
@@ -1880,27 +2096,27 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "additiveOperator"
-    // Dart.g:144:1: additiveOperator : ( '+' | '-' );
+    // Dart.g:152:1: additiveOperator : ( '+' | '-' );
     public final DartParser.additiveOperator_return additiveOperator() throws RecognitionException {
         DartParser.additiveOperator_return retval = new DartParser.additiveOperator_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token set56=null;
+        Token set46=null;
 
-        CommonTree set56_tree=null;
+        CommonTree set46_tree=null;
 
         try {
-            // Dart.g:145:5: ( '+' | '-' )
+            // Dart.g:153:5: ( '+' | '-' )
             // Dart.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            set56=(Token)input.LT(1);
-            if ( (input.LA(1)>=37 && input.LA(1)<=38) ) {
+            set46=(Token)input.LT(1);
+            if ( (input.LA(1)>=35 && input.LA(1)<=36) ) {
                 input.consume();
-                adaptor.addChild(root_0, (CommonTree)adaptor.create(set56));
+                adaptor.addChild(root_0, (CommonTree)adaptor.create(set46));
                 state.errorRecovery=false;
             }
             else {
@@ -1935,27 +2151,27 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "multiplicativeOperator"
-    // Dart.g:149:1: multiplicativeOperator : ( '*' | '/' | '%' | '~/' );
+    // Dart.g:157:1: multiplicativeOperator : ( '*' | '/' | '%' | '~/' );
     public final DartParser.multiplicativeOperator_return multiplicativeOperator() throws RecognitionException {
         DartParser.multiplicativeOperator_return retval = new DartParser.multiplicativeOperator_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token set57=null;
+        Token set47=null;
 
-        CommonTree set57_tree=null;
+        CommonTree set47_tree=null;
 
         try {
-            // Dart.g:150:5: ( '*' | '/' | '%' | '~/' )
+            // Dart.g:158:5: ( '*' | '/' | '%' | '~/' )
             // Dart.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            set57=(Token)input.LT(1);
-            if ( (input.LA(1)>=39 && input.LA(1)<=42) ) {
+            set47=(Token)input.LT(1);
+            if ( (input.LA(1)>=37 && input.LA(1)<=40) ) {
                 input.consume();
-                adaptor.addChild(root_0, (CommonTree)adaptor.create(set57));
+                adaptor.addChild(root_0, (CommonTree)adaptor.create(set47));
                 state.errorRecovery=false;
             }
             else {
@@ -1990,96 +2206,96 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "shiftOperator"
-    // Dart.g:156:1: shiftOperator : ( '<<' | '>' '>' '>' {...}? | '>' '>' {...}?);
+    // Dart.g:164:1: shiftOperator : ( '<<' | '>' '>' '>' {...}? | '>' '>' {...}?);
     public final DartParser.shiftOperator_return shiftOperator() throws RecognitionException {
         DartParser.shiftOperator_return retval = new DartParser.shiftOperator_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token string_literal58=null;
-        Token char_literal59=null;
-        Token char_literal60=null;
-        Token char_literal61=null;
-        Token char_literal62=null;
-        Token char_literal63=null;
+        Token string_literal48=null;
+        Token char_literal49=null;
+        Token char_literal50=null;
+        Token char_literal51=null;
+        Token char_literal52=null;
+        Token char_literal53=null;
 
-        CommonTree string_literal58_tree=null;
-        CommonTree char_literal59_tree=null;
-        CommonTree char_literal60_tree=null;
-        CommonTree char_literal61_tree=null;
-        CommonTree char_literal62_tree=null;
-        CommonTree char_literal63_tree=null;
+        CommonTree string_literal48_tree=null;
+        CommonTree char_literal49_tree=null;
+        CommonTree char_literal50_tree=null;
+        CommonTree char_literal51_tree=null;
+        CommonTree char_literal52_tree=null;
+        CommonTree char_literal53_tree=null;
 
         try {
-            // Dart.g:157:5: ( '<<' | '>' '>' '>' {...}? | '>' '>' {...}?)
-            int alt17=3;
-            int LA17_0 = input.LA(1);
+            // Dart.g:165:5: ( '<<' | '>' '>' '>' {...}? | '>' '>' {...}?)
+            int alt19=3;
+            int LA19_0 = input.LA(1);
 
-            if ( (LA17_0==43) ) {
-                alt17=1;
+            if ( (LA19_0==41) ) {
+                alt19=1;
             }
-            else if ( (LA17_0==44) ) {
-                int LA17_2 = input.LA(2);
+            else if ( (LA19_0==42) ) {
+                int LA19_2 = input.LA(2);
 
-                if ( (LA17_2==44) ) {
-                    int LA17_3 = input.LA(3);
+                if ( (LA19_2==42) ) {
+                    int LA19_3 = input.LA(3);
 
-                    if ( (LA17_3==44) ) {
-                        alt17=2;
+                    if ( (LA19_3==42) ) {
+                        alt19=2;
                     }
-                    else if ( ((LA17_3>=INT && LA17_3<=STRING)) ) {
-                        alt17=3;
+                    else if ( ((LA19_3>=INT && LA19_3<=STRING)||LA19_3==23) ) {
+                        alt19=3;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 17, 3, input);
+                            new NoViableAltException("", 19, 3, input);
 
                         throw nvae;
                     }
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 17, 2, input);
+                        new NoViableAltException("", 19, 2, input);
 
                     throw nvae;
                 }
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 19, 0, input);
 
                 throw nvae;
             }
-            switch (alt17) {
+            switch (alt19) {
                 case 1 :
-                    // Dart.g:157:7: '<<'
+                    // Dart.g:165:7: '<<'
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    string_literal58=(Token)match(input,43,FOLLOW_43_in_shiftOperator1156); 
-                    string_literal58_tree = (CommonTree)adaptor.create(string_literal58);
-                    adaptor.addChild(root_0, string_literal58_tree);
+                    string_literal48=(Token)match(input,41,FOLLOW_41_in_shiftOperator1255); 
+                    string_literal48_tree = (CommonTree)adaptor.create(string_literal48);
+                    adaptor.addChild(root_0, string_literal48_tree);
 
 
                     }
                     break;
                 case 2 :
-                    // Dart.g:158:7: '>' '>' '>' {...}?
+                    // Dart.g:166:7: '>' '>' '>' {...}?
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    char_literal59=(Token)match(input,44,FOLLOW_44_in_shiftOperator1164); 
-                    char_literal59_tree = (CommonTree)adaptor.create(char_literal59);
-                    adaptor.addChild(root_0, char_literal59_tree);
+                    char_literal49=(Token)match(input,42,FOLLOW_42_in_shiftOperator1263); 
+                    char_literal49_tree = (CommonTree)adaptor.create(char_literal49);
+                    adaptor.addChild(root_0, char_literal49_tree);
 
-                    char_literal60=(Token)match(input,44,FOLLOW_44_in_shiftOperator1166); 
-                    char_literal60_tree = (CommonTree)adaptor.create(char_literal60);
-                    adaptor.addChild(root_0, char_literal60_tree);
+                    char_literal50=(Token)match(input,42,FOLLOW_42_in_shiftOperator1265); 
+                    char_literal50_tree = (CommonTree)adaptor.create(char_literal50);
+                    adaptor.addChild(root_0, char_literal50_tree);
 
-                    char_literal61=(Token)match(input,44,FOLLOW_44_in_shiftOperator1168); 
-                    char_literal61_tree = (CommonTree)adaptor.create(char_literal61);
-                    adaptor.addChild(root_0, char_literal61_tree);
+                    char_literal51=(Token)match(input,42,FOLLOW_42_in_shiftOperator1267); 
+                    char_literal51_tree = (CommonTree)adaptor.create(char_literal51);
+                    adaptor.addChild(root_0, char_literal51_tree);
 
                     if ( !(( ">>>".equals(input.toString(retval.start,input.LT(-1))) )) ) {
                         throw new FailedPredicateException(input, "shiftOperator", " \">>>\".equals($text) ");
@@ -2088,17 +2304,17 @@ public class DartParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // Dart.g:159:7: '>' '>' {...}?
+                    // Dart.g:167:7: '>' '>' {...}?
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
-                    char_literal62=(Token)match(input,44,FOLLOW_44_in_shiftOperator1178); 
-                    char_literal62_tree = (CommonTree)adaptor.create(char_literal62);
-                    adaptor.addChild(root_0, char_literal62_tree);
+                    char_literal52=(Token)match(input,42,FOLLOW_42_in_shiftOperator1277); 
+                    char_literal52_tree = (CommonTree)adaptor.create(char_literal52);
+                    adaptor.addChild(root_0, char_literal52_tree);
 
-                    char_literal63=(Token)match(input,44,FOLLOW_44_in_shiftOperator1180); 
-                    char_literal63_tree = (CommonTree)adaptor.create(char_literal63);
-                    adaptor.addChild(root_0, char_literal63_tree);
+                    char_literal53=(Token)match(input,42,FOLLOW_42_in_shiftOperator1279); 
+                    char_literal53_tree = (CommonTree)adaptor.create(char_literal53);
+                    adaptor.addChild(root_0, char_literal53_tree);
 
                     if ( !(( ">>".equals(input.toString(retval.start,input.LT(-1))) )) ) {
                         throw new FailedPredicateException(input, "shiftOperator", " \">>\".equals($text) ");
@@ -2132,27 +2348,27 @@ public class DartParser extends Parser {
     };
 
     // $ANTLR start "equalityOperator"
-    // Dart.g:162:1: equalityOperator : ( '==' | '!=' | '===' | '!==' );
+    // Dart.g:170:1: equalityOperator : ( '==' | '!=' | '===' | '!==' );
     public final DartParser.equalityOperator_return equalityOperator() throws RecognitionException {
         DartParser.equalityOperator_return retval = new DartParser.equalityOperator_return();
         retval.start = input.LT(1);
 
         CommonTree root_0 = null;
 
-        Token set64=null;
+        Token set54=null;
 
-        CommonTree set64_tree=null;
+        CommonTree set54_tree=null;
 
         try {
-            // Dart.g:163:5: ( '==' | '!=' | '===' | '!==' )
+            // Dart.g:171:5: ( '==' | '!=' | '===' | '!==' )
             // Dart.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
-            set64=(Token)input.LT(1);
-            if ( (input.LA(1)>=45 && input.LA(1)<=48) ) {
+            set54=(Token)input.LT(1);
+            if ( (input.LA(1)>=43 && input.LA(1)<=46) ) {
                 input.consume();
-                adaptor.addChild(root_0, (CommonTree)adaptor.create(set64));
+                adaptor.addChild(root_0, (CommonTree)adaptor.create(set54));
                 state.errorRecovery=false;
             }
             else {
@@ -2186,76 +2402,84 @@ public class DartParser extends Parser {
 
  
 
-    public static final BitSet FOLLOW_stataemet_in_topLevel397 = new BitSet(new long[]{0x0000000000400002L});
-    public static final BitSet FOLLOW_type_in_functionDeclaration419 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_ID_in_functionDeclaration422 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_25_in_functionDeclaration424 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_parameterList_in_functionDeclaration426 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_functionDeclaration428 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_block_in_functionDeclaration430 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_type446 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_parameter461 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_ID_in_parameter465 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_parameter_in_parameterList488 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_27_in_parameterList493 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_parameter_in_parameterList497 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_type_in_varDeclaration524 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_ID_in_varDeclaration526 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_varInit_in_varDeclaration528 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_varInit544 = new BitSet(new long[]{0x0000000000E00000L});
-    public static final BitSet FOLLOW_expression_in_varInit546 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_block564 = new BitSet(new long[]{0x0000000040400000L});
-    public static final BitSet FOLLOW_stataemet_in_block572 = new BitSet(new long[]{0x0000000040400000L});
-    public static final BitSet FOLLOW_30_in_block581 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_varDeclaration_in_stataemet596 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_31_in_stataemet598 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_functionDeclaration_in_stataemet605 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_value622 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_callExpression_in_value629 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_value636 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_value643 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_callExpression663 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_25_in_callExpression665 = new BitSet(new long[]{0x0000000000E00000L});
-    public static final BitSet FOLLOW_expression_in_callExpression683 = new BitSet(new long[]{0x000000000C000000L});
-    public static final BitSet FOLLOW_27_in_callExpression694 = new BitSet(new long[]{0x0000000000E00000L});
-    public static final BitSet FOLLOW_expression_in_callExpression698 = new BitSet(new long[]{0x000000000C000000L});
-    public static final BitSet FOLLOW_26_in_callExpression710 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_logicalOrExpression_in_expression732 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_logicalAndExpression_in_logicalOrExpression752 = new BitSet(new long[]{0x0000000100000002L});
-    public static final BitSet FOLLOW_32_in_logicalOrExpression763 = new BitSet(new long[]{0x0000000000E00000L});
-    public static final BitSet FOLLOW_expression_in_logicalOrExpression765 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bitwiseOrExpression_in_logicalAndExpression790 = new BitSet(new long[]{0x0000000200000002L});
-    public static final BitSet FOLLOW_33_in_logicalAndExpression801 = new BitSet(new long[]{0x0000000000E00000L});
-    public static final BitSet FOLLOW_expression_in_logicalAndExpression803 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bitwiseXorExpression_in_bitwiseOrExpression828 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_34_in_bitwiseOrExpression839 = new BitSet(new long[]{0x0000000000E00000L});
-    public static final BitSet FOLLOW_expression_in_bitwiseOrExpression841 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bitwiseAndExpression_in_bitwiseXorExpression866 = new BitSet(new long[]{0x0000000800000002L});
-    public static final BitSet FOLLOW_35_in_bitwiseXorExpression877 = new BitSet(new long[]{0x0000000000E00000L});
-    public static final BitSet FOLLOW_expression_in_bitwiseXorExpression879 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_equalityExpression_in_bitwiseAndExpression904 = new BitSet(new long[]{0x0000001000000002L});
-    public static final BitSet FOLLOW_36_in_bitwiseAndExpression915 = new BitSet(new long[]{0x0000000000E00000L});
-    public static final BitSet FOLLOW_expression_in_bitwiseAndExpression917 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_shiftExpression_in_equalityExpression942 = new BitSet(new long[]{0x0001E00000000002L});
-    public static final BitSet FOLLOW_equalityOperator_in_equalityExpression953 = new BitSet(new long[]{0x0000000000E00000L});
-    public static final BitSet FOLLOW_expression_in_equalityExpression955 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_additiveExpression_in_shiftExpression980 = new BitSet(new long[]{0x0000180000000002L});
-    public static final BitSet FOLLOW_shiftOperator_in_shiftExpression991 = new BitSet(new long[]{0x0000000000E00000L});
-    public static final BitSet FOLLOW_expression_in_shiftExpression993 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression1018 = new BitSet(new long[]{0x0000006000000002L});
-    public static final BitSet FOLLOW_additiveOperator_in_additiveExpression1029 = new BitSet(new long[]{0x0000000000E00000L});
-    public static final BitSet FOLLOW_expression_in_additiveExpression1031 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_value_in_multiplicativeExpression1056 = new BitSet(new long[]{0x0000078000000002L});
-    public static final BitSet FOLLOW_multiplicativeOperator_in_multiplicativeExpression1067 = new BitSet(new long[]{0x0000000000E00000L});
-    public static final BitSet FOLLOW_expression_in_multiplicativeExpression1069 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_statement_in_topLevel366 = new BitSet(new long[]{0x0000000000110002L});
+    public static final BitSet FOLLOW_type_in_functionDeclaration388 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_ID_in_functionDeclaration391 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_functionDeclaration393 = new BitSet(new long[]{0x0000000001100000L});
+    public static final BitSet FOLLOW_parameterList_in_functionDeclaration395 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_functionDeclaration397 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_block_in_functionDeclaration399 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_type415 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_in_parameter430 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_ID_in_parameter434 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_parameter_in_parameterList469 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_25_in_parameterList474 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_parameter_in_parameterList478 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_type_in_varDeclaration511 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_ID_in_varDeclaration513 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_varInit_in_varDeclaration515 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RETURN_in_returnStatement533 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_expression_in_returnStatement535 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_returnStatement537 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_varInit552 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_expression_in_varInit554 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_block572 = new BitSet(new long[]{0x0000000020110000L});
+    public static final BitSet FOLLOW_statement_in_block580 = new BitSet(new long[]{0x0000000020110000L});
+    public static final BitSet FOLLOW_29_in_block589 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_varDeclaration_in_statement604 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_statement606 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_functionDeclaration_in_statement613 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_returnStatement_in_statement620 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_value637 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_callExpression_in_value644 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_value651 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_value658 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_value665 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_expression_in_value667 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_value669 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_callExpression689 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_callExpression691 = new BitSet(new long[]{0x0000000001B80000L});
+    public static final BitSet FOLLOW_expression_in_callExpression721 = new BitSet(new long[]{0x0000000003000000L});
+    public static final BitSet FOLLOW_25_in_callExpression736 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_expression_in_callExpression740 = new BitSet(new long[]{0x0000000003000000L});
+    public static final BitSet FOLLOW_24_in_callExpression756 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_callExpression773 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_logicalOrExpression_in_expression795 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_logicalAndExpression_in_logicalOrExpression817 = new BitSet(new long[]{0x0000000040000002L});
+    public static final BitSet FOLLOW_30_in_logicalOrExpression828 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_logicalAndExpression_in_logicalOrExpression832 = new BitSet(new long[]{0x0000000040000002L});
+    public static final BitSet FOLLOW_bitwiseOrExpression_in_logicalAndExpression859 = new BitSet(new long[]{0x0000000080000002L});
+    public static final BitSet FOLLOW_31_in_logicalAndExpression870 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_bitwiseOrExpression_in_logicalAndExpression874 = new BitSet(new long[]{0x0000000080000002L});
+    public static final BitSet FOLLOW_bitwiseXorExpression_in_bitwiseOrExpression901 = new BitSet(new long[]{0x0000000100000002L});
+    public static final BitSet FOLLOW_32_in_bitwiseOrExpression912 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_bitwiseXorExpression_in_bitwiseOrExpression916 = new BitSet(new long[]{0x0000000100000002L});
+    public static final BitSet FOLLOW_bitwiseAndExpression_in_bitwiseXorExpression943 = new BitSet(new long[]{0x0000000200000002L});
+    public static final BitSet FOLLOW_33_in_bitwiseXorExpression954 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_bitwiseAndExpression_in_bitwiseXorExpression958 = new BitSet(new long[]{0x0000000200000002L});
+    public static final BitSet FOLLOW_equalityExpression_in_bitwiseAndExpression985 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_34_in_bitwiseAndExpression996 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_equalityExpression_in_bitwiseAndExpression1000 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_shiftExpression_in_equalityExpression1027 = new BitSet(new long[]{0x0000780000000002L});
+    public static final BitSet FOLLOW_equalityOperator_in_equalityExpression1038 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_shiftExpression_in_equalityExpression1042 = new BitSet(new long[]{0x0000780000000002L});
+    public static final BitSet FOLLOW_additiveExpression_in_shiftExpression1069 = new BitSet(new long[]{0x0000060000000002L});
+    public static final BitSet FOLLOW_shiftOperator_in_shiftExpression1080 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_additiveExpression_in_shiftExpression1084 = new BitSet(new long[]{0x0000060000000002L});
+    public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression1111 = new BitSet(new long[]{0x0000001800000002L});
+    public static final BitSet FOLLOW_additiveOperator_in_additiveExpression1122 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression1126 = new BitSet(new long[]{0x0000001800000002L});
+    public static final BitSet FOLLOW_value_in_multiplicativeExpression1153 = new BitSet(new long[]{0x000001E000000002L});
+    public static final BitSet FOLLOW_multiplicativeOperator_in_multiplicativeExpression1164 = new BitSet(new long[]{0x0000000000B80000L});
+    public static final BitSet FOLLOW_value_in_multiplicativeExpression1168 = new BitSet(new long[]{0x000001E000000002L});
     public static final BitSet FOLLOW_set_in_additiveOperator0 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_set_in_multiplicativeOperator0 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_shiftOperator1156 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_shiftOperator1164 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_44_in_shiftOperator1166 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_44_in_shiftOperator1168 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_shiftOperator1178 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_44_in_shiftOperator1180 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_shiftOperator1255 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_shiftOperator1263 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_shiftOperator1265 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_shiftOperator1267 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_shiftOperator1277 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_42_in_shiftOperator1279 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_set_in_equalityOperator0 = new BitSet(new long[]{0x0000000000000002L});
 
 }

@@ -9,7 +9,7 @@ public class VarDeclarationNode extends ASTNode {
     private final ASTNode expression;
 
     public VarDeclarationNode(String name, TypeNode type, ASTNode expression) {
-        super(name);
+        super(expression);
         this.name = name;
         this.type = type;
         this.expression = expression;
@@ -17,6 +17,6 @@ public class VarDeclarationNode extends ASTNode {
 
     @Override
     public String getText() {
-        return name + " = " + super.getText();
+        return super.getText() + "(" + name + ")";
     }
 }

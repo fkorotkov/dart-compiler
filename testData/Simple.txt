@@ -1,0 +1,12 @@
+StatementsNode
+	VarDeclarationNode(a)
+		VarInitNode
+			IntegerValueNode(1)
+	FunctionDeclarationNode(foo)
+		ParameterListNode
+			ParameterNode(tmp)
+				TypeNode(int)
+		StatementsNode
+			VarDeclarationNode(b)
+				VarInitNode
+					IdentifierNode(a)

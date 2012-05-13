@@ -1,5 +1,8 @@
 package org.dartlang.ast;
 
+import org.dartlang.util.Condition;
+import org.dartlang.util.ContainerUtil;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,31 +11,26 @@ import java.util.List;
  * @author fedor.korotkov
  */
 public class ASTNode {
-    private final String text;
-    protected final List<ASTNode> children;
+    protected final List<? extends ASTNode> children;
 
-    public ASTNode(String text) {
-        this(text, new ArrayList<ASTNode>());
-    }
-
-    public ASTNode(String text, List<ASTNode> children) {
-        this.text = text;
-        this.children = children;
-    }
-
-    public ASTNode(List<ASTNode> children) {
-        this(null, children);
+    public ASTNode(List<? extends ASTNode> children) {
+        this.children = ContainerUtil.filter(children, new Condition<ASTNode>() {
+            @Override
+            public boolean value(ASTNode item) {
+                return item != null;
+            }
+        });
     }
 
     public ASTNode(ASTNode child) {
-        this(child.getText(), Arrays.asList(child));
+        this(Arrays.asList(child));
     }
 
     public String getText() {
-        return text == null ? getClass().getSimpleName() : text;
+        return getClass().getSimpleName();
     }
 
-    public List<ASTNode> getChildren() {
+    public List<? extends ASTNode> getChildren() {
         return children;
     }
 }

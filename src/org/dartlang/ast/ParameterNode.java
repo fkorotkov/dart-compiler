@@ -15,6 +15,6 @@ public class ParameterNode extends ASTNode {
 
     @Override
     public String getText() {
-        return super.getText() + " " + name;
+        return super.getText() + "(" + name + ")";
     }
 }

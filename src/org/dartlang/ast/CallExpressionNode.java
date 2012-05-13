@@ -6,10 +6,15 @@ import java.util.List;
  * @author fedor.korotkov
  */
 public class CallExpressionNode extends ExpressionNode {
-    private final List<ExpressionNode> parameters;
+    private String functionName;
 
     public CallExpressionNode(String text, List<ExpressionNode> parameters) {
-        super(text);
-        this.parameters = parameters;
+        super(parameters);
+        functionName = text;
+    }
+
+    @Override
+    public String getText() {
+        return super.getText() + "(" + functionName + ")";
     }
 }
