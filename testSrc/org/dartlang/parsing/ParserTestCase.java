@@ -7,6 +7,7 @@ import org.antlr.runtime.RecognitionException;
 import org.dartlang.DartLexer;
 import org.dartlang.DartParser;
 import org.dartlang.util.DebugUtil;
+import org.dartlang.util.FileUtil;
 
 import java.io.*;
 import java.util.Scanner;
@@ -52,16 +53,7 @@ public class ParserTestCase extends TestCase {
             assertTrue("Expected file not found. Create new at " + getExpectedFilePath(), false);
         }
 
-        assertEquals(getFileContent(expectedOutFile), actualOut.toString());
-    }
-
-    private String getFileContent(File expectedOutFile) throws FileNotFoundException {
-        final Scanner in = new Scanner(new BufferedInputStream(new FileInputStream(expectedOutFile)));
-        final StringBuilder result = new StringBuilder();
-        while (in.hasNext()) {
-            result.append(in.nextLine()).append("\n");
-        }
-        return result.toString();
+        assertEquals(FileUtil.getFileContent(expectedOutFile), actualOut.toString());
     }
 
     public void testSimple() throws Throwable {
