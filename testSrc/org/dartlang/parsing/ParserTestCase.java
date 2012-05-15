@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class ParserTestCase extends TestCase {
 
     protected String getDataPath() {
-        return "testData";
+        return "testData" + File.separator + "parser";
     }
 
     protected String getTestFilePath() {
