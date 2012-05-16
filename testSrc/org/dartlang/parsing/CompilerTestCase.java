@@ -29,7 +29,7 @@ public class CompilerTestCase extends TestCase {
 
     @Override
     protected void tearDown() throws Exception {
-        //new File(getDataPath(), getTestName() + ".asm").delete();
+        new File(getDataPath(), getTestName() + ".asm").delete();
         new File(getDataPath(), getTestName() + ".o").delete();
         new File(getDataPath(), getTestName()).delete();
     }
