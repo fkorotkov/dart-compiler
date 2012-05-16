@@ -1,6 +1,7 @@
 package org.dartlang.parsing;
 
 import junit.framework.TestCase;
+import org.dartlang.DartTranslator;
 import org.dartlang.util.FileUtil;
 
 import java.io.*;
@@ -28,11 +29,13 @@ public class CompilerTestCase extends TestCase {
 
     @Override
     protected void tearDown() throws Exception {
+        //new File(getDataPath(), getTestName() + ".asm").delete();
         new File(getDataPath(), getTestName() + ".o").delete();
         new File(getDataPath(), getTestName()).delete();
     }
 
     public void doTest() throws Throwable {
+        DartTranslator.translate(new File(getDataPath(), getTestName() + ".dart"));
         doCompile();
         doLinking();
         final StringBuilder stdout = runCommandAndGetOutput(new String[]{"./" + getTestName()}, false);
@@ -75,7 +78,7 @@ public class CompilerTestCase extends TestCase {
         return out;
     }
 
-    public void testHello() throws Throwable {
+    public void testSimple() throws Throwable {
         doTest();
     }
 }

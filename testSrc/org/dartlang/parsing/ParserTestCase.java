@@ -10,7 +10,6 @@ import org.dartlang.util.DebugUtil;
 import org.dartlang.util.FileUtil;
 
 import java.io.*;
-import java.util.Scanner;
 
 /**
  * @author fedor.korotkov
@@ -61,6 +60,10 @@ public class ParserTestCase extends TestCase {
     }
 
     public void testExpressions() throws Throwable {
+        doTest();
+    }
+
+    public void testCall() throws Throwable {
         doTest();
     }
 }

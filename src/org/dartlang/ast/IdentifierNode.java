@@ -10,7 +10,9 @@ public class IdentifierNode extends ExpressionNode {
         value = text;
     }
 
-
+    public String getValue() {
+        return value;
+    }
 
     @Override
     public String getText() {

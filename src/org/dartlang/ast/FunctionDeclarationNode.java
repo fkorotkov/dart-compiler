@@ -19,6 +19,18 @@ public class FunctionDeclarationNode extends ASTNode {
         this.statementsNode = statementsNode;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public ParameterListNode getParameterListNode() {
+        return parameterListNode;
+    }
+
+    public TypeNode getTypeNode() {
+        return typeNode;
+    }
+
     public StatementsNode getStatementsNode() {
         return statementsNode;
     }

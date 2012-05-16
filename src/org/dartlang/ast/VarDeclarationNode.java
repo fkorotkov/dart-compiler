@@ -12,7 +12,15 @@ public class VarDeclarationNode extends ASTNode {
         super(expression);
         this.name = name;
         this.type = type;
-        this.expression = expression;
+        this.expression = ((VarInitNode) expression).getExpression();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ASTNode getExpression() {
+        return expression;
     }
 
     @Override

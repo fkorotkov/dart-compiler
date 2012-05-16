@@ -3,7 +3,6 @@ package org.dartlang.ast;
 import org.dartlang.util.Condition;
 import org.dartlang.util.ContainerUtil;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

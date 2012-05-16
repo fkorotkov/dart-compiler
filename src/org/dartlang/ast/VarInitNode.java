@@ -10,4 +10,8 @@ public class VarInitNode extends ASTNode {
         super(expression);
         this.expression = expression;
     }
+
+    public ASTNode getExpression() {
+        return expression;
+    }
 }

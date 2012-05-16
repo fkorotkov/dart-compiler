@@ -13,6 +13,14 @@ public class CallExpressionNode extends ExpressionNode {
         functionName = text;
     }
 
+    public String getFunctionName() {
+        return functionName;
+    }
+
+    public List<? extends ASTNode> getParameters() {
+        return children;
+    }
+
     @Override
     public String getText() {
         return super.getText() + "(" + functionName + ")";

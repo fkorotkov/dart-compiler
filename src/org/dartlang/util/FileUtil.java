@@ -15,4 +15,9 @@ public class FileUtil {
         }
         return result.toString();
     }
+
+    public static String getFileNameWithoutExtension(String fileName) {
+        final int index = fileName.lastIndexOf('.');
+        return index == -1 ? fileName : fileName.substring(0, index);
+    }
 }

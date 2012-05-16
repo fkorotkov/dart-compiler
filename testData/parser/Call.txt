@@ -1,0 +1,9 @@
+StatementsNode
+	FunctionDeclarationNode(main)
+		ParameterListNode
+		StatementsNode
+			VarDeclarationNode(foo)
+				VarInitNode
+					IntegerValueNode(239)
+			CallExpressionNode(print)
+				IdentifierNode(foo)

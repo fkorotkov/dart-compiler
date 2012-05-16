@@ -3,7 +3,6 @@ package org.dartlang.util;
 import org.dartlang.ast.ASTNode;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.Arrays;
 

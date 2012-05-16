@@ -10,6 +10,10 @@ public class IntegerValueNode extends ExpressionNode {
         this.value = value;
     }
 
+    public int getValue() {
+        return value;
+    }
+
     @Override
     public String getText() {
         return super.getText() + "(" + value + ")";

@@ -77,6 +77,7 @@ block returns [StatementsNode root]
 
 statement returns [ASTNode root]
 	: varDeclaration ';' {$root = $varDeclaration.root;}
+	| callExpression ';' {$root = $callExpression.root;}
 	| functionDeclaration {$root = $functionDeclaration.root;}
 	| returnStatement {$root = $returnStatement.root;}
 	;
@@ -95,7 +96,6 @@ callExpression returns [CallExpressionNode root]
       (
           child1=expression {children.add($child1.root);}
           (',' child2=expression {children.add($child2.root);})*
-          ')'
       )?
       ')' {$root = new CallExpressionNode($ID.text, children);}
       ;
