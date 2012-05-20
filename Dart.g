@@ -27,6 +27,7 @@ tokens {
   package org.dartlang;
 
   import org.dartlang.ast.*;
+  import org.dartlang.compile.*;
 }
 
 @lexer::header {
@@ -106,47 +107,56 @@ expression returns [ExpressionNode root]
 
 logicalOrExpression returns [ExpressionNode root]
     : expression1=logicalAndExpression {$root = $expression1.root;}
-      ('||' expression2=logicalAndExpression {$root = new LogicalOrExpression($root, $expression2.root);})*
+      ('||' expression2=logicalAndExpression
+      {$root = new LogicalOrExpression(Operator.LOGICAL_OR, $root, $expression2.root);})*
     ;
 
 logicalAndExpression returns [ExpressionNode root]
     : expression1=bitwiseOrExpression {$root = $expression1.root;}
-      ('&&' expression2=bitwiseOrExpression {$root = new LogicalAndExpression($root, $expression2.root);})*
+      ('&&' expression2=bitwiseOrExpression
+      {$root = new LogicalAndExpression(Operator.LOGICAL_AND, $root, $expression2.root);})*
     ;
 
 bitwiseOrExpression returns [ExpressionNode root]
     : expression1=bitwiseXorExpression {$root = $expression1.root;}
-      ('|' expression2=bitwiseXorExpression {$root = new BitwiseOrExpression($root, $expression2.root);})*
+      ('|' expression2=bitwiseXorExpression
+      {$root = new BitwiseOrExpression(Operator.BITWISE_OR, $root, $expression2.root);})*
     ;
 
 bitwiseXorExpression returns [ExpressionNode root]
     : expression1=bitwiseAndExpression {$root = $expression1.root;}
-      ('^' expression2=bitwiseAndExpression {$root = new BitwiseXorExpression($root, $expression2.root);})*
+      ('^' expression2=bitwiseAndExpression
+      {$root = new BitwiseXorExpression(Operator.BITWISE_XOR, $root, $expression2.root);})*
     ;
 
 bitwiseAndExpression returns [ExpressionNode root]
     : expression1=equalityExpression {$root = $expression1.root;}
-      ('&' expression2=equalityExpression {$root = new BitwiseAndExpression($root, $expression2.root);})*
+      ('&' expression2=equalityExpression
+      {$root = new BitwiseAndExpression(Operator.BITWISE_AND, $root, $expression2.root);})*
     ;
 
 equalityExpression returns [ExpressionNode root]
     : expression1=shiftExpression {$root = $expression1.root;}
-      (equalityOperator expression2=shiftExpression {$root = new EqualityExpression($root, $expression2.root);})*
+      (equalityOperator expression2=shiftExpression
+      {$root = new EqualityExpression(Operator.getOperator($equalityOperator.text), $root, $expression2.root);})*
     ;
 
 shiftExpression returns [ExpressionNode root]
     : expression1=additiveExpression {$root = $expression1.root;}
-      (shiftOperator expression2=additiveExpression {$root = new ShiftExpression($root, $expression2.root);})*
+      (shiftOperator expression2=additiveExpression
+      {$root = new ShiftExpression(Operator.getOperator($shiftOperator.text), $root, $expression2.root);})*
     ;
 
 additiveExpression returns [ExpressionNode root]
     : expression1=multiplicativeExpression {$root = $expression1.root;}
-      (additiveOperator expression2=multiplicativeExpression {$root = new AdditiveExpression($root, $expression2.root);})*
+      (additiveOperator expression2=multiplicativeExpression
+      {$root = new AdditiveExpression(Operator.getOperator($additiveOperator.text), $root, $expression2.root);})*
     ;
 
 multiplicativeExpression returns [ExpressionNode root]
     : value1=value {$root = $value1.root;}
-      (multiplicativeOperator value2=value {$root = new MultiplicativeExpression($root, $value2.root);})*
+      (multiplicativeOperator value2=value
+      {$root = new MultiplicativeExpression(Operator.getOperator($multiplicativeOperator.text), $root, $value2.root);})*
     ;
 
 additiveOperator

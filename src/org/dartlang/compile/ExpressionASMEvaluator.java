@@ -1,6 +1,9 @@
 package org.dartlang.compile;
 
-import org.dartlang.ast.*;
+import org.dartlang.ast.ASTNode;
+import org.dartlang.ast.BinaryExpressionNode;
+import org.dartlang.ast.IdentifierNode;
+import org.dartlang.ast.IntegerValueNode;
 
 import java.io.PrintWriter;
 
@@ -23,11 +26,12 @@ public class ExpressionASMEvaluator {
                                             PrintWriter out,
                                             ASTNode expression,
                                             String registerName) {
-        if(expression instanceof BinaryExpressionNode) {
+        if (expression instanceof BinaryExpressionNode) {
             calculateBinaryExpression(variableManager, flow, out, (BinaryExpressionNode) expression, registerName);
-        } else if(expression instanceof IntegerValueNode) {
+        } else if (expression instanceof IntegerValueNode) {
             out.println("\t\tmov " + registerName + ", " + ((IntegerValueNode) expression).getValue());
-        } if(expression instanceof IdentifierNode) {
+        }
+        if (expression instanceof IdentifierNode) {
             final String varName = ((IdentifierNode) expression).getValue();
             out.println("\t\tmov " + registerName + ", dword [" + flow.getVar(varName).getName() + "]");
         }
@@ -47,7 +51,7 @@ public class ExpressionASMEvaluator {
         applyBinaryOperation(out, expression, rightVar);
         variableManager.release(rightVar);
 
-        if(!"eax".equals(registerName)) {
+        if (!"eax".equals(registerName)) {
             out.println("\t\tmov " + registerName + ", eax");
         }
     }
@@ -58,11 +62,17 @@ public class ExpressionASMEvaluator {
     private static void applyBinaryOperation(PrintWriter out,
                                              BinaryExpressionNode expression,
                                              TemporaryVariableManager.Variable rightVar) {
-        if(expression instanceof AdditiveExpression) {
-            out.println("\t\tadd eax, " + " dword [" + rightVar.getName() + "]");
-        } else if(expression instanceof MultiplicativeExpression) {
-            out.println("\t\tmov ebx, " + " dword [" + rightVar.getName() + "]");
-            out.println("\t\tmul ebx");
+        final String opcode = expression.getOperator().getOpcode();
+        switch (expression.getOperator()) {
+            case PLUS:
+            case MINUS:
+                out.println("\t\t" + opcode + " eax, " + " dword [" + rightVar.getName() + "]");
+                break;
+            case MULTIPLY:
+            case DIVIDE:
+                out.println("\t\tmov ebx, " + " dword [" + rightVar.getName() + "]");
+                out.println("\t\t" + opcode + " ebx");
+                break;
         }
         // todo: other
     }

@@ -1,13 +1,22 @@
 package org.dartlang.ast;
 
+import org.dartlang.compile.Operator;
+
 import java.util.Arrays;
 
 /**
  * @author fedor.korotkov
  */
 public abstract class BinaryExpressionNode extends ExpressionNode {
-    public BinaryExpressionNode(ExpressionNode left, ExpressionNode right) {
+    private final Operator operator;
+
+    public BinaryExpressionNode(Operator operator, ExpressionNode left, ExpressionNode right) {
         super(Arrays.asList(left, right));
+        this.operator = operator;
+    }
+
+    public Operator getOperator() {
+        return operator;
     }
 
     public ExpressionNode getLeft(){

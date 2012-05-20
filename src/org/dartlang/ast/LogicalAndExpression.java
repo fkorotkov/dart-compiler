@@ -1,10 +1,12 @@
 package org.dartlang.ast;
 
+import org.dartlang.compile.Operator;
+
 /**
  * @author fedor.korotkov
  */
 public class LogicalAndExpression extends BinaryExpressionNode {
-    public LogicalAndExpression(ExpressionNode left, ExpressionNode right) {
-        super(left, right);
+    public LogicalAndExpression(Operator operator, ExpressionNode left, ExpressionNode right) {
+        super(operator, left, right);
     }
 }

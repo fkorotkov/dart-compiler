@@ -1,75 +1,71 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 Dart.g 2012-05-17 02:14:30
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 Dart.g 2012-05-20 15:40:38
 
-package org.dartlang;
+  package org.dartlang;
 
 
 import org.antlr.runtime.*;
+import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
 
 public class DartLexer extends Lexer {
-    public static final int T__29 = 29;
-    public static final int T__28 = 28;
-    public static final int T__27 = 27;
-    public static final int WHILE = 18;
-    public static final int T__26 = 26;
-    public static final int T__25 = 25;
-    public static final int T__24 = 24;
-    public static final int T__23 = 23;
-    public static final int CONST = 5;
-    public static final int FOR = 12;
-    public static final int DO = 8;
-    public static final int ID = 20;
-    public static final int EOF = -1;
-    public static final int BREAK = 4;
-    public static final int IF = 13;
-    public static final int FINAL = 11;
-    public static final int IN = 14;
-    public static final int CONTINUE = 6;
-    public static final int RETURN = 16;
-    public static final int T__42 = 42;
-    public static final int T__43 = 43;
-    public static final int T__40 = 40;
-    public static final int T__41 = 41;
-    public static final int T__46 = 46;
-    public static final int T__44 = 44;
-    public static final int T__45 = 45;
-    public static final int NULL = 15;
-    public static final int DEFAULT = 7;
-    public static final int ELSE = 9;
-    public static final int WHITESPACE = 22;
-    public static final int INT = 19;
-    public static final int TRUE = 17;
-    public static final int T__30 = 30;
-    public static final int T__31 = 31;
-    public static final int T__32 = 32;
-    public static final int T__33 = 33;
-    public static final int T__34 = 34;
-    public static final int T__35 = 35;
-    public static final int T__36 = 36;
-    public static final int T__37 = 37;
-    public static final int T__38 = 38;
-    public static final int T__39 = 39;
-    public static final int FALSE = 10;
-    public static final int STRING = 21;
+    public static final int T__29=29;
+    public static final int T__28=28;
+    public static final int T__27=27;
+    public static final int WHILE=18;
+    public static final int T__26=26;
+    public static final int T__25=25;
+    public static final int T__24=24;
+    public static final int T__23=23;
+    public static final int CONST=5;
+    public static final int FOR=12;
+    public static final int DO=8;
+    public static final int ID=20;
+    public static final int EOF=-1;
+    public static final int BREAK=4;
+    public static final int IF=13;
+    public static final int FINAL=11;
+    public static final int IN=14;
+    public static final int CONTINUE=6;
+    public static final int RETURN=16;
+    public static final int T__42=42;
+    public static final int T__43=43;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__46=46;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int NULL=15;
+    public static final int DEFAULT=7;
+    public static final int ELSE=9;
+    public static final int WHITESPACE=22;
+    public static final int INT=19;
+    public static final int TRUE=17;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int T__33=33;
+    public static final int T__34=34;
+    public static final int T__35=35;
+    public static final int T__36=36;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
+    public static final int FALSE=10;
+    public static final int STRING=21;
 
     // delegates
     // delegators
 
-    public DartLexer() {
-        ;
-    }
-
+    public DartLexer() {;} 
     public DartLexer(CharStream input) {
         this(input, new RecognizerSharedState());
     }
-
     public DartLexer(CharStream input, RecognizerSharedState state) {
-        super(input, state);
+        super(input,state);
 
     }
-
-    public String getGrammarFileName() {
-        return "Dart.g";
-    }
+    public String getGrammarFileName() { return "Dart.g"; }
 
     // $ANTLR start "BREAK"
     public final void mBREAK() throws RecognitionException {
@@ -79,14 +75,15 @@ public class DartLexer extends Lexer {
             // Dart.g:7:7: ( 'break' )
             // Dart.g:7:9: 'break'
             {
-                match("break");
+            match("break"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "BREAK"
@@ -99,14 +96,15 @@ public class DartLexer extends Lexer {
             // Dart.g:8:7: ( 'const' )
             // Dart.g:8:9: 'const'
             {
-                match("const");
+            match("const"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "CONST"
@@ -119,14 +117,15 @@ public class DartLexer extends Lexer {
             // Dart.g:9:10: ( 'continue' )
             // Dart.g:9:12: 'continue'
             {
-                match("continue");
+            match("continue"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "CONTINUE"
@@ -139,14 +138,15 @@ public class DartLexer extends Lexer {
             // Dart.g:10:9: ( 'default' )
             // Dart.g:10:11: 'default'
             {
-                match("default");
+            match("default"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "DEFAULT"
@@ -159,14 +159,15 @@ public class DartLexer extends Lexer {
             // Dart.g:11:4: ( 'do' )
             // Dart.g:11:6: 'do'
             {
-                match("do");
+            match("do"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "DO"
@@ -179,14 +180,15 @@ public class DartLexer extends Lexer {
             // Dart.g:12:6: ( 'else' )
             // Dart.g:12:8: 'else'
             {
-                match("else");
+            match("else"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "ELSE"
@@ -199,14 +201,15 @@ public class DartLexer extends Lexer {
             // Dart.g:13:7: ( 'false' )
             // Dart.g:13:9: 'false'
             {
-                match("false");
+            match("false"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "FALSE"
@@ -219,14 +222,15 @@ public class DartLexer extends Lexer {
             // Dart.g:14:7: ( 'final' )
             // Dart.g:14:9: 'final'
             {
-                match("final");
+            match("final"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "FINAL"
@@ -239,14 +243,15 @@ public class DartLexer extends Lexer {
             // Dart.g:15:5: ( 'for' )
             // Dart.g:15:7: 'for'
             {
-                match("for");
+            match("for"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "FOR"
@@ -259,14 +264,15 @@ public class DartLexer extends Lexer {
             // Dart.g:16:4: ( 'if' )
             // Dart.g:16:6: 'if'
             {
-                match("if");
+            match("if"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "IF"
@@ -279,14 +285,15 @@ public class DartLexer extends Lexer {
             // Dart.g:17:4: ( 'in' )
             // Dart.g:17:6: 'in'
             {
-                match("in");
+            match("in"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "IN"
@@ -299,14 +306,15 @@ public class DartLexer extends Lexer {
             // Dart.g:18:6: ( 'null' )
             // Dart.g:18:8: 'null'
             {
-                match("null");
+            match("null"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "NULL"
@@ -319,14 +327,15 @@ public class DartLexer extends Lexer {
             // Dart.g:19:8: ( 'return' )
             // Dart.g:19:10: 'return'
             {
-                match("return");
+            match("return"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "RETURN"
@@ -339,14 +348,15 @@ public class DartLexer extends Lexer {
             // Dart.g:20:6: ( 'true' )
             // Dart.g:20:8: 'true'
             {
-                match("true");
+            match("true"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "TRUE"
@@ -359,14 +369,15 @@ public class DartLexer extends Lexer {
             // Dart.g:21:7: ( 'while' )
             // Dart.g:21:9: 'while'
             {
-                match("while");
+            match("while"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "WHILE"
@@ -379,13 +390,14 @@ public class DartLexer extends Lexer {
             // Dart.g:22:7: ( '(' )
             // Dart.g:22:9: '('
             {
-                match('(');
+            match('('); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__23"
@@ -398,13 +410,14 @@ public class DartLexer extends Lexer {
             // Dart.g:23:7: ( ')' )
             // Dart.g:23:9: ')'
             {
-                match(')');
+            match(')'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__24"
@@ -417,13 +430,14 @@ public class DartLexer extends Lexer {
             // Dart.g:24:7: ( ',' )
             // Dart.g:24:9: ','
             {
-                match(',');
+            match(','); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__25"
@@ -436,13 +450,14 @@ public class DartLexer extends Lexer {
             // Dart.g:25:7: ( ';' )
             // Dart.g:25:9: ';'
             {
-                match(';');
+            match(';'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__26"
@@ -455,13 +470,14 @@ public class DartLexer extends Lexer {
             // Dart.g:26:7: ( '=' )
             // Dart.g:26:9: '='
             {
-                match('=');
+            match('='); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__27"
@@ -474,13 +490,14 @@ public class DartLexer extends Lexer {
             // Dart.g:27:7: ( '{' )
             // Dart.g:27:9: '{'
             {
-                match('{');
+            match('{'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__28"
@@ -493,13 +510,14 @@ public class DartLexer extends Lexer {
             // Dart.g:28:7: ( '}' )
             // Dart.g:28:9: '}'
             {
-                match('}');
+            match('}'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__29"
@@ -512,14 +530,15 @@ public class DartLexer extends Lexer {
             // Dart.g:29:7: ( '||' )
             // Dart.g:29:9: '||'
             {
-                match("||");
+            match("||"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__30"
@@ -532,14 +551,15 @@ public class DartLexer extends Lexer {
             // Dart.g:30:7: ( '&&' )
             // Dart.g:30:9: '&&'
             {
-                match("&&");
+            match("&&"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__31"
@@ -552,13 +572,14 @@ public class DartLexer extends Lexer {
             // Dart.g:31:7: ( '|' )
             // Dart.g:31:9: '|'
             {
-                match('|');
+            match('|'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__32"
@@ -571,13 +592,14 @@ public class DartLexer extends Lexer {
             // Dart.g:32:7: ( '^' )
             // Dart.g:32:9: '^'
             {
-                match('^');
+            match('^'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__33"
@@ -590,13 +612,14 @@ public class DartLexer extends Lexer {
             // Dart.g:33:7: ( '&' )
             // Dart.g:33:9: '&'
             {
-                match('&');
+            match('&'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__34"
@@ -609,13 +632,14 @@ public class DartLexer extends Lexer {
             // Dart.g:34:7: ( '+' )
             // Dart.g:34:9: '+'
             {
-                match('+');
+            match('+'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__35"
@@ -628,13 +652,14 @@ public class DartLexer extends Lexer {
             // Dart.g:35:7: ( '-' )
             // Dart.g:35:9: '-'
             {
-                match('-');
+            match('-'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__36"
@@ -647,13 +672,14 @@ public class DartLexer extends Lexer {
             // Dart.g:36:7: ( '*' )
             // Dart.g:36:9: '*'
             {
-                match('*');
+            match('*'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__37"
@@ -666,13 +692,14 @@ public class DartLexer extends Lexer {
             // Dart.g:37:7: ( '/' )
             // Dart.g:37:9: '/'
             {
-                match('/');
+            match('/'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__38"
@@ -685,13 +712,14 @@ public class DartLexer extends Lexer {
             // Dart.g:38:7: ( '%' )
             // Dart.g:38:9: '%'
             {
-                match('%');
+            match('%'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__39"
@@ -704,14 +732,15 @@ public class DartLexer extends Lexer {
             // Dart.g:39:7: ( '~/' )
             // Dart.g:39:9: '~/'
             {
-                match("~/");
+            match("~/"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__40"
@@ -724,14 +753,15 @@ public class DartLexer extends Lexer {
             // Dart.g:40:7: ( '<<' )
             // Dart.g:40:9: '<<'
             {
-                match("<<");
+            match("<<"); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__41"
@@ -744,13 +774,14 @@ public class DartLexer extends Lexer {
             // Dart.g:41:7: ( '>' )
             // Dart.g:41:9: '>'
             {
-                match('>');
+            match('>'); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__42"
@@ -763,14 +794,15 @@ public class DartLexer extends Lexer {
             // Dart.g:42:7: ( '==' )
             // Dart.g:42:9: '=='
             {
-                match("==");
+            match("=="); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__43"
@@ -783,14 +815,15 @@ public class DartLexer extends Lexer {
             // Dart.g:43:7: ( '!=' )
             // Dart.g:43:9: '!='
             {
-                match("!=");
+            match("!="); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__44"
@@ -803,14 +836,15 @@ public class DartLexer extends Lexer {
             // Dart.g:44:7: ( '===' )
             // Dart.g:44:9: '==='
             {
-                match("===");
+            match("==="); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__45"
@@ -823,14 +857,15 @@ public class DartLexer extends Lexer {
             // Dart.g:45:7: ( '!==' )
             // Dart.g:45:9: '!=='
             {
-                match("!==");
+            match("!=="); 
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "T__46"
@@ -840,45 +875,46 @@ public class DartLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Dart.g:36:5: ( ( '0' .. '9' )+ )
-            // Dart.g:36:7: ( '0' .. '9' )+
+            // Dart.g:37:5: ( ( '0' .. '9' )+ )
+            // Dart.g:37:7: ( '0' .. '9' )+
             {
-                // Dart.g:36:7: ( '0' .. '9' )+
-                int cnt1 = 0;
-                loop1:
-                do {
-                    int alt1 = 2;
-                    int LA1_0 = input.LA(1);
+            // Dart.g:37:7: ( '0' .. '9' )+
+            int cnt1=0;
+            loop1:
+            do {
+                int alt1=2;
+                int LA1_0 = input.LA(1);
 
-                    if (((LA1_0 >= '0' && LA1_0 <= '9'))) {
-                        alt1 = 1;
-                    }
+                if ( ((LA1_0>='0' && LA1_0<='9')) ) {
+                    alt1=1;
+                }
 
 
-                    switch (alt1) {
-                        case 1:
-                            // Dart.g:36:7: '0' .. '9'
-                        {
-                            matchRange('0', '9');
+                switch (alt1) {
+            	case 1 :
+            	    // Dart.g:37:7: '0' .. '9'
+            	    {
+            	    matchRange('0','9'); 
 
-                        }
-                        break;
+            	    }
+            	    break;
 
-                        default:
-                            if (cnt1 >= 1) break loop1;
-                            EarlyExitException eee =
-                                    new EarlyExitException(1, input);
-                            throw eee;
-                    }
-                    cnt1++;
-                } while (true);
+            	default :
+            	    if ( cnt1 >= 1 ) break loop1;
+                        EarlyExitException eee =
+                            new EarlyExitException(1, input);
+                        throw eee;
+                }
+                cnt1++;
+            } while (true);
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "INT"
@@ -888,53 +924,54 @@ public class DartLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Dart.g:37:4: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
-            // Dart.g:37:6: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // Dart.g:38:4: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
+            // Dart.g:38:6: ( 'a' .. 'z' | 'A' .. 'Z' )+
             {
-                // Dart.g:37:6: ( 'a' .. 'z' | 'A' .. 'Z' )+
-                int cnt2 = 0;
-                loop2:
-                do {
-                    int alt2 = 2;
-                    int LA2_0 = input.LA(1);
+            // Dart.g:38:6: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            int cnt2=0;
+            loop2:
+            do {
+                int alt2=2;
+                int LA2_0 = input.LA(1);
 
-                    if (((LA2_0 >= 'A' && LA2_0 <= 'Z') || (LA2_0 >= 'a' && LA2_0 <= 'z'))) {
-                        alt2 = 1;
-                    }
-
-
-                    switch (alt2) {
-                        case 1:
-                            // Dart.g:
-                        {
-                            if ((input.LA(1) >= 'A' && input.LA(1) <= 'Z') || (input.LA(1) >= 'a' && input.LA(1) <= 'z')) {
-                                input.consume();
-
-                            } else {
-                                MismatchedSetException mse = new MismatchedSetException(null, input);
-                                recover(mse);
-                                throw mse;
-                            }
+                if ( ((LA2_0>='A' && LA2_0<='Z')||(LA2_0>='a' && LA2_0<='z')) ) {
+                    alt2=1;
+                }
 
 
-                        }
-                        break;
+                switch (alt2) {
+            	case 1 :
+            	    // Dart.g:
+            	    {
+            	    if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
+            	        input.consume();
 
-                        default:
-                            if (cnt2 >= 1) break loop2;
-                            EarlyExitException eee =
-                                    new EarlyExitException(2, input);
-                            throw eee;
-                    }
-                    cnt2++;
-                } while (true);
+            	    }
+            	    else {
+            	        MismatchedSetException mse = new MismatchedSetException(null,input);
+            	        recover(mse);
+            	        throw mse;}
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt2 >= 1 ) break loop2;
+                        EarlyExitException eee =
+                            new EarlyExitException(2, input);
+                        throw eee;
+                }
+                cnt2++;
+            } while (true);
 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "ID"
@@ -944,45 +981,47 @@ public class DartLexer extends Lexer {
         try {
             int _type = STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Dart.g:38:8: ( '\\\"' ( options {greedy=false; } : . )* '\\\"' )
-            // Dart.g:38:10: '\\\"' ( options {greedy=false; } : . )* '\\\"'
+            // Dart.g:39:8: ( '\\\"' ( options {greedy=false; } : . )* '\\\"' )
+            // Dart.g:39:10: '\\\"' ( options {greedy=false; } : . )* '\\\"'
             {
-                match('\"');
-                // Dart.g:38:15: ( options {greedy=false; } : . )*
-                loop3:
-                do {
-                    int alt3 = 2;
-                    int LA3_0 = input.LA(1);
+            match('\"'); 
+            // Dart.g:39:15: ( options {greedy=false; } : . )*
+            loop3:
+            do {
+                int alt3=2;
+                int LA3_0 = input.LA(1);
 
-                    if ((LA3_0 == '\"')) {
-                        alt3 = 2;
-                    } else if (((LA3_0 >= '\u0000' && LA3_0 <= '!') || (LA3_0 >= '#' && LA3_0 <= '\uFFFF'))) {
-                        alt3 = 1;
-                    }
+                if ( (LA3_0=='\"') ) {
+                    alt3=2;
+                }
+                else if ( ((LA3_0>='\u0000' && LA3_0<='!')||(LA3_0>='#' && LA3_0<='\uFFFF')) ) {
+                    alt3=1;
+                }
 
 
-                    switch (alt3) {
-                        case 1:
-                            // Dart.g:38:42: .
-                        {
-                            matchAny();
+                switch (alt3) {
+            	case 1 :
+            	    // Dart.g:39:42: .
+            	    {
+            	    matchAny(); 
 
-                        }
-                        break;
+            	    }
+            	    break;
 
-                        default:
-                            break loop3;
-                    }
-                } while (true);
+            	default :
+            	    break loop3;
+                }
+            } while (true);
 
-                match('\"');
-                setText(getText().substring(1, getText().length() - 1));
+            match('\"'); 
+             setText(getText().substring(1, getText().length()-1)); 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "STRING"
@@ -992,364 +1031,365 @@ public class DartLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Dart.g:39:12: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
-            // Dart.g:39:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // Dart.g:40:12: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
+            // Dart.g:40:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             {
-                // Dart.g:39:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
-                int cnt4 = 0;
-                loop4:
-                do {
-                    int alt4 = 2;
-                    int LA4_0 = input.LA(1);
+            // Dart.g:40:14: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            int cnt4=0;
+            loop4:
+            do {
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                    if (((LA4_0 >= '\t' && LA4_0 <= '\n') || (LA4_0 >= '\f' && LA4_0 <= '\r') || LA4_0 == ' ')) {
-                        alt4 = 1;
-                    }
-
-
-                    switch (alt4) {
-                        case 1:
-                            // Dart.g:
-                        {
-                            if ((input.LA(1) >= '\t' && input.LA(1) <= '\n') || (input.LA(1) >= '\f' && input.LA(1) <= '\r') || input.LA(1) == ' ') {
-                                input.consume();
-
-                            } else {
-                                MismatchedSetException mse = new MismatchedSetException(null, input);
-                                recover(mse);
-                                throw mse;
-                            }
+                if ( ((LA4_0>='\t' && LA4_0<='\n')||(LA4_0>='\f' && LA4_0<='\r')||LA4_0==' ') ) {
+                    alt4=1;
+                }
 
 
-                        }
-                        break;
+                switch (alt4) {
+            	case 1 :
+            	    // Dart.g:
+            	    {
+            	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||(input.LA(1)>='\f' && input.LA(1)<='\r')||input.LA(1)==' ' ) {
+            	        input.consume();
 
-                        default:
-                            if (cnt4 >= 1) break loop4;
-                            EarlyExitException eee =
-                                    new EarlyExitException(4, input);
-                            throw eee;
-                    }
-                    cnt4++;
-                } while (true);
+            	    }
+            	    else {
+            	        MismatchedSetException mse = new MismatchedSetException(null,input);
+            	        recover(mse);
+            	        throw mse;}
 
-                _channel = HIDDEN;
+
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt4 >= 1 ) break loop4;
+                        EarlyExitException eee =
+                            new EarlyExitException(4, input);
+                        throw eee;
+                }
+                cnt4++;
+            } while (true);
+
+             _channel = HIDDEN; 
 
             }
 
             state.type = _type;
             state.channel = _channel;
-        } finally {
+        }
+        finally {
         }
     }
     // $ANTLR end "WHITESPACE"
 
     public void mTokens() throws RecognitionException {
         // Dart.g:1:8: ( BREAK | CONST | CONTINUE | DEFAULT | DO | ELSE | FALSE | FINAL | FOR | IF | IN | NULL | RETURN | TRUE | WHILE | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | INT | ID | STRING | WHITESPACE )
-        int alt5 = 43;
+        int alt5=43;
         alt5 = dfa5.predict(input);
         switch (alt5) {
-            case 1:
+            case 1 :
                 // Dart.g:1:10: BREAK
-            {
-                mBREAK();
+                {
+                mBREAK(); 
 
-            }
-            break;
-            case 2:
+                }
+                break;
+            case 2 :
                 // Dart.g:1:16: CONST
-            {
-                mCONST();
+                {
+                mCONST(); 
 
-            }
-            break;
-            case 3:
+                }
+                break;
+            case 3 :
                 // Dart.g:1:22: CONTINUE
-            {
-                mCONTINUE();
+                {
+                mCONTINUE(); 
 
-            }
-            break;
-            case 4:
+                }
+                break;
+            case 4 :
                 // Dart.g:1:31: DEFAULT
-            {
-                mDEFAULT();
+                {
+                mDEFAULT(); 
 
-            }
-            break;
-            case 5:
+                }
+                break;
+            case 5 :
                 // Dart.g:1:39: DO
-            {
-                mDO();
+                {
+                mDO(); 
 
-            }
-            break;
-            case 6:
+                }
+                break;
+            case 6 :
                 // Dart.g:1:42: ELSE
-            {
-                mELSE();
+                {
+                mELSE(); 
 
-            }
-            break;
-            case 7:
+                }
+                break;
+            case 7 :
                 // Dart.g:1:47: FALSE
-            {
-                mFALSE();
+                {
+                mFALSE(); 
 
-            }
-            break;
-            case 8:
+                }
+                break;
+            case 8 :
                 // Dart.g:1:53: FINAL
-            {
-                mFINAL();
+                {
+                mFINAL(); 
 
-            }
-            break;
-            case 9:
+                }
+                break;
+            case 9 :
                 // Dart.g:1:59: FOR
-            {
-                mFOR();
+                {
+                mFOR(); 
 
-            }
-            break;
-            case 10:
+                }
+                break;
+            case 10 :
                 // Dart.g:1:63: IF
-            {
-                mIF();
+                {
+                mIF(); 
 
-            }
-            break;
-            case 11:
+                }
+                break;
+            case 11 :
                 // Dart.g:1:66: IN
-            {
-                mIN();
+                {
+                mIN(); 
 
-            }
-            break;
-            case 12:
+                }
+                break;
+            case 12 :
                 // Dart.g:1:69: NULL
-            {
-                mNULL();
+                {
+                mNULL(); 
 
-            }
-            break;
-            case 13:
+                }
+                break;
+            case 13 :
                 // Dart.g:1:74: RETURN
-            {
-                mRETURN();
+                {
+                mRETURN(); 
 
-            }
-            break;
-            case 14:
+                }
+                break;
+            case 14 :
                 // Dart.g:1:81: TRUE
-            {
-                mTRUE();
+                {
+                mTRUE(); 
 
-            }
-            break;
-            case 15:
+                }
+                break;
+            case 15 :
                 // Dart.g:1:86: WHILE
-            {
-                mWHILE();
+                {
+                mWHILE(); 
 
-            }
-            break;
-            case 16:
+                }
+                break;
+            case 16 :
                 // Dart.g:1:92: T__23
-            {
-                mT__23();
+                {
+                mT__23(); 
 
-            }
-            break;
-            case 17:
+                }
+                break;
+            case 17 :
                 // Dart.g:1:98: T__24
-            {
-                mT__24();
+                {
+                mT__24(); 
 
-            }
-            break;
-            case 18:
+                }
+                break;
+            case 18 :
                 // Dart.g:1:104: T__25
-            {
-                mT__25();
+                {
+                mT__25(); 
 
-            }
-            break;
-            case 19:
+                }
+                break;
+            case 19 :
                 // Dart.g:1:110: T__26
-            {
-                mT__26();
+                {
+                mT__26(); 
 
-            }
-            break;
-            case 20:
+                }
+                break;
+            case 20 :
                 // Dart.g:1:116: T__27
-            {
-                mT__27();
+                {
+                mT__27(); 
 
-            }
-            break;
-            case 21:
+                }
+                break;
+            case 21 :
                 // Dart.g:1:122: T__28
-            {
-                mT__28();
+                {
+                mT__28(); 
 
-            }
-            break;
-            case 22:
+                }
+                break;
+            case 22 :
                 // Dart.g:1:128: T__29
-            {
-                mT__29();
+                {
+                mT__29(); 
 
-            }
-            break;
-            case 23:
+                }
+                break;
+            case 23 :
                 // Dart.g:1:134: T__30
-            {
-                mT__30();
+                {
+                mT__30(); 
 
-            }
-            break;
-            case 24:
+                }
+                break;
+            case 24 :
                 // Dart.g:1:140: T__31
-            {
-                mT__31();
+                {
+                mT__31(); 
 
-            }
-            break;
-            case 25:
+                }
+                break;
+            case 25 :
                 // Dart.g:1:146: T__32
-            {
-                mT__32();
+                {
+                mT__32(); 
 
-            }
-            break;
-            case 26:
+                }
+                break;
+            case 26 :
                 // Dart.g:1:152: T__33
-            {
-                mT__33();
+                {
+                mT__33(); 
 
-            }
-            break;
-            case 27:
+                }
+                break;
+            case 27 :
                 // Dart.g:1:158: T__34
-            {
-                mT__34();
+                {
+                mT__34(); 
 
-            }
-            break;
-            case 28:
+                }
+                break;
+            case 28 :
                 // Dart.g:1:164: T__35
-            {
-                mT__35();
+                {
+                mT__35(); 
 
-            }
-            break;
-            case 29:
+                }
+                break;
+            case 29 :
                 // Dart.g:1:170: T__36
-            {
-                mT__36();
+                {
+                mT__36(); 
 
-            }
-            break;
-            case 30:
+                }
+                break;
+            case 30 :
                 // Dart.g:1:176: T__37
-            {
-                mT__37();
+                {
+                mT__37(); 
 
-            }
-            break;
-            case 31:
+                }
+                break;
+            case 31 :
                 // Dart.g:1:182: T__38
-            {
-                mT__38();
+                {
+                mT__38(); 
 
-            }
-            break;
-            case 32:
+                }
+                break;
+            case 32 :
                 // Dart.g:1:188: T__39
-            {
-                mT__39();
+                {
+                mT__39(); 
 
-            }
-            break;
-            case 33:
+                }
+                break;
+            case 33 :
                 // Dart.g:1:194: T__40
-            {
-                mT__40();
+                {
+                mT__40(); 
 
-            }
-            break;
-            case 34:
+                }
+                break;
+            case 34 :
                 // Dart.g:1:200: T__41
-            {
-                mT__41();
+                {
+                mT__41(); 
 
-            }
-            break;
-            case 35:
+                }
+                break;
+            case 35 :
                 // Dart.g:1:206: T__42
-            {
-                mT__42();
+                {
+                mT__42(); 
 
-            }
-            break;
-            case 36:
+                }
+                break;
+            case 36 :
                 // Dart.g:1:212: T__43
-            {
-                mT__43();
+                {
+                mT__43(); 
 
-            }
-            break;
-            case 37:
+                }
+                break;
+            case 37 :
                 // Dart.g:1:218: T__44
-            {
-                mT__44();
+                {
+                mT__44(); 
 
-            }
-            break;
-            case 38:
+                }
+                break;
+            case 38 :
                 // Dart.g:1:224: T__45
-            {
-                mT__45();
+                {
+                mT__45(); 
 
-            }
-            break;
-            case 39:
+                }
+                break;
+            case 39 :
                 // Dart.g:1:230: T__46
-            {
-                mT__46();
+                {
+                mT__46(); 
 
-            }
-            break;
-            case 40:
+                }
+                break;
+            case 40 :
                 // Dart.g:1:236: INT
-            {
-                mINT();
+                {
+                mINT(); 
 
-            }
-            break;
-            case 41:
+                }
+                break;
+            case 41 :
                 // Dart.g:1:240: ID
-            {
-                mID();
+                {
+                mID(); 
 
-            }
-            break;
-            case 42:
+                }
+                break;
+            case 42 :
                 // Dart.g:1:243: STRING
-            {
-                mSTRING();
+                {
+                mSTRING(); 
 
-            }
-            break;
-            case 43:
+                }
+                break;
+            case 43 :
                 // Dart.g:1:250: WHITESPACE
-            {
-                mWHITESPACE();
+                {
+                mWHITESPACE(); 
 
-            }
-            break;
+                }
+                break;
 
         }
 
@@ -1358,47 +1398,47 @@ public class DartLexer extends Lexer {
 
     protected DFA5 dfa5 = new DFA5(this);
     static final String DFA5_eotS =
-            "\1\uffff\12\37\4\uffff\1\61\2\uffff\1\63\1\65\16\uffff\3\37\1\72" +
-                    "\4\37\1\77\1\100\4\37\1\106\5\uffff\1\110\3\37\1\uffff\3\37\1\120" +
-                    "\2\uffff\4\37\4\uffff\4\37\1\131\2\37\1\uffff\1\134\1\37\1\136\1" +
-                    "\37\1\140\1\141\2\37\1\uffff\1\144\1\145\1\uffff\1\37\1\uffff\1" +
-                    "\147\2\uffff\2\37\2\uffff\1\152\1\uffff\1\37\1\154\1\uffff\1\155" +
-                    "\2\uffff";
+        "\1\uffff\12\37\4\uffff\1\61\2\uffff\1\63\1\65\16\uffff\3\37\1\72"+
+        "\4\37\1\77\1\100\4\37\1\106\5\uffff\1\110\3\37\1\uffff\3\37\1\120"+
+        "\2\uffff\4\37\4\uffff\4\37\1\131\2\37\1\uffff\1\134\1\37\1\136\1"+
+        "\37\1\140\1\141\2\37\1\uffff\1\144\1\145\1\uffff\1\37\1\uffff\1"+
+        "\147\2\uffff\2\37\2\uffff\1\152\1\uffff\1\37\1\154\1\uffff\1\155"+
+        "\2\uffff";
     static final String DFA5_eofS =
-            "\156\uffff";
+        "\156\uffff";
     static final String DFA5_minS =
-            "\1\11\1\162\1\157\1\145\1\154\1\141\1\146\1\165\1\145\1\162\1\150" +
-                    "\4\uffff\1\75\2\uffff\1\174\1\46\11\uffff\1\75\4\uffff\1\145\1\156" +
-                    "\1\146\1\101\1\163\1\154\1\156\1\162\2\101\1\154\1\164\1\165\1\151" +
-                    "\1\75\5\uffff\1\75\1\141\1\163\1\141\1\uffff\1\145\1\163\1\141\1" +
-                    "\101\2\uffff\1\154\1\165\1\145\1\154\4\uffff\1\153\1\164\1\151\1" +
-                    "\165\1\101\1\145\1\154\1\uffff\1\101\1\162\1\101\1\145\2\101\1\156" +
-                    "\1\154\1\uffff\2\101\1\uffff\1\156\1\uffff\1\101\2\uffff\1\165\1" +
-                    "\164\2\uffff\1\101\1\uffff\1\145\1\101\1\uffff\1\101\2\uffff";
+        "\1\11\1\162\1\157\1\145\1\154\1\141\1\146\1\165\1\145\1\162\1\150"+
+        "\4\uffff\1\75\2\uffff\1\174\1\46\11\uffff\1\75\4\uffff\1\145\1\156"+
+        "\1\146\1\101\1\163\1\154\1\156\1\162\2\101\1\154\1\164\1\165\1\151"+
+        "\1\75\5\uffff\1\75\1\141\1\163\1\141\1\uffff\1\145\1\163\1\141\1"+
+        "\101\2\uffff\1\154\1\165\1\145\1\154\4\uffff\1\153\1\164\1\151\1"+
+        "\165\1\101\1\145\1\154\1\uffff\1\101\1\162\1\101\1\145\2\101\1\156"+
+        "\1\154\1\uffff\2\101\1\uffff\1\156\1\uffff\1\101\2\uffff\1\165\1"+
+        "\164\2\uffff\1\101\1\uffff\1\145\1\101\1\uffff\1\101\2\uffff";
     static final String DFA5_maxS =
-            "\1\176\1\162\2\157\1\154\1\157\1\156\1\165\1\145\1\162\1\150\4\uffff" +
-                    "\1\75\2\uffff\1\174\1\46\11\uffff\1\75\4\uffff\1\145\1\156\1\146" +
-                    "\1\172\1\163\1\154\1\156\1\162\2\172\1\154\1\164\1\165\1\151\1\75" +
-                    "\5\uffff\1\75\1\141\1\164\1\141\1\uffff\1\145\1\163\1\141\1\172" +
-                    "\2\uffff\1\154\1\165\1\145\1\154\4\uffff\1\153\1\164\1\151\1\165" +
-                    "\1\172\1\145\1\154\1\uffff\1\172\1\162\1\172\1\145\2\172\1\156\1" +
-                    "\154\1\uffff\2\172\1\uffff\1\156\1\uffff\1\172\2\uffff\1\165\1\164" +
-                    "\2\uffff\1\172\1\uffff\1\145\1\172\1\uffff\1\172\2\uffff";
+        "\1\176\1\162\2\157\1\154\1\157\1\156\1\165\1\145\1\162\1\150\4\uffff"+
+        "\1\75\2\uffff\1\174\1\46\11\uffff\1\75\4\uffff\1\145\1\156\1\146"+
+        "\1\172\1\163\1\154\1\156\1\162\2\172\1\154\1\164\1\165\1\151\1\75"+
+        "\5\uffff\1\75\1\141\1\164\1\141\1\uffff\1\145\1\163\1\141\1\172"+
+        "\2\uffff\1\154\1\165\1\145\1\154\4\uffff\1\153\1\164\1\151\1\165"+
+        "\1\172\1\145\1\154\1\uffff\1\172\1\162\1\172\1\145\2\172\1\156\1"+
+        "\154\1\uffff\2\172\1\uffff\1\156\1\uffff\1\172\2\uffff\1\165\1\164"+
+        "\2\uffff\1\172\1\uffff\1\145\1\172\1\uffff\1\172\2\uffff";
     static final String DFA5_acceptS =
-            "\13\uffff\1\20\1\21\1\22\1\23\1\uffff\1\25\1\26\2\uffff\1\32\1\34" +
-                    "\1\35\1\36\1\37\1\40\1\41\1\42\1\43\1\uffff\1\50\1\51\1\52\1\53" +
-                    "\17\uffff\1\24\1\27\1\31\1\30\1\33\4\uffff\1\5\4\uffff\1\12\1\13" +
-                    "\4\uffff\1\46\1\44\1\47\1\45\7\uffff\1\11\10\uffff\1\6\2\uffff\1" +
-                    "\14\1\uffff\1\16\1\uffff\1\1\1\2\2\uffff\1\7\1\10\1\uffff\1\17\2" +
-                    "\uffff\1\15\1\uffff\1\4\1\3";
+        "\13\uffff\1\20\1\21\1\22\1\23\1\uffff\1\25\1\26\2\uffff\1\32\1\34"+
+        "\1\35\1\36\1\37\1\40\1\41\1\42\1\43\1\uffff\1\50\1\51\1\52\1\53"+
+        "\17\uffff\1\24\1\27\1\31\1\30\1\33\4\uffff\1\5\4\uffff\1\12\1\13"+
+        "\4\uffff\1\46\1\44\1\47\1\45\7\uffff\1\11\10\uffff\1\6\2\uffff\1"+
+        "\14\1\uffff\1\16\1\uffff\1\1\1\2\2\uffff\1\7\1\10\1\uffff\1\17\2"+
+        "\uffff\1\15\1\uffff\1\4\1\3";
     static final String DFA5_specialS =
-            "\156\uffff}>";
+        "\156\uffff}>";
     static final String[] DFA5_transitionS = {
-            "\2\41\1\uffff\2\41\22\uffff\1\41\1\35\1\40\2\uffff\1\31\1\23" +
-                    "\1\uffff\1\13\1\14\1\27\1\25\1\15\1\26\1\uffff\1\30\12\36\1" +
-                    "\uffff\1\16\1\33\1\17\1\34\2\uffff\32\37\3\uffff\1\24\2\uffff" +
-                    "\1\37\1\1\1\2\1\3\1\4\1\5\2\37\1\6\4\37\1\7\3\37\1\10\1\37\1" +
-                    "\11\2\37\1\12\3\37\1\20\1\22\1\21\1\32",
+            "\2\41\1\uffff\2\41\22\uffff\1\41\1\35\1\40\2\uffff\1\31\1\23"+
+            "\1\uffff\1\13\1\14\1\27\1\25\1\15\1\26\1\uffff\1\30\12\36\1"+
+            "\uffff\1\16\1\33\1\17\1\34\2\uffff\32\37\3\uffff\1\24\2\uffff"+
+            "\1\37\1\1\1\2\1\3\1\4\1\5\2\37\1\6\4\37\1\7\3\37\1\10\1\37\1"+
+            "\11\2\37\1\12\3\37\1\20\1\22\1\21\1\32",
             "\1\42",
             "\1\43",
             "\1\44\11\uffff\1\45",
@@ -1521,7 +1561,7 @@ public class DartLexer extends Lexer {
     static {
         int numStates = DFA5_transitionS.length;
         DFA5_transition = new short[numStates][];
-        for (int i = 0; i < numStates; i++) {
+        for (int i=0; i<numStates; i++) {
             DFA5_transition[i] = DFA.unpackEncodedString(DFA5_transitionS[i]);
         }
     }
@@ -1539,11 +1579,10 @@ public class DartLexer extends Lexer {
             this.special = DFA5_special;
             this.transition = DFA5_transition;
         }
-
         public String getDescription() {
             return "1:1: Tokens : ( BREAK | CONST | CONTINUE | DEFAULT | DO | ELSE | FALSE | FINAL | FOR | IF | IN | NULL | RETURN | TRUE | WHILE | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | INT | ID | STRING | WHITESPACE );";
         }
     }
-
+ 
 
 }

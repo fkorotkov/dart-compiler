@@ -35,7 +35,6 @@ public class CompilerTestCase extends TestCase {
     @Override
     protected void tearDown() throws Exception {
         deleteFiles();
-
     }
 
     private void deleteFiles() {
@@ -97,6 +96,10 @@ public class CompilerTestCase extends TestCase {
     }
 
     public void testExpression2() throws Throwable {
+        doTest();
+    }
+
+    public void testExpression3() throws Throwable {
         doTest();
     }
 }
