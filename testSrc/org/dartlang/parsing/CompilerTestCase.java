@@ -28,7 +28,17 @@ public class CompilerTestCase extends TestCase {
     }
 
     @Override
+    protected void setUp() throws Exception {
+        deleteFiles();
+    }
+
+    @Override
     protected void tearDown() throws Exception {
+        deleteFiles();
+
+    }
+
+    private void deleteFiles() {
         new File(getDataPath(), getTestName() + ".asm").delete();
         new File(getDataPath(), getTestName() + ".o").delete();
         new File(getDataPath(), getTestName()).delete();
@@ -79,6 +89,14 @@ public class CompilerTestCase extends TestCase {
     }
 
     public void testSimple() throws Throwable {
+        doTest();
+    }
+
+    public void testExpression1() throws Throwable {
+        doTest();
+    }
+
+    public void testExpression2() throws Throwable {
         doTest();
     }
 }

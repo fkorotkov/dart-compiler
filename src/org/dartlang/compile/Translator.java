@@ -16,7 +16,7 @@ public class Translator {
     public void translate(PrintWriter out) {
         ASMGenerator.header(out);
         translate(out, root.getChildren(), new Flow());
-        ASMGenerator.dataBlock(out, variableManager.getAllVariables());
+        ASMGenerator.dataBlock(out, variableManager.getCount());
     }
 
     private void translate(PrintWriter out, List<? extends ASTNode> nodes, Flow flow) {
@@ -42,14 +42,14 @@ public class Translator {
     }
 
     private void translateVarDeclaration(PrintWriter out, VarDeclarationNode node, Flow flow) {
+        out.println("\t; " + node.getText());
         TemporaryVariableManager.Variable variable = variableManager.hold();
         flow.addVar(node.getName(), variable);
-        ASTNode expression = node.getExpression();
-        if (expression instanceof IntegerValueNode) {
-            ASMGenerator.calculateExpression(variableManager, out, variable, (IntegerValueNode) expression);
-        } else {
-            // todo
-        }
+        out.println("\t; " + node.getName() + " is in " + variable.getName());
+        out.println("\t; start calculating expression for " + node.getName());
+        ExpressionASMEvaluator.calculateExpression(variableManager, flow, out, node.getExpression());
+        ASMGenerator.saveVar(out, variable);
+        out.println("\t; end calculating expression for " + node.getName());
     }
 
     private void translateCallExpression(PrintWriter out, CallExpressionNode callExpressionNode, Flow flow) {

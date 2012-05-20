@@ -31,7 +31,8 @@ public class Flow {
     }
 
     public List<TemporaryVariableManager.Variable> resetTo(Flow oldFlow) {
-        final List<TemporaryVariableManager.Variable> result = new ArrayList<TemporaryVariableManager.Variable>(oldFlow.id2var.values());
+        final List<TemporaryVariableManager.Variable> result = new ArrayList<TemporaryVariableManager.Variable>(
+                oldFlow.id2var.values());
         result.removeAll(id2var.values());
         id2var.clear();
         id2var.entrySet().addAll(oldFlow.id2var.entrySet());

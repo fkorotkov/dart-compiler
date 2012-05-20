@@ -1,7 +1,5 @@
 package org.dartlang.compile;
 
-import org.dartlang.ast.IntegerValueNode;
-
 import java.io.PrintWriter;
 import java.util.Collection;
 
@@ -14,10 +12,10 @@ public class ASMGenerator {
         out.println("global _main");
     }
 
-    public static void dataBlock(PrintWriter out, Collection<TemporaryVariableManager.Variable> variables) {
+    public static void dataBlock(PrintWriter out, int variableCount) {
         out.println("segment .data");
-        for (TemporaryVariableManager.Variable variable : variables) {
-            out.println("\t" + variable.getName() + " dq 0.0");
+        for (int i = 0; i < variableCount; ++i) {
+            out.println("\t tmp" + i + " dq 0.0");
         }
         out.println("\t" + formatInt.getName() + " db \"%10d\", 0");
     }
@@ -43,8 +41,7 @@ public class ASMGenerator {
         out.println("\t\tpop  ebp");
     }
 
-    public static void calculateExpression(TemporaryVariableManager variableManager, PrintWriter out, TemporaryVariableManager.Variable variable, IntegerValueNode valueNode) {
-        out.println("\t\tmov dword [" + variable.getName() + "], " + valueNode.getValue());
-
+    public static void saveVar(PrintWriter out, TemporaryVariableManager.Variable variable) {
+        out.println("\t\tmov dword [" + variable.getName() + "], eax");
     }
 }

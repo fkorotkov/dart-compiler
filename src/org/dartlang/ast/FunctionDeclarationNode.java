@@ -11,7 +11,10 @@ public class FunctionDeclarationNode extends ASTNode {
     private final TypeNode typeNode;
     private final StatementsNode statementsNode;
 
-    public FunctionDeclarationNode(String name, ParameterListNode parameterListNode, TypeNode typeNode, StatementsNode statementsNode) {
+    public FunctionDeclarationNode(String name,
+                                   ParameterListNode parameterListNode,
+                                   TypeNode typeNode,
+                                   StatementsNode statementsNode) {
         super(Arrays.<ASTNode>asList(typeNode, parameterListNode, statementsNode));
         this.name = name;
         this.parameterListNode = parameterListNode;

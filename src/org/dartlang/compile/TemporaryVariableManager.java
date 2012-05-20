@@ -2,6 +2,7 @@ package org.dartlang.compile;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class TemporaryVariableManager {
@@ -13,7 +14,14 @@ public class TemporaryVariableManager {
             variables.add(new Variable("tmp" + count));
             ++count;
         }
-        return variables.iterator().next();
+        final Iterator<Variable> iterator = variables.iterator();
+        Variable result = iterator.next();
+        iterator.remove();
+        return result;
+    }
+
+    public int getCount() {
+        return count;
     }
 
     public void release(Variable variable) {
@@ -42,9 +50,7 @@ public class TemporaryVariableManager {
 
             Variable variable = (Variable) o;
 
-            if (!name.equals(variable.name)) return false;
-
-            return true;
+            return name.equals(variable.name);
         }
 
         @Override
