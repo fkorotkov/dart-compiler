@@ -1,5 +1,8 @@
 package org.dartlang.ast;
 
+import org.dartlang.compile.Flow;
+import org.dartlang.compile.Type;
+
 /**
  * @author fedor.korotkov
  */
@@ -17,5 +20,10 @@ public class IntegerValueNode extends ExpressionNode {
     @Override
     public String getText() {
         return super.getText() + "(" + value + ")";
+    }
+
+    @Override
+    public Type getType(Flow currentFlow) {
+        return Type.INT;
     }
 }

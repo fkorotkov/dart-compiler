@@ -1,13 +1,13 @@
 package org.dartlang.compile;
 
 import java.io.PrintWriter;
-import java.util.Collection;
 
 public class ASMGenerator {
-    private static TemporaryVariableManager.Variable formatInt = new TemporaryVariableManager.Variable("format_int");
+    private static TemporaryVariableManager.Variable formatInt = new TemporaryVariableManager.Variable("format_int",
+            Type.STRING);
 
     public static void header(PrintWriter out) {
-        out.println("extern _printf");
+        out.println("extern _printf, _strcat, _strlen, _strcopy");
         out.println("segment .text");
         out.println("global _main");
     }
@@ -18,19 +18,35 @@ public class ASMGenerator {
             out.println("\t tmp" + i + " dq 0.0");
         }
         out.println("\t" + formatInt.getName() + " db \"%10d\", 0");
+        StringPool.writeToDataBlock(out);
     }
 
     public static void callPrintf(PrintWriter out, TemporaryVariableManager.Variable variable) {
-        callPrintf(out, variable, formatInt);
+        if (variable.getType() == Type.INT) {
+            callPrintfMany(out, variable, formatInt);
+        } else {
+            // todo: something strange with dummy formatInt
+            callPrintfMany(out, formatInt, variable);
+        }
     }
 
-    public static void callPrintf(PrintWriter out, TemporaryVariableManager.Variable... variables) {
+    public static void callPrintfMany(PrintWriter out, TemporaryVariableManager.Variable... variables) {
+        out.print("\t; printf(");
+        for (int i = variables.length - 1; i >= 0; --i) {
+            if (i > 0) out.print(", ");
+            out.print(variables[i].getType().toString().toLowerCase());
+            out.print(" ");
+            out.print(variables[i].getName());
+        }
+        out.println(")");
         out.println("\t\tpush  ebp ; setup the frame");
         out.println("\t\tmov  ebp, esp");
         for (TemporaryVariableManager.Variable variable : variables) {
             // todo: hack
             if (variable == formatInt) {
                 out.println("\t\tpush " + variable.getName());
+            } else if (variable.getType() == Type.STRING) {
+                out.println("\t\tpush dword [" + variable.getName() + "]");
             } else {
                 out.println("\t\tpush dword [" + variable.getName() + "]");
             }

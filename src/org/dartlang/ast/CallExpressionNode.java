@@ -1,5 +1,8 @@
 package org.dartlang.ast;
 
+import org.dartlang.compile.Flow;
+import org.dartlang.compile.Type;
+
 import java.util.List;
 
 /**
@@ -24,5 +27,10 @@ public class CallExpressionNode extends ExpressionNode {
     @Override
     public String getText() {
         return super.getText() + "(" + functionName + ")";
+    }
+
+    @Override
+    public Type getType(Flow currentFlow) {
+        return null;
     }
 }

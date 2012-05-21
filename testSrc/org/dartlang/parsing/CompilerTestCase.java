@@ -102,4 +102,8 @@ public class CompilerTestCase extends TestCase {
     public void testExpression3() throws Throwable {
         doTest();
     }
+
+    public void testExpression4() throws Throwable {
+        doTest();
+    }
 }

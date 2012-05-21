@@ -16,14 +16,14 @@ public enum Operator {
         return opcode;
     }
 
-    public static Operator getOperator(String token){
-        if("+".equals(token)) {
+    public static Operator getOperator(String token) {
+        if ("+".equals(token)) {
             return PLUS;
-        } else if("-".equals(token)) {
+        } else if ("-".equals(token)) {
             return MINUS;
-        } else if("*".equals(token)) {
+        } else if ("*".equals(token)) {
             return MULTIPLY;
-        } else if("/".equals(token)) {
+        } else if ("/".equals(token)) {
             return DIVIDE;
         }
         return null;

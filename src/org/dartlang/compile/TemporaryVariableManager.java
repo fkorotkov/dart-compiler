@@ -9,14 +9,15 @@ public class TemporaryVariableManager {
     private int count = 0;
     private final Set<Variable> variables = new HashSet<Variable>();
 
-    public Variable hold() {
+    public Variable hold(Type type) {
         if (variables.isEmpty()) {
-            variables.add(new Variable("tmp" + count));
+            variables.add(new Variable("tmp" + count, type));
             ++count;
         }
         final Iterator<Variable> iterator = variables.iterator();
         Variable result = iterator.next();
         iterator.remove();
+        result.setType(type);
         return result;
     }
 
@@ -34,9 +35,11 @@ public class TemporaryVariableManager {
 
     public static class Variable {
         private final String name;
+        private Type type;
 
-        public Variable(String name) {
+        public Variable(String name, Type type) {
             this.name = name;
+            this.type = type;
         }
 
         public String getName() {
@@ -56,6 +59,14 @@ public class TemporaryVariableManager {
         @Override
         public int hashCode() {
             return name.hashCode();
+        }
+
+        public void setType(Type type) {
+            this.type = type;
+        }
+
+        public Type getType() {
+            return type;
         }
     }
 }

@@ -1,6 +1,8 @@
 package org.dartlang.ast;
 
+import org.dartlang.compile.Flow;
 import org.dartlang.compile.Operator;
+import org.dartlang.compile.Type;
 
 import java.util.Arrays;
 
@@ -19,11 +21,18 @@ public abstract class BinaryExpressionNode extends ExpressionNode {
         return operator;
     }
 
-    public ExpressionNode getLeft(){
+    public ExpressionNode getLeft() {
         return (ExpressionNode) getChildren().get(0);
     }
 
-    public ExpressionNode getRight(){
+    public ExpressionNode getRight() {
         return (ExpressionNode) getChildren().get(1);
+    }
+
+    @Override
+    public Type getType(Flow currentFlow) {
+        final Type l = getLeft().getType(currentFlow);
+        final Type r = getRight().getType(currentFlow);
+        return l == Type.INT && r == Type.INT ? Type.INT : Type.STRING;
     }
 }

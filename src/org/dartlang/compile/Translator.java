@@ -43,11 +43,13 @@ public class Translator {
 
     private void translateVarDeclaration(PrintWriter out, VarDeclarationNode node, Flow flow) {
         out.println("\t; " + node.getText());
-        TemporaryVariableManager.Variable variable = variableManager.hold();
+        ASTNode expression = node.getExpression();
+        Type type = expression instanceof ExpressionNode ? ((ExpressionNode) expression).getType(flow) : Type.INT;
+        TemporaryVariableManager.Variable variable = variableManager.hold(type);
         flow.addVar(node.getName(), variable);
-        out.println("\t; " + node.getName() + " is in " + variable.getName());
+        out.println("\t; " + node.getName() + " is in " + variable.getName() + " with type " + type.toString());
         out.println("\t; start calculating expression for " + node.getName());
-        ExpressionASMEvaluator.calculateExpression(variableManager, flow, out, node.getExpression());
+        ExpressionASMEvaluator.calculateExpression(variableManager, flow, out, expression);
         ASMGenerator.saveVar(out, variable);
         out.println("\t; end calculating expression for " + node.getName());
     }

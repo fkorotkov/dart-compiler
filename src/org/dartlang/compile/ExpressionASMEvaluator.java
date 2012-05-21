@@ -1,9 +1,6 @@
 package org.dartlang.compile;
 
-import org.dartlang.ast.ASTNode;
-import org.dartlang.ast.BinaryExpressionNode;
-import org.dartlang.ast.IdentifierNode;
-import org.dartlang.ast.IntegerValueNode;
+import org.dartlang.ast.*;
 
 import java.io.PrintWriter;
 
@@ -30,8 +27,10 @@ public class ExpressionASMEvaluator {
             calculateBinaryExpression(variableManager, flow, out, (BinaryExpressionNode) expression, registerName);
         } else if (expression instanceof IntegerValueNode) {
             out.println("\t\tmov " + registerName + ", " + ((IntegerValueNode) expression).getValue());
-        }
-        if (expression instanceof IdentifierNode) {
+        } else if (expression instanceof StringValueNode) {
+            String literalName = StringPool.getLiteralName(((StringValueNode) expression).getValue());
+            out.println("\t\tmov " + registerName + ", dword " + literalName);
+        } else if (expression instanceof IdentifierNode) {
             final String varName = ((IdentifierNode) expression).getValue();
             out.println("\t\tmov " + registerName + ", dword [" + flow.getVar(varName).getName() + "]");
         }
@@ -43,7 +42,7 @@ public class ExpressionASMEvaluator {
                                                   BinaryExpressionNode expression,
                                                   String registerName) {
         calculateExpression(variableManager, flow, out, expression.getRight(), registerName);
-        final TemporaryVariableManager.Variable rightVar = variableManager.hold();
+        final TemporaryVariableManager.Variable rightVar = variableManager.hold(expression.getRight().getType(flow));
         ASMGenerator.saveVar(out, rightVar);
 
         calculateExpression(variableManager, flow, out, expression.getLeft());
