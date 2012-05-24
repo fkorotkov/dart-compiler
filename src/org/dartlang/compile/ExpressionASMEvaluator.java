@@ -47,11 +47,60 @@ public class ExpressionASMEvaluator {
 
         calculateExpression(variableManager, flow, out, expression.getLeft());
 
-        applyBinaryOperation(out, expression, rightVar);
-        variableManager.release(rightVar);
+        if (expression.getType(flow) == Type.STRING) {
+            assert expression.getOperator() == Operator.PLUS;
+            final TemporaryVariableManager.Variable leftVar = variableManager.hold(expression.getLeft().getType(flow));
+            ASMGenerator.saveVar(out, leftVar);
+            contatinateStrings(out, leftVar, rightVar);
+            variableManager.release(leftVar);
+        } else {
+            applyBinaryOperation(out, expression, rightVar);
+        }
 
+        variableManager.release(rightVar);
         if (!"eax".equals(registerName)) {
             out.println("\t\tmov " + registerName + ", eax");
+        }
+    }
+
+    private static void contatinateStrings(PrintWriter out,
+                                           TemporaryVariableManager.Variable leftVar,
+                                           TemporaryVariableManager.Variable rightVar) {
+        out.println("\t; concatinate two strings: " + leftVar.getName() + " + " + rightVar.getName());
+
+        out.println("\t; copy string: " + leftVar.getName());
+
+        varToString(out, leftVar, "eax");
+
+        out.println("\t\tpush  ebp ; setup the frame");
+        out.println("\t\tmov  ebp, esp");
+
+        out.println("\t\tpush eax");
+        out.println("\t\tpush eax");
+
+        out.println("\t\tcall _strdup");
+        out.println("\tafter:");
+
+        out.println("\t\tmov  esp, ebp");
+        out.println("\t\tpop  ebp");
+
+        varToString(out, rightVar, "ebx");
+        out.println("\t\tpush  ebp ; setup the frame");
+        out.println("\t\tmov  ebp, esp");
+
+        out.println("\t\tpush ebx");
+        out.println("\t\tpush eax");
+        out.println("\t\tcall _strcat");
+
+        out.println("\t\tmov  esp, ebp");
+        out.println("\t\tpop  ebp");
+    }
+
+    private static void varToString(PrintWriter out, TemporaryVariableManager.Variable variable, String registerName) {
+        if (variable.getType() == Type.STRING) {
+            out.println("\t\tmov " + registerName + ", dword [" + variable.getName() + "]");
+        } else {
+            //todo: itoa
         }
     }
 

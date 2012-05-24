@@ -60,7 +60,7 @@ public class CompilerTestCase extends TestCase {
     }
 
     private void doLinking() throws IOException, InterruptedException {
-        final String[] cmdarray = {"gcc", "-m32", "-Wl", getTestName() + ".o", "-o", getTestName()};
+        final String[] cmdarray = {"gcc", "-m32", "-mstackrealign", "-Wl", getTestName() + ".o", "-o", getTestName()};
         runCommand(cmdarray, "linking error:\n", new File(getDataPath(), getTestName()));
     }
 
@@ -104,6 +104,10 @@ public class CompilerTestCase extends TestCase {
     }
 
     public void testExpression4() throws Throwable {
+        doTest();
+    }
+
+    public void testExpression5() throws Throwable {
         doTest();
     }
 }
