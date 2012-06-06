@@ -3,13 +3,15 @@ package org.dartlang.compile;
 import java.io.PrintWriter;
 
 public class ASMGenerator {
-    private static TemporaryVariableManager.Variable formatInt = new TemporaryVariableManager.Variable("format_int",
+    public static TemporaryVariableManager.Variable formatInt = new TemporaryVariableManager.Variable("format_int",
             Type.STRING);
-    private static TemporaryVariableManager.Variable formatString = new TemporaryVariableManager.Variable("format_str",
+    public static TemporaryVariableManager.Variable formatString = new TemporaryVariableManager.Variable("format_str",
+            Type.STRING);
+    public static TemporaryVariableManager.Variable int2stringBuffer = new TemporaryVariableManager.Variable("int2string_buf",
             Type.STRING);
 
     public static void header(PrintWriter out) {
-        out.println("extern _printf, _strcat, _strlen, _strdup, _itoa, _malloc");
+        out.println("extern _printf, _sprintf, _strcat, _strlen, _strdup, _itoa, _malloc");
         out.println("segment .text");
         out.println("global _main");
     }
@@ -21,6 +23,7 @@ public class ASMGenerator {
         }
         out.println("\t" + formatInt.getName() + " db \"%10d\", 0");
         out.println("\t" + formatString.getName() + " db \"%s\", 0");
+        out.println("\t" + int2stringBuffer.getName() + " db \"1234567890\", 0");
         StringPool.writeToDataBlock(out);
     }
 
@@ -54,7 +57,6 @@ public class ASMGenerator {
             }
         }
         out.println("\t\tcall _printf");
-        out.println("\t\tadd  esp, " + (4 * variables.length) + " ; cleanup the stack");
         out.println("\t\tmov  esp, ebp");
         out.println("\t\tpop  ebp");
     }

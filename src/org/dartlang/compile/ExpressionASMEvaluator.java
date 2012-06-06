@@ -51,6 +51,8 @@ public class ExpressionASMEvaluator {
             assert expression.getOperator() == Operator.PLUS;
             final TemporaryVariableManager.Variable leftVar = variableManager.hold(expression.getLeft().getType(flow));
             ASMGenerator.saveVar(out, leftVar);
+            builtinToString(out, leftVar);
+            builtinToString(out, rightVar);
             contatinateStrings(out, leftVar, rightVar);
             variableManager.release(leftVar);
         } else {
@@ -61,6 +63,42 @@ public class ExpressionASMEvaluator {
         if (!"eax".equals(registerName)) {
             out.println("\t\tmov " + registerName + ", eax");
         }
+    }
+
+    private static void builtinToString(PrintWriter out, TemporaryVariableManager.Variable variable) {
+        if (variable.getType() == Type.STRING) {
+            return;
+        }
+        out.println("\t; toString(" + variable.getName() + ")");
+
+        out.println("\t; creating buffer");
+        out.println("\t\tpush  ebp ; setup the frame");
+        out.println("\t\tmov  ebp, esp");
+
+        out.println("\t\tpush " + ASMGenerator.int2stringBuffer.getName());
+        out.println("\t\tpush " + ASMGenerator.int2stringBuffer.getName());
+
+        out.println("\t\tcall _strdup");
+
+        out.println("\t\tmov  esp, ebp");
+
+        out.println("\t; sprintf");
+        out.println("\t;align 3*4. ");
+        out.println("\t\tpush dword [" + variable.getName() + "]");
+        out.println("\t\tpush dword [" + variable.getName() + "]");
+        out.println("\t\tpush dword [" + variable.getName() + "]");
+
+        out.println("\t\tpush dword [" + variable.getName() + "]");
+        out.println("\t\tpush " + ASMGenerator.formatInt.getName());
+
+        out.println("\t\tmov dword [" + variable.getName() + "], eax ; save");
+        out.println("\t\tpush eax");
+
+        out.println("\t\tcall _sprintf");
+        out.println("\t\tmov  esp, ebp");
+        out.println("\t\tpop  ebp");
+
+        variable.setType(Type.STRING);
     }
 
     private static void contatinateStrings(PrintWriter out,
@@ -79,7 +117,6 @@ public class ExpressionASMEvaluator {
         out.println("\t\tpush eax");
 
         out.println("\t\tcall _strdup");
-        out.println("\tafter:");
 
         out.println("\t\tmov  esp, ebp");
         out.println("\t\tpop  ebp");
