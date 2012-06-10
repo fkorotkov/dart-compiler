@@ -49,7 +49,7 @@ public class ASMGenerator {
     public static void callPrintfMany(PrintWriter out, TemporaryVariableManager.Variable... variables) {
         out.print("\t; printf(");
         for (int i = variables.length - 1; i >= 0; --i) {
-            if (i > 0) out.print(", ");
+            if (i < variables.length - 1) out.print(", ");
             out.print(variables[i].getType().toString().toLowerCase());
             out.print(" ");
             out.print(variables[i].getName());

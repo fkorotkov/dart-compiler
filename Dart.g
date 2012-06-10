@@ -35,7 +35,7 @@ tokens {
 }
 
 INT : '0'..'9'+;
-ID : ('a'..'z'|'A'..'Z')+;
+ID : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9')*;
 STRING : '\"' (options {greedy=false;} : .)* '\"' { setText(getText().substring(1, getText().length()-1)); };
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ { $channel = HIDDEN; } ;
 

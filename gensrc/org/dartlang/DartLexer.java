@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 Dart.g 2012-05-20 15:40:38
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 Dart.g 2012-06-10 21:41:23
 
   package org.dartlang;
 
@@ -924,17 +924,25 @@ public class DartLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Dart.g:38:4: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
-            // Dart.g:38:6: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // Dart.g:38:4: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+            // Dart.g:38:6: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             {
-            // Dart.g:38:6: ( 'a' .. 'z' | 'A' .. 'Z' )+
-            int cnt2=0;
+            if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            // Dart.g:38:25: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
                 int LA2_0 = input.LA(1);
 
-                if ( ((LA2_0>='A' && LA2_0<='Z')||(LA2_0>='a' && LA2_0<='z')) ) {
+                if ( ((LA2_0>='0' && LA2_0<='9')||(LA2_0>='A' && LA2_0<='Z')||(LA2_0>='a' && LA2_0<='z')) ) {
                     alt2=1;
                 }
 
@@ -943,7 +951,7 @@ public class DartLexer extends Lexer {
             	case 1 :
             	    // Dart.g:
             	    {
-            	    if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
+            	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
 
             	    }
@@ -957,12 +965,8 @@ public class DartLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt2 >= 1 ) break loop2;
-                        EarlyExitException eee =
-                            new EarlyExitException(2, input);
-                        throw eee;
+            	    break loop2;
                 }
-                cnt2++;
             } while (true);
 
 
@@ -1409,12 +1413,12 @@ public class DartLexer extends Lexer {
     static final String DFA5_minS =
         "\1\11\1\162\1\157\1\145\1\154\1\141\1\146\1\165\1\145\1\162\1\150"+
         "\4\uffff\1\75\2\uffff\1\174\1\46\11\uffff\1\75\4\uffff\1\145\1\156"+
-        "\1\146\1\101\1\163\1\154\1\156\1\162\2\101\1\154\1\164\1\165\1\151"+
+        "\1\146\1\60\1\163\1\154\1\156\1\162\2\60\1\154\1\164\1\165\1\151"+
         "\1\75\5\uffff\1\75\1\141\1\163\1\141\1\uffff\1\145\1\163\1\141\1"+
-        "\101\2\uffff\1\154\1\165\1\145\1\154\4\uffff\1\153\1\164\1\151\1"+
-        "\165\1\101\1\145\1\154\1\uffff\1\101\1\162\1\101\1\145\2\101\1\156"+
-        "\1\154\1\uffff\2\101\1\uffff\1\156\1\uffff\1\101\2\uffff\1\165\1"+
-        "\164\2\uffff\1\101\1\uffff\1\145\1\101\1\uffff\1\101\2\uffff";
+        "\60\2\uffff\1\154\1\165\1\145\1\154\4\uffff\1\153\1\164\1\151\1"+
+        "\165\1\60\1\145\1\154\1\uffff\1\60\1\162\1\60\1\145\2\60\1\156\1"+
+        "\154\1\uffff\2\60\1\uffff\1\156\1\uffff\1\60\2\uffff\1\165\1\164"+
+        "\2\uffff\1\60\1\uffff\1\145\1\60\1\uffff\1\60\2\uffff";
     static final String DFA5_maxS =
         "\1\176\1\162\2\157\1\154\1\157\1\156\1\165\1\145\1\162\1\150\4\uffff"+
         "\1\75\2\uffff\1\174\1\46\11\uffff\1\75\4\uffff\1\145\1\156\1\146"+
@@ -1475,13 +1479,13 @@ public class DartLexer extends Lexer {
             "\1\67",
             "\1\70",
             "\1\71",
-            "\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "\1\73",
             "\1\74",
             "\1\75",
             "\1\76",
-            "\32\37\6\uffff\32\37",
-            "\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "\1\101",
             "\1\102",
             "\1\103",
@@ -1500,7 +1504,7 @@ public class DartLexer extends Lexer {
             "\1\115",
             "\1\116",
             "\1\117",
-            "\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
             "",
             "\1\121",
@@ -1515,37 +1519,37 @@ public class DartLexer extends Lexer {
             "\1\126",
             "\1\127",
             "\1\130",
-            "\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "\1\132",
             "\1\133",
             "",
-            "\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "\1\135",
-            "\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "\1\137",
-            "\32\37\6\uffff\32\37",
-            "\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "\1\142",
             "\1\143",
             "",
-            "\32\37\6\uffff\32\37",
-            "\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
             "\1\146",
             "",
-            "\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
             "",
             "\1\150",
             "\1\151",
             "",
             "",
-            "\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
             "\1\153",
-            "\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
-            "\32\37\6\uffff\32\37",
+            "\12\37\7\uffff\32\37\6\uffff\32\37",
             "",
             ""
     };

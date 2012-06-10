@@ -13,6 +13,10 @@ public class TypeNode extends ASTNode {
         typeName = text;
     }
 
+    public String getTypeName() {
+        return typeName.toUpperCase();
+    }
+
     @Override
     public String getText() {
         return super.getText() + "(" + typeName + ")";

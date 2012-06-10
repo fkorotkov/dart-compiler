@@ -1,9 +1,6 @@
 package org.dartlang.compile;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class TemporaryVariableManager {
     private int count = 0;
@@ -23,6 +20,12 @@ public class TemporaryVariableManager {
 
     public int getCount() {
         return count;
+    }
+
+    public void release(List<Variable> variables) {
+        for (Variable variable : variables) {
+            release(variable);
+        }
     }
 
     public void release(Variable variable) {

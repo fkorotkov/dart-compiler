@@ -32,10 +32,12 @@ public class Flow {
 
     public List<TemporaryVariableManager.Variable> resetTo(Flow oldFlow) {
         final List<TemporaryVariableManager.Variable> result = new ArrayList<TemporaryVariableManager.Variable>(
-                oldFlow.id2var.values());
-        result.removeAll(id2var.values());
+                id2var.values());
+        result.removeAll(oldFlow.id2var.values());
         id2var.clear();
-        id2var.entrySet().addAll(oldFlow.id2var.entrySet());
+        for (Map.Entry<String, TemporaryVariableManager.Variable> entry : oldFlow.id2var.entrySet()) {
+            id2var.put(entry.getKey(), entry.getValue());
+        }
         return result;
     }
 }

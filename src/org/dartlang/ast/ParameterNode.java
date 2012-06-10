@@ -13,6 +13,14 @@ public class ParameterNode extends ASTNode {
         this.name = name;
     }
 
+    public TypeNode getTypeNode() {
+        return typeNode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String getText() {
         return super.getText() + "(" + name + ")";
