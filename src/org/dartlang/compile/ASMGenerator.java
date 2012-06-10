@@ -9,6 +9,13 @@ public class ASMGenerator {
             Type.STRING);
     public static TemporaryVariableManager.Variable int2stringBuffer = new TemporaryVariableManager.Variable("int2string_buf",
             Type.STRING);
+    public static final int int2stringBufferLength = 10;
+
+    private static int uid = 0;
+
+    public static int getUniqueUID() {
+        return uid++;
+    }
 
     public static void header(PrintWriter out) {
         out.println("extern _printf, _sprintf, _strcat, _strlen, _strdup, _itoa, _malloc");
@@ -23,7 +30,11 @@ public class ASMGenerator {
         }
         out.println("\t" + formatInt.getName() + " db \"%10d\", 0");
         out.println("\t" + formatString.getName() + " db \"%s\", 0");
-        out.println("\t" + int2stringBuffer.getName() + " db \"1234567890\", 0");
+        String int2stringBufferValue = "";
+        while (int2stringBufferValue.length() < int2stringBufferLength) {
+            int2stringBufferValue += "0";
+        }
+        out.println("\t" + int2stringBuffer.getName() + " db \"" + int2stringBufferValue + "\", 0");
         StringPool.writeToDataBlock(out);
     }
 

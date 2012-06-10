@@ -29,15 +29,13 @@ public class CompilerTestCase extends TestCase {
 
     @Override
     protected void setUp() throws Exception {
-        deleteFiles();
+        new File(getDataPath(), getTestName() + ".asm").delete();
+        new File(getDataPath(), getTestName() + ".o").delete();
+        new File(getDataPath(), getTestName()).delete();
     }
 
     @Override
     protected void tearDown() throws Exception {
-        deleteFiles();
-    }
-
-    private void deleteFiles() {
         new File(getDataPath(), getTestName() + ".asm").delete();
         new File(getDataPath(), getTestName() + ".o").delete();
         new File(getDataPath(), getTestName()).delete();

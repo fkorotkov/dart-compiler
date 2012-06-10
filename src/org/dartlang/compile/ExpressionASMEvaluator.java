@@ -72,10 +72,10 @@ public class ExpressionASMEvaluator {
         out.println("\t; toString(" + variable.getName() + ")");
 
         out.println("\t; creating buffer");
+        out.println("\t\tpush dword [" + variable.getName() + "]");
         out.println("\t\tpush  ebp ; setup the frame");
         out.println("\t\tmov  ebp, esp");
 
-        out.println("\t\tpush " + ASMGenerator.int2stringBuffer.getName());
         out.println("\t\tpush " + ASMGenerator.int2stringBuffer.getName());
 
         out.println("\t\tcall _strdup");
@@ -83,8 +83,7 @@ public class ExpressionASMEvaluator {
         out.println("\t\tmov  esp, ebp");
 
         out.println("\t; sprintf");
-        out.println("\t;align 3*4. ");
-        out.println("\t\tpush dword [" + variable.getName() + "]");
+        out.println("\t;align 2*4. ");
         out.println("\t\tpush dword [" + variable.getName() + "]");
         out.println("\t\tpush dword [" + variable.getName() + "]");
 
@@ -97,8 +96,38 @@ public class ExpressionASMEvaluator {
         out.println("\t\tcall _sprintf");
         out.println("\t\tmov  esp, ebp");
         out.println("\t\tpop  ebp");
+        out.println("\t\tpop  eax ; save int value");
 
         variable.setType(Type.STRING);
+        out.println("\t; move pointer");
+        out.println("\t\tpush ebx");
+        out.println("\t\tpush ecx");
+
+        out.println("\t\tmov ecx, 10");
+        out.println("\t\tmov ebx, 0");
+
+        final int id = ASMGenerator.getUniqueUID();
+        out.println("\t; check less 0");
+        out.println("\t\tcmp eax, 0");
+        out.println("\t\tjge ll_" + id);
+        out.println("\t\tsub ebx, eax");
+        out.println("\t\tmov eax, ebx");
+        out.println("\t\tmov ebx, 1");
+
+        out.println("\tll_" + id + ":");
+        out.println("\t\tmov edx, 0");
+        out.println("\t\tdiv ecx");
+        out.println("\t\tinc ebx");
+        out.println("\t\tcmp eax, 0");
+        out.println("\t\tjne ll_" + id);
+
+        out.println("\t\tmov eax, dword [" + variable.getName() + "]");
+        out.println("\t\tadd eax, " + ASMGenerator.int2stringBufferLength);
+        out.println("\t\tsub eax, ebx");
+
+        out.println("\t\tmov dword [" + variable.getName() + "], eax ; save");
+        out.println("\t\tpop  ecx");
+        out.println("\t\tpop  ebx");
     }
 
     private static void contatinateStrings(PrintWriter out,
