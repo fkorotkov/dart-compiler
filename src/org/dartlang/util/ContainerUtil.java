@@ -1,5 +1,7 @@
 package org.dartlang.util;
 
+import org.dartlang.ast.ASTNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,5 +17,13 @@ public class ContainerUtil {
             }
         }
         return result;
+    }
+    public static <T> T find(List<? extends T> collection, Condition<T> condition) {
+        for (T item : collection) {
+            if (condition.value(item)) {
+                return item;
+            }
+        }
+        return null;
     }
 }

@@ -2,6 +2,9 @@ package org.dartlang.ast;
 
 import org.dartlang.compile.Flow;
 import org.dartlang.compile.Type;
+import org.dartlang.util.Processor;
+import org.dartlang.util.ResolveUtil;
+import org.dartlang.util.Wrapper;
 
 import java.util.List;
 
@@ -31,6 +34,15 @@ public class CallExpressionNode extends ExpressionNode {
 
     @Override
     public Type getType(Flow currentFlow) {
-        return null;
+        final Wrapper<FunctionDeclarationNode> functionDeclarationNodeWrapper = new Wrapper<FunctionDeclarationNode>();
+        ResolveUtil.treeWalkUp(this, new Processor<ASTNode>() {
+            @Override
+            public boolean process(ASTNode value) {
+                functionDeclarationNodeWrapper.setValue(ResolveUtil.findFunctionDeclaration(getFunctionName(), value.getChildren()));
+                return functionDeclarationNodeWrapper.getValue() == null;
+            }
+        });
+        assert functionDeclarationNodeWrapper.getValue() != null : "can't find function " + getFunctionName();
+        return functionDeclarationNodeWrapper.getValue().getTypeNode().getType();
     }
 }

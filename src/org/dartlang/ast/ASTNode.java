@@ -10,6 +10,7 @@ import java.util.List;
  * @author fedor.korotkov
  */
 public class ASTNode {
+    private ASTNode parent = null;
     protected final List<? extends ASTNode> children;
 
     public ASTNode(List<? extends ASTNode> children) {
@@ -19,6 +20,13 @@ public class ASTNode {
                 return item != null;
             }
         });
+        for (ASTNode child : getChildren()) {
+            child.parent = this;
+        }
+    }
+
+    public ASTNode getParent() {
+        return parent;
     }
 
     public ASTNode(ASTNode child) {

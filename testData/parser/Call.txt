@@ -4,6 +4,20 @@ StatementsNode
 		StatementsNode
 			VarDeclarationNode(foo)
 				VarInitNode
-					IntegerValueNode(239)
+					IntegerValueNode(15)
+			VarDeclarationNode(foo2)
+				VarInitNode
+					CallExpressionNode(sqr)
+						IntegerValueNode(15)
 			CallExpressionNode(print)
-				IdentifierNode(foo)
+				IdentifierNode(foo2)
+	FunctionDeclarationNode(sqr)
+		TypeNode(int)
+		ParameterListNode
+			ParameterNode(value)
+				TypeNode(int)
+		StatementsNode
+			ReturnStatementNode
+				MultiplicativeExpression
+					IdentifierNode(value)
+					IdentifierNode(value)

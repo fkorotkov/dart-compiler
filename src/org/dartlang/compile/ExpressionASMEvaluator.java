@@ -33,6 +33,9 @@ public class ExpressionASMEvaluator {
         } else if (expression instanceof IdentifierNode) {
             final String varName = ((IdentifierNode) expression).getValue();
             out.println("\t\tmov " + registerName + ", dword [" + flow.getVar(varName).getName() + "]");
+        } else if (expression instanceof CallExpressionNode) {
+            Translator.translateCallExpression(variableManager, out, (CallExpressionNode) expression, flow);
+            out.println("\t\tmov " + registerName + ", eax");
         }
     }
 

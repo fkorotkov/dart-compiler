@@ -1,5 +1,7 @@
 package org.dartlang.ast;
 
+import org.dartlang.compile.Type;
+
 import java.util.Collections;
 
 /**
@@ -13,6 +15,9 @@ public class TypeNode extends ASTNode {
         typeName = text;
     }
 
+    public Type getType() {
+        return Type.valueOf(getTypeName());
+    }
     public String getTypeName() {
         return typeName.toUpperCase();
     }

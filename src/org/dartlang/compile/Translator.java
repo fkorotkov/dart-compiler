@@ -27,7 +27,10 @@ public class Translator {
             } else if (node instanceof VarDeclarationNode) {
                 translateVarDeclaration(out, (VarDeclarationNode) node, flow);
             } else if (node instanceof CallExpressionNode) {
-                translateCallExpression(out, (CallExpressionNode) node, flow);
+                translateCallExpression(variableManager, out, (CallExpressionNode) node, flow);
+            } else if (node instanceof ReturnStatementNode) {
+                ExpressionASMEvaluator.calculateExpression(variableManager, flow, out, ((ReturnStatementNode) node).getExpression());
+                out.println("\t\tret");
             } else {
                 System.err.println("Cannot translate node: " + node.getText());
             }
@@ -42,7 +45,7 @@ public class Translator {
         for (int i = 0, childrenSize = children.size(); i < childrenSize; i++) {
             ASTNode item = children.get(i);
             final ParameterNode parameter = (ParameterNode) item;
-            final Type type = Type.valueOf(parameter.getTypeNode().getTypeName());
+            final Type type = parameter.getTypeNode().getType();
             TemporaryVariableManager.Variable variable = variableManager.hold(type);
             flow.addVar(parameter.getName(), variable);
             final String reg = "e" + ((char) ('a' + i)) + "x";
@@ -67,7 +70,7 @@ public class Translator {
         out.println("\t; end calculating expression for " + node.getName());
     }
 
-    private void translateCallExpression(PrintWriter out, CallExpressionNode callExpressionNode, Flow flow) {
+    public static void translateCallExpression(TemporaryVariableManager variableManager, PrintWriter out, CallExpressionNode callExpressionNode, Flow flow) {
         if ("print".equals(callExpressionNode.getFunctionName())) {
             final ASTNode expression = callExpressionNode.getParameters().iterator().next();
             if (expression instanceof IdentifierNode) {
